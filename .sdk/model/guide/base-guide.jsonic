@@ -1,0 +1,29 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: case_analysi: {
+    path: "/case-analysis": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: contract_service: {
+    path: "/contract/draft": {
+      op: create: method: *POST
+    }
+    path: "/contract/review": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: legal_query: {
+    path: "/query": {
+      op: create: method: *POST
+    }
+  }
+
+}

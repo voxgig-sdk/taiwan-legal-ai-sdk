@@ -1,0 +1,18 @@
+# BasicCaseAnalysiFlow
+
+main: kit: flow: BasicCaseAnalysiFlow:
+{
+  entity: "case_analysi",
+  kind: "basic",
+  name: "BasicCaseAnalysiFlow",
+  step: [
+    {
+      input: {
+        ref: "case_analysi_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCaseAnalysiFlow"
+}

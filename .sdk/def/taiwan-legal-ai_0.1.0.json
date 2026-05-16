@@ -1,0 +1,723 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Taiwan Legal AI",
+    "description": "TaiLexi AI is a specialized legal AI designed for Taiwan, providing automated assistance in legal queries, case analysis, and contract drafting and review. It offers a comprehensive platform for individuals and legal professionals to access legal information and support 24/7.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://twlawbot.com/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://twlawbot.com/api",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Legal Queries",
+      "description": "Operations for handling legal questions and queries"
+    },
+    {
+      "name": "Case Analysis",
+      "description": "Operations for analyzing legal cases"
+    },
+    {
+      "name": "Contract Services",
+      "description": "Operations for contract drafting and review"
+    }
+  ],
+  "paths": {
+    "/query": {
+      "post": {
+        "tags": [
+          "Legal Queries"
+        ],
+        "summary": "Submit a legal query",
+        "description": "Submit a legal question to receive AI-powered legal assistance and guidance based on Taiwan law",
+        "operationId": "submitLegalQuery",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "question"
+                ],
+                "properties": {
+                  "question": {
+                    "type": "string",
+                    "description": "The legal question or query",
+                    "example": "What are the requirements for filing a lawsuit in Taiwan?"
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "Category of legal question",
+                    "enum": [
+                      "civil",
+                      "criminal",
+                      "commercial",
+                      "labor",
+                      "family",
+                      "administrative",
+                      "other"
+                    ],
+                    "example": "civil"
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "Response language preference",
+                    "enum": [
+                      "zh-TW",
+                      "en"
+                    ],
+                    "default": "zh-TW",
+                    "example": "zh-TW"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response with legal guidance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "queryId": {
+                      "type": "string",
+                      "description": "Unique identifier for the query",
+                      "example": "q-123456789"
+                    },
+                    "question": {
+                      "type": "string",
+                      "description": "The submitted question",
+                      "example": "What are the requirements for filing a lawsuit in Taiwan?"
+                    },
+                    "answer": {
+                      "type": "string",
+                      "description": "AI-generated legal guidance",
+                      "example": "根據台灣民事訴訟法..."
+                    },
+                    "relevantLaws": {
+                      "type": "array",
+                      "description": "List of relevant legal statutes",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "lawName": {
+                            "type": "string",
+                            "example": "民事訴訟法"
+                          },
+                          "article": {
+                            "type": "string",
+                            "example": "第244條"
+                          },
+                          "content": {
+                            "type": "string",
+                            "example": "訴訟標的之價額..."
+                          }
+                        }
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of the response"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/case-analysis": {
+      "post": {
+        "tags": [
+          "Case Analysis"
+        ],
+        "summary": "Analyze a legal case",
+        "description": "Submit case details for AI-powered analysis and legal insights",
+        "operationId": "analyzeLegalCase",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "caseDetails"
+                ],
+                "properties": {
+                  "caseDetails": {
+                    "type": "string",
+                    "description": "Detailed description of the case",
+                    "example": "This case involves a contract dispute between..."
+                  },
+                  "caseType": {
+                    "type": "string",
+                    "description": "Type of legal case",
+                    "enum": [
+                      "civil",
+                      "criminal",
+                      "commercial",
+                      "labor",
+                      "family",
+                      "administrative"
+                    ],
+                    "example": "commercial"
+                  },
+                  "parties": {
+                    "type": "object",
+                    "description": "Information about parties involved",
+                    "properties": {
+                      "plaintiff": {
+                        "type": "string",
+                        "example": "Company A"
+                      },
+                      "defendant": {
+                        "type": "string",
+                        "example": "Company B"
+                      }
+                    }
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "zh-TW",
+                      "en"
+                    ],
+                    "default": "zh-TW",
+                    "example": "zh-TW"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful case analysis",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "analysisId": {
+                      "type": "string",
+                      "description": "Unique identifier for the analysis",
+                      "example": "ca-987654321"
+                    },
+                    "summary": {
+                      "type": "string",
+                      "description": "Summary of the case analysis"
+                    },
+                    "legalIssues": {
+                      "type": "array",
+                      "description": "Identified legal issues",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "applicableLaws": {
+                      "type": "array",
+                      "description": "Laws applicable to this case",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "lawName": {
+                            "type": "string"
+                          },
+                          "articles": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "precedents": {
+                      "type": "array",
+                      "description": "Relevant legal precedents",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "caseNumber": {
+                            "type": "string"
+                          },
+                          "court": {
+                            "type": "string"
+                          },
+                          "year": {
+                            "type": "integer"
+                          },
+                          "summary": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "recommendations": {
+                      "type": "string",
+                      "description": "AI recommendations for case strategy"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contract/draft": {
+      "post": {
+        "tags": [
+          "Contract Services"
+        ],
+        "summary": "Draft a contract",
+        "description": "Generate a contract draft based on specified requirements",
+        "operationId": "draftContract",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "contractType",
+                  "requirements"
+                ],
+                "properties": {
+                  "contractType": {
+                    "type": "string",
+                    "description": "Type of contract to draft",
+                    "enum": [
+                      "employment",
+                      "lease",
+                      "sales",
+                      "service",
+                      "nda",
+                      "partnership",
+                      "other"
+                    ],
+                    "example": "employment"
+                  },
+                  "requirements": {
+                    "type": "string",
+                    "description": "Specific requirements and terms for the contract",
+                    "example": "Full-time employment contract with 6-month probation period"
+                  },
+                  "parties": {
+                    "type": "object",
+                    "description": "Information about contracting parties",
+                    "properties": {
+                      "party1": {
+                        "type": "string",
+                        "example": "ABC Corporation"
+                      },
+                      "party2": {
+                        "type": "string",
+                        "example": "John Doe"
+                      }
+                    }
+                  },
+                  "specificClauses": {
+                    "type": "array",
+                    "description": "Specific clauses to include",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "confidentiality",
+                      "non-compete",
+                      "termination"
+                    ]
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "zh-TW",
+                      "en"
+                    ],
+                    "default": "zh-TW",
+                    "example": "zh-TW"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully generated contract draft",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "draftId": {
+                      "type": "string",
+                      "description": "Unique identifier for the contract draft",
+                      "example": "cd-555666777"
+                    },
+                    "contractType": {
+                      "type": "string",
+                      "example": "employment"
+                    },
+                    "content": {
+                      "type": "string",
+                      "description": "The complete contract draft text"
+                    },
+                    "clauses": {
+                      "type": "array",
+                      "description": "List of contract clauses",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "clauseNumber": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "notes": {
+                      "type": "string",
+                      "description": "Important notes and considerations"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contract/review": {
+      "post": {
+        "tags": [
+          "Contract Services"
+        ],
+        "summary": "Review a contract",
+        "description": "Submit a contract for AI-powered legal review and analysis",
+        "operationId": "reviewContract",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "contractText"
+                ],
+                "properties": {
+                  "contractText": {
+                    "type": "string",
+                    "description": "The complete contract text to be reviewed"
+                  },
+                  "contractType": {
+                    "type": "string",
+                    "description": "Type of contract",
+                    "enum": [
+                      "employment",
+                      "lease",
+                      "sales",
+                      "service",
+                      "nda",
+                      "partnership",
+                      "other"
+                    ],
+                    "example": "lease"
+                  },
+                  "focusAreas": {
+                    "type": "array",
+                    "description": "Specific areas to focus the review on",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "liability",
+                        "termination",
+                        "payment",
+                        "confidentiality",
+                        "compliance",
+                        "all"
+                      ]
+                    },
+                    "example": [
+                      "liability",
+                      "termination"
+                    ]
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "zh-TW",
+                      "en"
+                    ],
+                    "default": "zh-TW",
+                    "example": "zh-TW"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully reviewed contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "reviewId": {
+                      "type": "string",
+                      "description": "Unique identifier for the review",
+                      "example": "cr-111222333"
+                    },
+                    "overallAssessment": {
+                      "type": "string",
+                      "description": "Overall assessment of the contract",
+                      "example": "This contract generally protects both parties' interests but requires attention to specific clauses."
+                    },
+                    "riskLevel": {
+                      "type": "string",
+                      "enum": [
+                        "low",
+                        "medium",
+                        "high"
+                      ],
+                      "description": "Overall risk level assessment",
+                      "example": "medium"
+                    },
+                    "issues": {
+                      "type": "array",
+                      "description": "Identified issues and concerns",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "severity": {
+                            "type": "string",
+                            "enum": [
+                              "critical",
+                              "high",
+                              "medium",
+                              "low"
+                            ]
+                          },
+                          "clause": {
+                            "type": "string",
+                            "description": "Clause reference"
+                          },
+                          "issue": {
+                            "type": "string",
+                            "description": "Description of the issue"
+                          },
+                          "recommendation": {
+                            "type": "string",
+                            "description": "Recommended action"
+                          }
+                        }
+                      }
+                    },
+                    "missingClauses": {
+                      "type": "array",
+                      "description": "Important clauses that are missing",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "complianceCheck": {
+                      "type": "object",
+                      "description": "Compliance with Taiwan laws",
+                      "properties": {
+                        "compliant": {
+                          "type": "boolean"
+                        },
+                        "issues": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "recommendations": {
+                      "type": "array",
+                      "description": "Recommended changes and improvements",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message"
+          },
+          "details": {
+            "type": "string",
+            "description": "Additional error details"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key for authentication"
+      },
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT token authentication"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    },
+    {
+      "BearerAuth": []
+    }
+  ]
+}

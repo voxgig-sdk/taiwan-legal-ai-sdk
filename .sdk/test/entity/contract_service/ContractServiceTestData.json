@@ -1,0 +1,94 @@
+{
+  "existing": {
+    "contract_service": {
+      "CONTRACT_SERVICE00": {
+        "claus": [],
+        "compliance_check": {},
+        "content": "sc0",
+        "contract_text": "sc1",
+        "contract_type": "sc2",
+        "draft_id": "DRAFT01",
+        "focus_area": [],
+        "issue": [],
+        "language": "sc6",
+        "missing_claus": [],
+        "note": "sc8",
+        "overall_assessment": "sc9",
+        "party": {},
+        "recommendation": [],
+        "requirement": "scc",
+        "review_id": "REVIEW01",
+        "risk_level": "sce",
+        "specific_claus": [],
+        "timestamp": "sd0"
+      },
+      "CONTRACT_SERVICE01": {
+        "claus": [],
+        "compliance_check": {},
+        "content": "s17e",
+        "contract_text": "s17f",
+        "contract_type": "s180",
+        "draft_id": "DRAFT01",
+        "focus_area": [],
+        "issue": [],
+        "language": "s184",
+        "missing_claus": [],
+        "note": "s186",
+        "overall_assessment": "s187",
+        "party": {},
+        "recommendation": [],
+        "requirement": "s18a",
+        "review_id": "REVIEW01",
+        "risk_level": "s18c",
+        "specific_claus": [],
+        "timestamp": "s18e"
+      },
+      "CONTRACT_SERVICE02": {
+        "claus": [],
+        "compliance_check": {},
+        "content": "s23c",
+        "contract_text": "s23d",
+        "contract_type": "s23e",
+        "draft_id": "DRAFT01",
+        "focus_area": [],
+        "issue": [],
+        "language": "s242",
+        "missing_claus": [],
+        "note": "s244",
+        "overall_assessment": "s245",
+        "party": {},
+        "recommendation": [],
+        "requirement": "s248",
+        "review_id": "REVIEW01",
+        "risk_level": "s24a",
+        "specific_claus": [],
+        "timestamp": "s24c"
+      }
+    }
+  },
+  "new": {
+    "contract_service": {
+      "contract_service_ref01": {
+        "claus": [],
+        "compliance_check": {},
+        "content": "s2fa",
+        "contract_text": "s2fb",
+        "contract_type": "s2fc",
+        "draft_id": "DRAFT01",
+        "focus_area": [],
+        "issue": [],
+        "language": "s300",
+        "missing_claus": [],
+        "note": "s302",
+        "overall_assessment": "s303",
+        "party": {},
+        "recommendation": [],
+        "requirement": "s306",
+        "review_id": "REVIEW01",
+        "risk_level": "s308",
+        "specific_claus": [],
+        "timestamp": "s30a"
+      }
+    }
+  }
+}

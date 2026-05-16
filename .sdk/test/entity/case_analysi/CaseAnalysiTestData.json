@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "case_analysi": {
+      "CASE_ANALYSI00": {
+        "analysis_id": "ANALYSIS01",
+        "applicable_law": [],
+        "case_detail": "s70",
+        "case_type": "s71",
+        "language": "s72",
+        "legal_issue": [],
+        "party": {},
+        "precedent": [],
+        "recommendation": "s76",
+        "summary": "s77",
+        "timestamp": "s78"
+      },
+      "CASE_ANALYSI01": {
+        "analysis_id": "ANALYSIS01",
+        "applicable_law": [],
+        "case_detail": "sde",
+        "case_type": "sdf",
+        "language": "se0",
+        "legal_issue": [],
+        "party": {},
+        "precedent": [],
+        "recommendation": "se4",
+        "summary": "se5",
+        "timestamp": "se6"
+      },
+      "CASE_ANALYSI02": {
+        "analysis_id": "ANALYSIS01",
+        "applicable_law": [],
+        "case_detail": "s14c",
+        "case_type": "s14d",
+        "language": "s14e",
+        "legal_issue": [],
+        "party": {},
+        "precedent": [],
+        "recommendation": "s152",
+        "summary": "s153",
+        "timestamp": "s154"
+      }
+    }
+  },
+  "new": {
+    "case_analysi": {
+      "case_analysi_ref01": {
+        "analysis_id": "ANALYSIS01",
+        "applicable_law": [],
+        "case_detail": "s1ba",
+        "case_type": "s1bb",
+        "language": "s1bc",
+        "legal_issue": [],
+        "party": {},
+        "precedent": [],
+        "recommendation": "s1c0",
+        "summary": "s1c1",
+        "timestamp": "s1c2"
+      }
+    }
+  }
+}

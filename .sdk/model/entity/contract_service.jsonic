@@ -1,0 +1,146 @@
+# Entity: contract_service
+
+main: kit: entity: contract_service: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "claus"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "compliance_check"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "content"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "contract_text"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "contract_type"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "draft_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "focus_area"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "issue"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "language"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "missing_claus"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "note"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "overall_assessment"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "party"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "recommendation"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "requirement"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "review_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "risk_level"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "specific_claus"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "timestamp"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "contract_service"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/contract/draft"
+          parts: [
+            "contract"
+            "draft"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "POST"
+          orig: "/contract/review"
+          parts: [
+            "contract"
+            "review"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

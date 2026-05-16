@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "legal_query": {
+      "LEGAL_QUERY00": {
+        "answer": "s46",
+        "category": "s47",
+        "language": "s48",
+        "query_id": "QUERY01",
+        "question": "s4a",
+        "relevant_law": [],
+        "timestamp": "s4c"
+      },
+      "LEGAL_QUERY01": {
+        "answer": "s8c",
+        "category": "s8d",
+        "language": "s8e",
+        "query_id": "QUERY01",
+        "question": "s90",
+        "relevant_law": [],
+        "timestamp": "s92"
+      },
+      "LEGAL_QUERY02": {
+        "answer": "sd2",
+        "category": "sd3",
+        "language": "sd4",
+        "query_id": "QUERY01",
+        "question": "sd6",
+        "relevant_law": [],
+        "timestamp": "sd8"
+      }
+    }
+  },
+  "new": {
+    "legal_query": {
+      "legal_query_ref01": {
+        "answer": "s118",
+        "category": "s119",
+        "language": "s11a",
+        "query_id": "QUERY01",
+        "question": "s11c",
+        "relevant_law": [],
+        "timestamp": "s11e"
+      }
+    }
+  }
+}

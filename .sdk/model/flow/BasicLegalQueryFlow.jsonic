@@ -1,0 +1,18 @@
+# BasicLegalQueryFlow
+
+main: kit: flow: BasicLegalQueryFlow:
+{
+  entity: "legal_query",
+  kind: "basic",
+  name: "BasicLegalQueryFlow",
+  step: [
+    {
+      input: {
+        ref: "legal_query_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicLegalQueryFlow"
+}

@@ -1,0 +1,87 @@
+# Entity: case_analysi
+
+main: kit: entity: case_analysi: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "analysis_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "applicable_law"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "case_detail"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "case_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "language"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "legal_issue"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "party"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "precedent"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "recommendation"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "summary"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "timestamp"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "case_analysi"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/case-analysis"
+          parts: [
+            "case-analysis"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

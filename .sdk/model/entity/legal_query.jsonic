@@ -1,0 +1,73 @@
+# Entity: legal_query
+
+main: kit: entity: legal_query: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "answer"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "category"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "language"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "query_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "question"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "relevant_law"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "timestamp"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "legal_query"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/query"
+          parts: [
+            "query"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
