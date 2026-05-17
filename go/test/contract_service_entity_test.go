@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/taiwan-legal-ai-sdk"
-	"github.com/voxgig-sdk/taiwan-legal-ai-sdk/core"
+	sdk "github.com/voxgig-sdk/taiwan-legal-ai-sdk/go"
+	"github.com/voxgig-sdk/taiwan-legal-ai-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/taiwan-legal-ai-sdk/go/utility/struct"
 )
 
 func TestContractServiceEntity(t *testing.T) {

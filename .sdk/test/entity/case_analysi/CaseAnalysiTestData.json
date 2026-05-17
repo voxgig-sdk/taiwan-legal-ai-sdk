@@ -12,7 +12,8 @@
         "precedent": [],
         "recommendation": "s76",
         "summary": "s77",
-        "timestamp": "s78"
+        "timestamp": "s78",
+        "id": "CASE_ANALYSI00"
       },
       "CASE_ANALYSI01": {
         "analysis_id": "ANALYSIS01",
@@ -25,7 +26,8 @@
         "precedent": [],
         "recommendation": "se4",
         "summary": "se5",
-        "timestamp": "se6"
+        "timestamp": "se6",
+        "id": "CASE_ANALYSI01"
       },
       "CASE_ANALYSI02": {
         "analysis_id": "ANALYSIS01",
@@ -38,7 +40,8 @@
         "precedent": [],
         "recommendation": "s152",
         "summary": "s153",
-        "timestamp": "s154"
+        "timestamp": "s154",
+        "id": "CASE_ANALYSI02"
       }
     }
   },

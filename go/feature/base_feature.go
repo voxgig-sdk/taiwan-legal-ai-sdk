@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/taiwan-legal-ai-sdk/core"
+	"github.com/voxgig-sdk/taiwan-legal-ai-sdk/go/core"
 )
 
 type BaseFeature struct {

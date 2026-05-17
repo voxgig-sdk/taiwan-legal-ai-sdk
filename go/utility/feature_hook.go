@@ -3,7 +3,7 @@ package utility
 import (
 	"reflect"
 
-	"github.com/voxgig-sdk/taiwan-legal-ai-sdk/core"
+	"github.com/voxgig-sdk/taiwan-legal-ai-sdk/go/core"
 )
 
 func featureHookUtil(ctx *core.Context, name string) {

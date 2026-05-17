@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/taiwan-legal-ai-sdk/core"
+	"github.com/voxgig-sdk/taiwan-legal-ai-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/taiwan-legal-ai-sdk/go/utility/struct"
 )
 
 type ContractServiceEntity struct {

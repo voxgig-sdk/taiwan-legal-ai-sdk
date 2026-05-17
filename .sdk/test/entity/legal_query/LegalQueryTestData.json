@@ -8,7 +8,8 @@
         "query_id": "QUERY01",
         "question": "s4a",
         "relevant_law": [],
-        "timestamp": "s4c"
+        "timestamp": "s4c",
+        "id": "LEGAL_QUERY00"
       },
       "LEGAL_QUERY01": {
         "answer": "s8c",
@@ -17,7 +18,8 @@
         "query_id": "QUERY01",
         "question": "s90",
         "relevant_law": [],
-        "timestamp": "s92"
+        "timestamp": "s92",
+        "id": "LEGAL_QUERY01"
       },
       "LEGAL_QUERY02": {
         "answer": "sd2",
@@ -26,7 +28,8 @@
         "query_id": "QUERY01",
         "question": "sd6",
         "relevant_law": [],
-        "timestamp": "sd8"
+        "timestamp": "sd8",
+        "id": "LEGAL_QUERY02"
       }
     }
   },

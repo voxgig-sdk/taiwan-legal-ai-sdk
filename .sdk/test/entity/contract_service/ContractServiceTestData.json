@@ -20,7 +20,8 @@
         "review_id": "REVIEW01",
         "risk_level": "sce",
         "specific_claus": [],
-        "timestamp": "sd0"
+        "timestamp": "sd0",
+        "id": "CONTRACT_SERVICE00"
       },
       "CONTRACT_SERVICE01": {
         "claus": [],
@@ -41,7 +42,8 @@
         "review_id": "REVIEW01",
         "risk_level": "s18c",
         "specific_claus": [],
-        "timestamp": "s18e"
+        "timestamp": "s18e",
+        "id": "CONTRACT_SERVICE01"
       },
       "CONTRACT_SERVICE02": {
         "claus": [],
@@ -62,7 +64,8 @@
         "review_id": "REVIEW01",
         "risk_level": "s24a",
         "specific_claus": [],
-        "timestamp": "s24c"
+        "timestamp": "s24c",
+        "id": "CONTRACT_SERVICE02"
       }
     }
   },

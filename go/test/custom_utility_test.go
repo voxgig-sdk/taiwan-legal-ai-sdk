@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/taiwan-legal-ai-sdk"
+	sdk "github.com/voxgig-sdk/taiwan-legal-ai-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {
