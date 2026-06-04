@@ -80,7 +80,6 @@ function legal_query_basic_setup($extra)
         "TAIWANLEGALAI_TEST_LEGAL_QUERY_ENTID" => $idmap,
         "TAIWANLEGALAI_TEST_LIVE" => "FALSE",
         "TAIWANLEGALAI_TEST_EXPLAIN" => "FALSE",
-        "TAIWANLEGALAI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -92,7 +91,6 @@ function legal_query_basic_setup($extra)
     if ($env["TAIWANLEGALAI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["TAIWANLEGALAI_APIKEY"],
             ],
             $extra ?? [],
         ]);

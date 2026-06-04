@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://twlawbot.com/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

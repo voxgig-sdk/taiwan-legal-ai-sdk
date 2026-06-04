@@ -110,7 +110,6 @@ func legal_queryBasicSetup(extra map[string]any) *entityTestSetup {
 		"TAIWANLEGALAI_TEST_LEGAL_QUERY_ENTID": idmap,
 		"TAIWANLEGALAI_TEST_LIVE":      "FALSE",
 		"TAIWANLEGALAI_TEST_EXPLAIN":   "FALSE",
-		"TAIWANLEGALAI_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["TAIWANLEGALAI_TEST_LEGAL_QUERY_ENTID"])
@@ -121,7 +120,6 @@ func legal_queryBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["TAIWANLEGALAI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["TAIWANLEGALAI_APIKEY"],
 			},
 			extra,
 		})

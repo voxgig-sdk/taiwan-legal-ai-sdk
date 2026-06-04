@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID': idmap,
     'TAIWAN_LEGAL_AI_TEST_LIVE': 'FALSE',
     'TAIWAN_LEGAL_AI_TEST_EXPLAIN': 'FALSE',
-    'TAIWAN_LEGAL_AI_APIKEY': 'NONE',
   })
 
   idmap = env['TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new TaiwanLegalAiSDK(merge([
       {
-        apikey: env.TAIWAN_LEGAL_AI_APIKEY,
       },
       extra
     ]))

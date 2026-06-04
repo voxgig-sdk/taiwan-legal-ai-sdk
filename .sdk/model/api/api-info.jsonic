@@ -16,8 +16,23 @@ main: {
       ]
       title: "Taiwan Legal AI"
       version: "1.0.0"
+      tagline: "Query Taiwan legal information, analyse cases, and work with contract data via TaiLexi's AI-backed API"
+      homepage: "https://twlawbot.com/"
+      about_md: `[TaiLexi AI](https://twlawbot.com/) (法律AI) is a Taiwan-focused legal AI service. This SDK wraps its HTTP API at \`https://twlawbot.com/api\`, providing typed access to legal queries, case analysis, and contract-related operations from JavaScript and TypeScript.
+
+What you can do with the API:
+
+- Submit natural-language legal queries against Taiwan legal sources
+- Run case analysis workflows over supplied case material
+- Access contract-oriented services for drafting, review, or related tasks
+
+The upstream service is operated by TaiLexi AI. Authentication, quotas, and pricing are controlled by the provider — check the homepage for current terms before integrating into production workflows.`
+      entity_desc: {
+        case_analysi: "Case-analysis operations that process supplied case material and return AI-generated analysis."
+        contract_service: "Contract-oriented services covering contract-related AI tasks exposed by TaiLexi."
+        legal_query: "Legal-question lookups submitted to TaiLexi's Taiwan legal AI for natural-language answers grounded in Taiwan law."
+      }
+      auth: false
     }
   }
-}
-
 }
