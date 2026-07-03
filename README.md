@@ -1,20 +1,8 @@
 # TaiwanLegalAi SDK
 
-Query Taiwan legal information, analyse cases, and work with contract data via TaiLexi's AI-backed API
+Taiwan Legal AI client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Taiwan Legal AI
-
-[TaiLexi AI](https://twlawbot.com/) (法律AI) is a Taiwan-focused legal AI service. This SDK wraps its HTTP API at `https://twlawbot.com/api`, providing typed access to legal queries, case analysis, and contract-related operations from JavaScript and TypeScript.
-
-What you can do with the API:
-
-- Submit natural-language legal queries against Taiwan legal sources
-- Run case analysis workflows over supplied case material
-- Access contract-oriented services for drafting, review, or related tasks
-
-The upstream service is operated by TaiLexi AI. Authentication, quotas, and pricing are controlled by the provider — check the homepage for current terms before integrating into production workflows.
 
 ## Try it
 
@@ -48,27 +36,28 @@ gem install taiwan-legal-ai-sdk
 luarocks install taiwan-legal-ai-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { TaiwanLegalAiSDK } from 'taiwan-legal-ai'
 
-const client = new TaiwanLegalAiSDK({})
+const client = new TaiwanLegalAiSDK({
+  apikey: process.env.TAIWAN-LEGAL-AI_APIKEY,
+})
 
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,9 +87,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **CaseAnalysi** | Case-analysis operations that process supplied case material and return AI-generated analysis. | `/case-analysis` |
-| **ContractService** | Contract-oriented services covering contract-related AI tasks exposed by TaiLexi. | `/contract/draft` |
-| **LegalQuery** | Legal-question lookups submitted to TaiLexi's Taiwan legal AI for natural-language answers grounded in Taiwan law. | `/query` |
+| **CaseAnalysi** |  | `/case-analysis` |
+| **ContractService** |  | `/contract/draft` |
+| **LegalQuery** |  | `/query` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,9 +99,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from taiwanlegalai_sdk import TaiwanLegalAiSDK
 
-client = TaiwanLegalAiSDK({})
+client = TaiwanLegalAiSDK({
+    "apikey": os.environ.get("TAIWAN-LEGAL-AI_APIKEY"),
+})
 
 ```
 
@@ -122,7 +114,9 @@ client = TaiwanLegalAiSDK({})
 <?php
 require_once 'taiwanlegalai_sdk.php';
 
-$client = new TaiwanLegalAiSDK([]);
+$client = new TaiwanLegalAiSDK([
+    "apikey" => getenv("TAIWAN-LEGAL-AI_APIKEY"),
+]);
 
 ```
 
@@ -131,7 +125,9 @@ $client = new TaiwanLegalAiSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/taiwan-legal-ai-sdk/go"
 
-client := sdk.NewTaiwanLegalAiSDK(map[string]any{})
+client := sdk.NewTaiwanLegalAiSDK(map[string]any{
+    "apikey": os.Getenv("TAIWAN-LEGAL-AI_APIKEY"),
+})
 
 ```
 
@@ -140,7 +136,9 @@ client := sdk.NewTaiwanLegalAiSDK(map[string]any{})
 ```ruby
 require_relative "TaiwanLegalAi_sdk"
 
-client = TaiwanLegalAiSDK.new({})
+client = TaiwanLegalAiSDK.new({
+  "apikey" => ENV["TAIWAN-LEGAL-AI_APIKEY"],
+})
 
 ```
 
@@ -149,7 +147,9 @@ client = TaiwanLegalAiSDK.new({})
 ```lua
 local sdk = require("taiwan-legal-ai_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("TAIWAN-LEGAL-AI_APIKEY"),
+})
 
 ```
 
@@ -169,25 +169,21 @@ const result = await client.CaseAnalysi().load({ id: 'test01' })
 ### Python
 
 ```python
-client = TaiwanLegalAiSDK.test(None, None)
-result, err = client.CaseAnalysi(None).load(
-    {"id": "test01"}, None
-)
+client = TaiwanLegalAiSDK.test()
+result, err = client.CaseAnalysi().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = TaiwanLegalAiSDK::test(null, null);
-[$result, $err] = $client->CaseAnalysi(null)->load(
-    ["id" => "test01"], null
-);
+$client = TaiwanLegalAiSDK::test();
+[$result, $err] = $client->CaseAnalysi()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.CaseAnalysi(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -196,19 +192,15 @@ result, err := client.CaseAnalysi(nil).Load(
 ### Ruby
 
 ```ruby
-client = TaiwanLegalAiSDK.test(nil, nil)
-result, err = client.CaseAnalysi(nil).load(
-  { "id" => "test01" }, nil
-)
+client = TaiwanLegalAiSDK.test
+result, err = client.CaseAnalysi().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:CaseAnalysi(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:CaseAnalysi():load({ id = "test01" })
 ```
 
 ## How it works
@@ -312,10 +304,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Taiwan Legal AI
-
-- Upstream: [https://twlawbot.com/](https://twlawbot.com/)
 
 ---
 

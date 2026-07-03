@@ -86,6 +86,7 @@ function contract_service_basic_setup(extra)
     ["TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID"] = idmap,
     ["TAIWANLEGALAI_TEST_LIVE"] = "FALSE",
     ["TAIWANLEGALAI_TEST_EXPLAIN"] = "FALSE",
+    ["TAIWANLEGALAI_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -97,6 +98,7 @@ function contract_service_basic_setup(extra)
   if env["TAIWANLEGALAI_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["TAIWANLEGALAI_APIKEY"],
       },
       extra or {},
     })
