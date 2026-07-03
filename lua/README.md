@@ -10,7 +10,7 @@ The Lua SDK for the TaiwanLegalAi API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install taiwan-legal-ai-sdk
+luarocks install voxgig-sdk-taiwan-legal-ai
 ```
 
 If the module is not yet published, add the source directory to

@@ -10,7 +10,7 @@ The PHP SDK for the TaiwanLegalAi API — an entity-oriented client using PHP co
 
 ## Install
 ```bash
-composer require voxgig/taiwan-legal-ai-sdk
+composer require voxgig-sdk/taiwan-legal-ai
 ```
 
 

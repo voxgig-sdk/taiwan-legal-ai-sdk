@@ -10,7 +10,7 @@ The TypeScript SDK for the TaiwanLegalAi API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install taiwan-legal-ai
+npm install @voxgig-sdk/taiwan-legal-ai
 ```
 ## Tutorial: your first API call
 

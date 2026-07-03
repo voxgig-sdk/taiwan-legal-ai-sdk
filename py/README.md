@@ -10,7 +10,7 @@ The Python SDK for the TaiwanLegalAi API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install taiwan-legal-ai-sdk
+pip install voxgig-sdk-taiwan-legal-ai
 ```
 
 Or install from source:

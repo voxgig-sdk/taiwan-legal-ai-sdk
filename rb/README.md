@@ -10,13 +10,13 @@ The Ruby SDK for the TaiwanLegalAi API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install taiwan-legal-ai-sdk
+gem install voxgig-sdk-taiwan-legal-ai
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "taiwan-legal-ai-sdk"
+gem "voxgig-sdk-taiwan-legal-ai"
 ```
 
 Then run:
