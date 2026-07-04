@@ -89,7 +89,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CaseAnalysiEntity
 
 ```python
-case_analysi = client.case_analysi
+case_analysi = client.CaseAnalysi()
 ```
 
 ### Fields
@@ -115,8 +115,8 @@ case_analysi = client.case_analysi
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.case_analysi.create({
-    "case_detail": # `$STRING`,
+result = client.CaseAnalysi().create({
+    "case_detail": ...,  # `$STRING`
 })
 ```
 
@@ -152,7 +152,7 @@ Return the entity name.
 ## ContractServiceEntity
 
 ```python
-contract_service = client.contract_service
+contract_service = client.ContractService()
 ```
 
 ### Fields
@@ -210,9 +210,9 @@ contract_service = client.contract_service
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.contract_service.create({
-    "contract_text": # `$STRING`,
-    "requirement": # `$STRING`,
+result = client.ContractService().create({
+    "contract_text": ...,  # `$STRING`
+    "requirement": ...,  # `$STRING`
 })
 ```
 
@@ -248,7 +248,7 @@ Return the entity name.
 ## LegalQueryEntity
 
 ```python
-legal_query = client.legal_query
+legal_query = client.LegalQuery()
 ```
 
 ### Fields
@@ -282,7 +282,7 @@ legal_query = client.legal_query
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.legal_query.create({
+result = client.LegalQuery().create({
 })
 ```
 

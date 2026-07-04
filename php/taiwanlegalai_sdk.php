@@ -233,10 +233,10 @@ class TaiwanLegalAiSDK
 
     private $_case_analysi = null;
 
-    // Idiomatic facade: $client->case_analysi()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CaseAnalysi() (PHP method
-    // names are case-insensitive).
-    public function case_analysi($data = null)
+    // Canonical facade: $client->CaseAnalysi()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->case_analysi()
+    // resolves here too.
+    public function CaseAnalysi($data = null)
     {
         require_once __DIR__ . '/entity/case_analysi_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class TaiwanLegalAiSDK
 
     private $_contract_service = null;
 
-    // Idiomatic facade: $client->contract_service()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ContractService() (PHP method
-    // names are case-insensitive).
-    public function contract_service($data = null)
+    // Canonical facade: $client->ContractService()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->contract_service()
+    // resolves here too.
+    public function ContractService($data = null)
     {
         require_once __DIR__ . '/entity/contract_service_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class TaiwanLegalAiSDK
 
     private $_legal_query = null;
 
-    // Idiomatic facade: $client->legal_query()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias LegalQuery() (PHP method
-    // names are case-insensitive).
-    public function legal_query($data = null)
+    // Canonical facade: $client->LegalQuery()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->legal_query()
+    // resolves here too.
+    public function LegalQuery($data = null)
     {
         require_once __DIR__ . '/entity/legal_query_entity.php';
         if ($data === null) {

@@ -134,7 +134,7 @@ Alias for `TaiwanLegalAiSDK.test()`.
 ## CaseAnalysiEntity
 
 ```ts
-const case_analysi = client.case_analysi
+const case_analysi = client.CaseAnalysi()
 ```
 
 ### Fields
@@ -160,7 +160,7 @@ const case_analysi = client.case_analysi
 Create a new entity with the given data.
 
 ```ts
-const result = await client.case_analysi.create({
+const result = await client.CaseAnalysi().create({
   case_detail: /* `$STRING` */,
 })
 ```
@@ -196,7 +196,7 @@ Return a copy of the entity options.
 ## ContractServiceEntity
 
 ```ts
-const contract_service = client.contract_service
+const contract_service = client.ContractService()
 ```
 
 ### Fields
@@ -254,7 +254,7 @@ const contract_service = client.contract_service
 Create a new entity with the given data.
 
 ```ts
-const result = await client.contract_service.create({
+const result = await client.ContractService().create({
   contract_text: /* `$STRING` */,
   requirement: /* `$STRING` */,
 })
@@ -291,7 +291,7 @@ Return a copy of the entity options.
 ## LegalQueryEntity
 
 ```ts
-const legal_query = client.legal_query
+const legal_query = client.LegalQuery()
 ```
 
 ### Fields
@@ -325,7 +325,7 @@ const legal_query = client.legal_query
 Create a new entity with the given data.
 
 ```ts
-const result = await client.legal_query.create({
+const result = await client.LegalQuery().create({
 })
 ```
 

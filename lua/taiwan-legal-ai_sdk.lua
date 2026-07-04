@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:case_analysi():list() / client:case_analysi():load({ id = ... })
-function TaiwanLegalAiSDK:case_analysi(data)
+-- Idiomatic facade: client:CaseAnalysi():list() / client:CaseAnalysi():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TaiwanLegalAiSDK:CaseAnalysi(data)
   local EntityMod = require("entity.case_analysi_entity")
   if data == nil then
     if self._case_analysi == nil then
@@ -256,15 +257,10 @@ function TaiwanLegalAiSDK:case_analysi(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:case_analysi() instead.
-function TaiwanLegalAiSDK:CaseAnalysi(data)
-  local EntityMod = require("entity.case_analysi_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:contract_service():list() / client:contract_service():load({ id = ... })
-function TaiwanLegalAiSDK:contract_service(data)
+-- Idiomatic facade: client:ContractService():list() / client:ContractService():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TaiwanLegalAiSDK:ContractService(data)
   local EntityMod = require("entity.contract_service_entity")
   if data == nil then
     if self._contract_service == nil then
@@ -275,15 +271,10 @@ function TaiwanLegalAiSDK:contract_service(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:contract_service() instead.
-function TaiwanLegalAiSDK:ContractService(data)
-  local EntityMod = require("entity.contract_service_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:legal_query():list() / client:legal_query():load({ id = ... })
-function TaiwanLegalAiSDK:legal_query(data)
+-- Idiomatic facade: client:LegalQuery():list() / client:LegalQuery():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TaiwanLegalAiSDK:LegalQuery(data)
   local EntityMod = require("entity.legal_query_entity")
   if data == nil then
     if self._legal_query == nil then
@@ -291,12 +282,6 @@ function TaiwanLegalAiSDK:legal_query(data)
     end
     return self._legal_query
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:legal_query() instead.
-function TaiwanLegalAiSDK:LegalQuery(data)
-  local EntityMod = require("entity.legal_query_entity")
   return EntityMod.new(self, data)
 end
 

@@ -33,8 +33,8 @@ client = TaiwanLegalAiSDK.new({
 ### 4. Create, update, and remove
 
 ```ruby
-# Create
-created = client.caseanalysi.create({ "name" => "Example" })
+# create returns the bare created CaseAnalysi record.
+created = client.CaseAnalysi.create({ "name" => "Example" })
 
 ```
 
@@ -79,13 +79,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = TaiwanLegalAiSDK.test
+client = TaiwanLegalAiSDK.test({
+  "entity" => { "caseanalysi" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.caseanalysi.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+caseanalysi = client.CaseAnalysi.load({ "id" => "test01" })
+puts caseanalysi
 ```
 
 ### Use a custom fetch function
@@ -275,7 +279,7 @@ API path: `/query`
 
 ### CaseAnalysi
 
-Create an instance: `const case_analysi = client.case_analysi`
+Create an instance: `case_analysi = client.CaseAnalysi`
 
 #### Operations
 
@@ -301,16 +305,16 @@ Create an instance: `const case_analysi = client.case_analysi`
 
 #### Example: Create
 
-```ts
-const case_analysi = await client.case_analysi.create({
-  case_detail: /* `$STRING` */,
+```ruby
+case_analysi = client.CaseAnalysi.create({
+  "case_detail" => nil, # `$STRING`
 })
 ```
 
 
 ### ContractService
 
-Create an instance: `const contract_service = client.contract_service`
+Create an instance: `contract_service = client.ContractService`
 
 #### Operations
 
@@ -344,17 +348,17 @@ Create an instance: `const contract_service = client.contract_service`
 
 #### Example: Create
 
-```ts
-const contract_service = await client.contract_service.create({
-  contract_text: /* `$STRING` */,
-  requirement: /* `$STRING` */,
+```ruby
+contract_service = client.ContractService.create({
+  "contract_text" => nil, # `$STRING`
+  "requirement" => nil, # `$STRING`
 })
 ```
 
 
 ### LegalQuery
 
-Create an instance: `const legal_query = client.legal_query`
+Create an instance: `legal_query = client.LegalQuery`
 
 #### Operations
 
@@ -376,8 +380,8 @@ Create an instance: `const legal_query = client.legal_query`
 
 #### Example: Create
 
-```ts
-const legal_query = await client.legal_query.create({
+```ruby
+legal_query = client.LegalQuery.create({
 })
 ```
 
@@ -453,7 +457,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-caseanalysi = client.caseanalysi
+caseanalysi = client.CaseAnalysi
 caseanalysi.load({ "id" => "example_id" })
 
 # caseanalysi.data_get now returns the loaded caseanalysi data

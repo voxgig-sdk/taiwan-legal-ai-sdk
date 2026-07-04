@@ -143,22 +143,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = TaiwanLegalAiSDK.test()
-const result = await client.caseanalysi.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const caseanalysi = await client.CaseAnalysi().load({ id: 'test01' })
+// caseanalysi is a bare CaseAnalysi populated with mock data
+console.log(caseanalysi)
 ```
 
 ### Python
 
 ```python
 client = TaiwanLegalAiSDK.test()
-result = client.caseanalysi.load({"id": "test01"})
+caseanalysi = client.CaseAnalysi().load({"id": "test01"})
+print(caseanalysi)
 ```
 
 ### PHP
 
 ```php
-$client = TaiwanLegalAiSDK::test();
-$result = $client->caseanalysi()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = TaiwanLegalAiSDK::test([
+    "entity" => ["caseanalysi" => ["test01" => ["id" => "test01"]]],
+]);
+$caseanalysi = $client->CaseAnalysi()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -173,15 +178,18 @@ result, err := client.CaseAnalysi(nil).Load(
 ### Ruby
 
 ```ruby
-client = TaiwanLegalAiSDK.test
-result = client.caseanalysi.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = TaiwanLegalAiSDK.test({
+  "entity" => { "caseanalysi" => { "test01" => { "id" => "test01" } } },
+})
+caseanalysi = client.CaseAnalysi.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:caseanalysi():load({ id = "test01" })
+local result, err = client:CaseAnalysi():load({ id = "test01" })
 ```
 
 ## How it works
@@ -229,6 +237,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

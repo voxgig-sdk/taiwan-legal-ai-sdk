@@ -208,39 +208,21 @@ class TaiwanLegalAiSDK
   end
 
 
-  # Idiomatic facade: client.case_analysi.list / client.case_analysi.load({ "id" => ... })
-  def case_analysi
-    require_relative 'entity/case_analysi_entity'
-    @case_analysi ||= CaseAnalysiEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.case_analysi instead.
+  # Canonical facade: client.CaseAnalysi.list / client.CaseAnalysi.load({ "id" => ... })
   def CaseAnalysi(data = nil)
     require_relative 'entity/case_analysi_entity'
     CaseAnalysiEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.contract_service.list / client.contract_service.load({ "id" => ... })
-  def contract_service
-    require_relative 'entity/contract_service_entity'
-    @contract_service ||= ContractServiceEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.contract_service instead.
+  # Canonical facade: client.ContractService.list / client.ContractService.load({ "id" => ... })
   def ContractService(data = nil)
     require_relative 'entity/contract_service_entity'
     ContractServiceEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.legal_query.list / client.legal_query.load({ "id" => ... })
-  def legal_query
-    require_relative 'entity/legal_query_entity'
-    @legal_query ||= LegalQueryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.legal_query instead.
+  # Canonical facade: client.LegalQuery.list / client.LegalQuery.load({ "id" => ... })
   def LegalQuery(data = nil)
     require_relative 'entity/legal_query_entity'
     LegalQueryEntity.new(self, data)

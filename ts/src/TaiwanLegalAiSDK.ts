@@ -206,42 +206,21 @@ class TaiwanLegalAiSDK {
 
 
 
-  _case_analysi?: CaseAnalysiEntity
-
-  // Idiomatic facade: `client.case_analysi.list()` / `client.case_analysi.load({ id })`.
-  get case_analysi(): CaseAnalysiEntity {
-    return (this._case_analysi ??= new CaseAnalysiEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.case_analysi` instead. */
+  // Entity access: `client.CaseAnalysi().list()` / `client.CaseAnalysi().load({ id })`.
   CaseAnalysi(data?: any) {
     const self = this
     return new CaseAnalysiEntity(self,data)
   }
 
 
-  _contract_service?: ContractServiceEntity
-
-  // Idiomatic facade: `client.contract_service.list()` / `client.contract_service.load({ id })`.
-  get contract_service(): ContractServiceEntity {
-    return (this._contract_service ??= new ContractServiceEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.contract_service` instead. */
+  // Entity access: `client.ContractService().list()` / `client.ContractService().load({ id })`.
   ContractService(data?: any) {
     const self = this
     return new ContractServiceEntity(self,data)
   }
 
 
-  _legal_query?: LegalQueryEntity
-
-  // Idiomatic facade: `client.legal_query.list()` / `client.legal_query.load({ id })`.
-  get legal_query(): LegalQueryEntity {
-    return (this._legal_query ??= new LegalQueryEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.legal_query` instead. */
+  // Entity access: `client.LegalQuery().list()` / `client.LegalQuery().load({ id })`.
   LegalQuery(data?: any) {
     const self = this
     return new LegalQueryEntity(self,data)

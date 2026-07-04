@@ -95,7 +95,7 @@ same parameters as `direct()`. Raises on error.
 ## CaseAnalysiEntity
 
 ```ruby
-case_analysi = client.case_analysi
+case_analysi = client.CaseAnalysi
 ```
 
 ### Fields
@@ -121,7 +121,7 @@ case_analysi = client.case_analysi
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.case_analysi.create({
+result = client.CaseAnalysi.create({
   "case_detail" => # `$STRING`,
 })
 ```
@@ -159,7 +159,7 @@ Return the entity name.
 ## ContractServiceEntity
 
 ```ruby
-contract_service = client.contract_service
+contract_service = client.ContractService
 ```
 
 ### Fields
@@ -217,7 +217,7 @@ contract_service = client.contract_service
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.contract_service.create({
+result = client.ContractService.create({
   "contract_text" => # `$STRING`,
   "requirement" => # `$STRING`,
 })
@@ -256,7 +256,7 @@ Return the entity name.
 ## LegalQueryEntity
 
 ```ruby
-legal_query = client.legal_query
+legal_query = client.LegalQuery
 ```
 
 ### Fields
@@ -290,7 +290,7 @@ legal_query = client.legal_query
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.legal_query.create({
+result = client.LegalQuery.create({
 })
 ```
 

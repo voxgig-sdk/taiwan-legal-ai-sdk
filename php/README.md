@@ -34,8 +34,8 @@ $client = new TaiwanLegalAiSDK([
 ### 4. Create, update, and remove
 
 ```php
-// Create
-$created = $client->caseanalysi()->create(["name" => "Example"]);
+// create() returns the bare created CaseAnalysi record.
+$created = $client->CaseAnalysi()->create(["name" => "Example"]);
 
 ```
 
@@ -80,13 +80,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = TaiwanLegalAiSDK::test();
+$client = TaiwanLegalAiSDK::test([
+    "entity" => ["caseanalysi" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->caseanalysi()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$caseanalysi = $client->CaseAnalysi()->load(["id" => "test01"]);
+print_r($caseanalysi);
 ```
 
 ### Use a custom fetch function
@@ -280,7 +284,7 @@ API path: `/query`
 
 ### CaseAnalysi
 
-Create an instance: `const case_analysi = client.case_analysi`
+Create an instance: `$case_analysi = $client->CaseAnalysi();`
 
 #### Operations
 
@@ -306,16 +310,16 @@ Create an instance: `const case_analysi = client.case_analysi`
 
 #### Example: Create
 
-```ts
-const case_analysi = await client.case_analysi.create({
-  case_detail: /* `$STRING` */,
-})
+```php
+$case_analysi = $client->CaseAnalysi()->create([
+    "case_detail" => null, // `$STRING`
+]);
 ```
 
 
 ### ContractService
 
-Create an instance: `const contract_service = client.contract_service`
+Create an instance: `$contract_service = $client->ContractService();`
 
 #### Operations
 
@@ -349,17 +353,17 @@ Create an instance: `const contract_service = client.contract_service`
 
 #### Example: Create
 
-```ts
-const contract_service = await client.contract_service.create({
-  contract_text: /* `$STRING` */,
-  requirement: /* `$STRING` */,
-})
+```php
+$contract_service = $client->ContractService()->create([
+    "contract_text" => null, // `$STRING`
+    "requirement" => null, // `$STRING`
+]);
 ```
 
 
 ### LegalQuery
 
-Create an instance: `const legal_query = client.legal_query`
+Create an instance: `$legal_query = $client->LegalQuery();`
 
 #### Operations
 
@@ -381,9 +385,9 @@ Create an instance: `const legal_query = client.legal_query`
 
 #### Example: Create
 
-```ts
-const legal_query = await client.legal_query.create({
-})
+```php
+$legal_query = $client->LegalQuery()->create([
+]);
 ```
 
 
@@ -458,7 +462,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$caseanalysi = $client->caseanalysi();
+$caseanalysi = $client->CaseAnalysi();
 $caseanalysi->load(["id" => "example_id"]);
 
 // $caseanalysi->dataGet() now returns the loaded caseanalysi data

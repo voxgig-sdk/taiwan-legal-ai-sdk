@@ -220,57 +220,27 @@ class TaiwanLegalAiSDK:
         }
 
 
-    @property
-    def case_analysi(self):
-        """Idiomatic facade: client.case_analysi.list() / client.case_analysi.load({"id": ...})."""
-        from entity.case_analysi_entity import CaseAnalysiEntity
-        cached = getattr(self, "_case_analysi", None)
-        if cached is None:
-            cached = CaseAnalysiEntity(self, None)
-            self._case_analysi = cached
-        return cached
-
-    def CaseAnalysi(self, data=None):
-        # Deprecated: use client.case_analysi instead.
+    def CaseAnalysi(self, data=None) -> "CaseAnalysiEntity":
+        """Entity factory: client.CaseAnalysi().list({}) / client.CaseAnalysi().load({"id": ...})."""
         from entity.case_analysi_entity import CaseAnalysiEntity
         return CaseAnalysiEntity(self, data)
 
 
-    @property
-    def contract_service(self):
-        """Idiomatic facade: client.contract_service.list() / client.contract_service.load({"id": ...})."""
-        from entity.contract_service_entity import ContractServiceEntity
-        cached = getattr(self, "_contract_service", None)
-        if cached is None:
-            cached = ContractServiceEntity(self, None)
-            self._contract_service = cached
-        return cached
-
-    def ContractService(self, data=None):
-        # Deprecated: use client.contract_service instead.
+    def ContractService(self, data=None) -> "ContractServiceEntity":
+        """Entity factory: client.ContractService().list({}) / client.ContractService().load({"id": ...})."""
         from entity.contract_service_entity import ContractServiceEntity
         return ContractServiceEntity(self, data)
 
 
-    @property
-    def legal_query(self):
-        """Idiomatic facade: client.legal_query.list() / client.legal_query.load({"id": ...})."""
-        from entity.legal_query_entity import LegalQueryEntity
-        cached = getattr(self, "_legal_query", None)
-        if cached is None:
-            cached = LegalQueryEntity(self, None)
-            self._legal_query = cached
-        return cached
-
-    def LegalQuery(self, data=None):
-        # Deprecated: use client.legal_query instead.
+    def LegalQuery(self, data=None) -> "LegalQueryEntity":
+        """Entity factory: client.LegalQuery().list({}) / client.LegalQuery().load({"id": ...})."""
         from entity.legal_query_entity import LegalQueryEntity
         return LegalQueryEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "TaiwanLegalAiSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class TaiwanLegalAiSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.case_analysi_entity import CaseAnalysiEntity
+    from entity.contract_service_entity import ContractServiceEntity
+    from entity.legal_query_entity import LegalQueryEntity

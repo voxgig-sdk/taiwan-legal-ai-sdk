@@ -4,107 +4,111 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class CaseAnalysi:
+class CaseAnalysiRequired(TypedDict):
     case_detail: str
-    analysis_id: Optional[str] = None
-    applicable_law: Optional[list] = None
-    case_type: Optional[str] = None
-    language: Optional[str] = None
-    legal_issue: Optional[list] = None
-    party: Optional[dict] = None
-    precedent: Optional[list] = None
-    recommendation: Optional[str] = None
-    summary: Optional[str] = None
-    timestamp: Optional[str] = None
 
 
-@dataclass
-class CaseAnalysiCreateData:
-    analysis_id: Optional[str] = None
-    applicable_law: Optional[list] = None
-    case_detail: Optional[str] = None
-    case_type: Optional[str] = None
-    language: Optional[str] = None
-    legal_issue: Optional[list] = None
-    party: Optional[dict] = None
-    precedent: Optional[list] = None
-    recommendation: Optional[str] = None
-    summary: Optional[str] = None
-    timestamp: Optional[str] = None
+class CaseAnalysi(CaseAnalysiRequired, total=False):
+    analysis_id: str
+    applicable_law: list
+    case_type: str
+    language: str
+    legal_issue: list
+    party: dict
+    precedent: list
+    recommendation: str
+    summary: str
+    timestamp: str
 
 
-@dataclass
-class ContractService:
+class CaseAnalysiCreateData(TypedDict, total=False):
+    analysis_id: str
+    applicable_law: list
+    case_detail: str
+    case_type: str
+    language: str
+    legal_issue: list
+    party: dict
+    precedent: list
+    recommendation: str
+    summary: str
+    timestamp: str
+
+
+class ContractServiceRequired(TypedDict):
     contract_text: str
     requirement: str
-    claus: Optional[list] = None
-    compliance_check: Optional[dict] = None
-    content: Optional[str] = None
-    contract_type: Optional[str] = None
-    draft_id: Optional[str] = None
-    focus_area: Optional[list] = None
-    issue: Optional[list] = None
-    language: Optional[str] = None
-    missing_claus: Optional[list] = None
-    note: Optional[str] = None
-    overall_assessment: Optional[str] = None
-    party: Optional[dict] = None
-    recommendation: Optional[list] = None
-    review_id: Optional[str] = None
-    risk_level: Optional[str] = None
-    specific_claus: Optional[list] = None
-    timestamp: Optional[str] = None
 
 
-@dataclass
-class ContractServiceCreateData:
-    claus: Optional[list] = None
-    compliance_check: Optional[dict] = None
-    content: Optional[str] = None
-    contract_text: Optional[str] = None
-    contract_type: Optional[str] = None
-    draft_id: Optional[str] = None
-    focus_area: Optional[list] = None
-    issue: Optional[list] = None
-    language: Optional[str] = None
-    missing_claus: Optional[list] = None
-    note: Optional[str] = None
-    overall_assessment: Optional[str] = None
-    party: Optional[dict] = None
-    recommendation: Optional[list] = None
-    requirement: Optional[str] = None
-    review_id: Optional[str] = None
-    risk_level: Optional[str] = None
-    specific_claus: Optional[list] = None
-    timestamp: Optional[str] = None
+class ContractService(ContractServiceRequired, total=False):
+    claus: list
+    compliance_check: dict
+    content: str
+    contract_type: str
+    draft_id: str
+    focus_area: list
+    issue: list
+    language: str
+    missing_claus: list
+    note: str
+    overall_assessment: str
+    party: dict
+    recommendation: list
+    review_id: str
+    risk_level: str
+    specific_claus: list
+    timestamp: str
 
 
-@dataclass
-class LegalQuery:
-    answer: Optional[str] = None
-    category: Optional[str] = None
-    language: Optional[str] = None
-    query_id: Optional[str] = None
-    question: Optional[str] = None
-    relevant_law: Optional[list] = None
-    timestamp: Optional[str] = None
+class ContractServiceCreateData(TypedDict, total=False):
+    claus: list
+    compliance_check: dict
+    content: str
+    contract_text: str
+    contract_type: str
+    draft_id: str
+    focus_area: list
+    issue: list
+    language: str
+    missing_claus: list
+    note: str
+    overall_assessment: str
+    party: dict
+    recommendation: list
+    requirement: str
+    review_id: str
+    risk_level: str
+    specific_claus: list
+    timestamp: str
 
 
-@dataclass
-class LegalQueryCreateData:
-    answer: Optional[str] = None
-    category: Optional[str] = None
-    language: Optional[str] = None
-    query_id: Optional[str] = None
-    question: Optional[str] = None
-    relevant_law: Optional[list] = None
-    timestamp: Optional[str] = None
+class LegalQuery(TypedDict, total=False):
+    answer: str
+    category: str
+    language: str
+    query_id: str
+    question: str
+    relevant_law: list
+    timestamp: str
 
+
+class LegalQueryCreateData(TypedDict, total=False):
+    answer: str
+    category: str
+    language: str
+    query_id: str
+    question: str
+    relevant_law: list
+    timestamp: str

@@ -37,8 +37,8 @@ client = TaiwanLegalAiSDK({
 ### 4. Create, update, and remove
 
 ```python
-# Create
-created = client.caseanalysi.create({"name": "Example"})
+# Create — returns the bare created record (a dict)
+created = client.CaseAnalysi().create({"name": "Example"})
 
 ```
 
@@ -85,8 +85,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = TaiwanLegalAiSDK.test()
 
-result = client.caseanalysi.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+caseanalysi = client.CaseAnalysi().load({"id": "test01"})
+# caseanalysi contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -277,7 +278,7 @@ API path: `/query`
 
 ### CaseAnalysi
 
-Create an instance: `const case_analysi = client.case_analysi`
+Create an instance: `case_analysi = client.CaseAnalysi()`
 
 #### Operations
 
@@ -303,16 +304,16 @@ Create an instance: `const case_analysi = client.case_analysi`
 
 #### Example: Create
 
-```ts
-const case_analysi = await client.case_analysi.create({
-  case_detail: /* `$STRING` */,
+```python
+case_analysi = client.CaseAnalysi().create({
+    "case_detail": ...,  # `$STRING`
 })
 ```
 
 
 ### ContractService
 
-Create an instance: `const contract_service = client.contract_service`
+Create an instance: `contract_service = client.ContractService()`
 
 #### Operations
 
@@ -346,17 +347,17 @@ Create an instance: `const contract_service = client.contract_service`
 
 #### Example: Create
 
-```ts
-const contract_service = await client.contract_service.create({
-  contract_text: /* `$STRING` */,
-  requirement: /* `$STRING` */,
+```python
+contract_service = client.ContractService().create({
+    "contract_text": ...,  # `$STRING`
+    "requirement": ...,  # `$STRING`
 })
 ```
 
 
 ### LegalQuery
 
-Create an instance: `const legal_query = client.legal_query`
+Create an instance: `legal_query = client.LegalQuery()`
 
 #### Operations
 
@@ -378,8 +379,8 @@ Create an instance: `const legal_query = client.legal_query`
 
 #### Example: Create
 
-```ts
-const legal_query = await client.legal_query.create({
+```python
+legal_query = client.LegalQuery().create({
 })
 ```
 
@@ -454,7 +455,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-caseanalysi = client.caseanalysi
+caseanalysi = client.CaseAnalysi()
 caseanalysi.load({"id": "example_id"})
 
 # caseanalysi.data_get() now returns the loaded caseanalysi data
