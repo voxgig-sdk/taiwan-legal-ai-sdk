@@ -43,8 +43,7 @@ class LegalQueryEntityTest extends TestCase
         $legal_query_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.legal_query"), "legal_query_ref01"));
 
-        [$legal_query_ref01_data_result, $err] = $legal_query_ref01_ent->create($legal_query_ref01_data, null);
-        $this->assertNull($err);
+        $legal_query_ref01_data_result = $legal_query_ref01_ent->create($legal_query_ref01_data, null);
         $legal_query_ref01_data = Helpers::to_map($legal_query_ref01_data_result);
         $this->assertNotNull($legal_query_ref01_data);
 

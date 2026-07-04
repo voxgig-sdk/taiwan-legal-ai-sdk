@@ -9,9 +9,10 @@ The PHP SDK for the TaiwanLegalAi API — an entity-oriented client using PHP co
 
 
 ## Install
-```bash
-composer require voxgig-sdk/taiwan-legal-ai
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -26,7 +27,7 @@ loading a specific record.
 require_once 'taiwanlegalai_sdk.php';
 
 $client = new TaiwanLegalAiSDK([
-    "apikey" => getenv("TAIWAN-LEGAL-AI_APIKEY"),
+    "apikey" => getenv("TAIWAN_LEGAL_AI_APIKEY"),
 ]);
 ```
 
@@ -34,7 +35,7 @@ $client = new TaiwanLegalAiSDK([
 
 ```php
 // Create
-[$created, $_] = $client->CaseAnalysi()->create(["name" => "Example"]);
+$created = $client->caseanalysi()->create(["name" => "Example"]);
 
 ```
 
@@ -46,28 +47,31 @@ $client = new TaiwanLegalAiSDK([
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +85,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = TaiwanLegalAiSDK::test();
 
-[$result, $err] = $client->TaiwanLegalAi()->load(["id" => "test01"]);
+$result = $client->caseanalysi()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -115,8 +119,8 @@ $client = new TaiwanLegalAiSDK([
 Create a `.env.local` file at the project root:
 
 ```
-TAIWAN-LEGAL-AI_TEST_LIVE=TRUE
-TAIWAN-LEGAL-AI_APIKEY=<your-key>
+TAIWAN_LEGAL_AI_TEST_LIVE=TRUE
+TAIWAN_LEGAL_AI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -187,8 +191,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -272,7 +280,7 @@ API path: `/query`
 
 ### CaseAnalysi
 
-Create an instance: `const case_analysi = client.CaseAnalysi()`
+Create an instance: `const case_analysi = client.case_analysi`
 
 #### Operations
 
@@ -299,7 +307,7 @@ Create an instance: `const case_analysi = client.CaseAnalysi()`
 #### Example: Create
 
 ```ts
-const case_analysi = await client.CaseAnalysi().create({
+const case_analysi = await client.case_analysi.create({
   case_detail: /* `$STRING` */,
 })
 ```
@@ -307,7 +315,7 @@ const case_analysi = await client.CaseAnalysi().create({
 
 ### ContractService
 
-Create an instance: `const contract_service = client.ContractService()`
+Create an instance: `const contract_service = client.contract_service`
 
 #### Operations
 
@@ -342,7 +350,7 @@ Create an instance: `const contract_service = client.ContractService()`
 #### Example: Create
 
 ```ts
-const contract_service = await client.ContractService().create({
+const contract_service = await client.contract_service.create({
   contract_text: /* `$STRING` */,
   requirement: /* `$STRING` */,
 })
@@ -351,7 +359,7 @@ const contract_service = await client.ContractService().create({
 
 ### LegalQuery
 
-Create an instance: `const legal_query = client.LegalQuery()`
+Create an instance: `const legal_query = client.legal_query`
 
 #### Operations
 
@@ -374,7 +382,7 @@ Create an instance: `const legal_query = client.LegalQuery()`
 #### Example: Create
 
 ```ts
-const legal_query = await client.LegalQuery().create({
+const legal_query = await client.legal_query.create({
 })
 ```
 
@@ -450,11 +458,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$caseanalysi = $client->caseanalysi();
+$caseanalysi->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $caseanalysi->dataGet() now returns the loaded caseanalysi data
+// $caseanalysi->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

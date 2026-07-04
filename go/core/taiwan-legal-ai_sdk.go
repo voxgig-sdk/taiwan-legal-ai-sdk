@@ -245,16 +245,25 @@ func (sdk *TaiwanLegalAiSDK) Direct(fetchargs map[string]any) (map[string]any, e
 }
 
 
+// CaseAnalysi returns a CaseAnalysi entity bound to this client.
+// Idiomatic usage: client.CaseAnalysi(nil).List(nil, nil) or
+// client.CaseAnalysi(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TaiwanLegalAiSDK) CaseAnalysi(data map[string]any) TaiwanLegalAiEntity {
 	return NewCaseAnalysiEntityFunc(sdk, data)
 }
 
 
+// ContractService returns a ContractService entity bound to this client.
+// Idiomatic usage: client.ContractService(nil).List(nil, nil) or
+// client.ContractService(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TaiwanLegalAiSDK) ContractService(data map[string]any) TaiwanLegalAiEntity {
 	return NewContractServiceEntityFunc(sdk, data)
 }
 
 
+// LegalQuery returns a LegalQuery entity bound to this client.
+// Idiomatic usage: client.LegalQuery(nil).List(nil, nil) or
+// client.LegalQuery(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *TaiwanLegalAiSDK) LegalQuery(data map[string]any) TaiwanLegalAiEntity {
 	return NewLegalQueryEntityFunc(sdk, data)
 }

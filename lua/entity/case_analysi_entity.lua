@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata CaseAnalysiCreateData
+---@param ctrl? table
+---@return CaseAnalysi
+---@return string? err
 function CaseAnalysiEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

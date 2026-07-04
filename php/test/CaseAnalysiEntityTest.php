@@ -43,8 +43,7 @@ class CaseAnalysiEntityTest extends TestCase
         $case_analysi_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.case_analysi"), "case_analysi_ref01"));
 
-        [$case_analysi_ref01_data_result, $err] = $case_analysi_ref01_ent->create($case_analysi_ref01_data, null);
-        $this->assertNull($err);
+        $case_analysi_ref01_data_result = $case_analysi_ref01_ent->create($case_analysi_ref01_data, null);
         $case_analysi_ref01_data = Helpers::to_map($case_analysi_ref01_data_result);
         $this->assertNotNull($case_analysi_ref01_data);
 

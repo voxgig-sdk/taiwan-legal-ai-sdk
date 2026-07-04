@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'TaiwanLegalAi_types'
+
 
 class TaiwanLegalAiSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class TaiwanLegalAiSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class TaiwanLegalAiSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue TaiwanLegalAiError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = TaiwanLegalAiHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class TaiwanLegalAiSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,28 +198,49 @@ class TaiwanLegalAiSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.case_analysi.list / client.case_analysi.load({ "id" => ... })
+  def case_analysi
+    require_relative 'entity/case_analysi_entity'
+    @case_analysi ||= CaseAnalysiEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.case_analysi instead.
   def CaseAnalysi(data = nil)
     require_relative 'entity/case_analysi_entity'
     CaseAnalysiEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.contract_service.list / client.contract_service.load({ "id" => ... })
+  def contract_service
+    require_relative 'entity/contract_service_entity'
+    @contract_service ||= ContractServiceEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.contract_service instead.
   def ContractService(data = nil)
     require_relative 'entity/contract_service_entity'
     ContractServiceEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.legal_query.list / client.legal_query.load({ "id" => ... })
+  def legal_query
+    require_relative 'entity/legal_query_entity'
+    @legal_query ||= LegalQueryEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.legal_query instead.
   def LegalQuery(data = nil)
     require_relative 'entity/legal_query_entity'
     LegalQueryEntity.new(self, data)

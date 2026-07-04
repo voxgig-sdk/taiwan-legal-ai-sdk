@@ -45,6 +45,7 @@ class LegalQueryEntity
     end
   end
 
+  # @return [LegalQuery, Hash] the current LegalQuery data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class LegalQueryEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of LegalQuery fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -67,6 +69,11 @@ class LegalQueryEntity
   
 
   
+  # Create a new LegalQuery.
+  #
+  # @param reqdata [LegalQueryCreateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [LegalQuery, Hash] the created LegalQuery; raises TaiwanLegalAiError on failure
   def create(reqdata, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

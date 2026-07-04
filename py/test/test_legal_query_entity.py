@@ -44,9 +44,7 @@ class TestLegalQueryEntity:
         legal_query_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.legal_query"), "legal_query_ref01"))
 
-        legal_query_ref01_data_result, err = legal_query_ref01_ent.create(legal_query_ref01_data, None)
-        assert err is None
-        legal_query_ref01_data = helpers.to_map(legal_query_ref01_data_result)
+        legal_query_ref01_data = helpers.to_map(legal_query_ref01_ent.create(legal_query_ref01_data, None))
         assert legal_query_ref01_data is not None
 
 

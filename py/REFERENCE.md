@@ -62,9 +62,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -77,11 +77,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -89,7 +89,7 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## CaseAnalysiEntity
 
 ```python
-case_analysi = client.CaseAnalysi()
+case_analysi = client.case_analysi
 ```
 
 ### Fields
@@ -110,12 +110,12 @@ case_analysi = client.CaseAnalysi()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> tuple`
+#### `create(reqdata, ctrl=None) -> dict`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result, err = client.CaseAnalysi().create({
+result = client.case_analysi.create({
     "case_detail": # `$STRING`,
 })
 ```
@@ -152,7 +152,7 @@ Return the entity name.
 ## ContractServiceEntity
 
 ```python
-contract_service = client.ContractService()
+contract_service = client.contract_service
 ```
 
 ### Fields
@@ -205,12 +205,12 @@ contract_service = client.ContractService()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> tuple`
+#### `create(reqdata, ctrl=None) -> dict`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result, err = client.ContractService().create({
+result = client.contract_service.create({
     "contract_text": # `$STRING`,
     "requirement": # `$STRING`,
 })
@@ -248,7 +248,7 @@ Return the entity name.
 ## LegalQueryEntity
 
 ```python
-legal_query = client.LegalQuery()
+legal_query = client.legal_query
 ```
 
 ### Fields
@@ -277,12 +277,12 @@ legal_query = client.LegalQuery()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> tuple`
+#### `create(reqdata, ctrl=None) -> dict`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result, err = client.LegalQuery().create({
+result = client.legal_query.create({
 })
 ```
 

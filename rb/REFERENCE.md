@@ -62,9 +62,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -78,14 +80,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -93,7 +95,7 @@ same parameters as `direct()`.
 ## CaseAnalysiEntity
 
 ```ruby
-case_analysi = client.CaseAnalysi
+case_analysi = client.case_analysi
 ```
 
 ### Fields
@@ -114,12 +116,12 @@ case_analysi = client.CaseAnalysi
 
 ### Operations
 
-#### `create(reqdata, ctrl = nil) -> result, err`
+#### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Raises on error.
 
 ```ruby
-result, err = client.CaseAnalysi.create({
+result = client.case_analysi.create({
   "case_detail" => # `$STRING`,
 })
 ```
@@ -157,7 +159,7 @@ Return the entity name.
 ## ContractServiceEntity
 
 ```ruby
-contract_service = client.ContractService
+contract_service = client.contract_service
 ```
 
 ### Fields
@@ -210,12 +212,12 @@ contract_service = client.ContractService
 
 ### Operations
 
-#### `create(reqdata, ctrl = nil) -> result, err`
+#### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Raises on error.
 
 ```ruby
-result, err = client.ContractService.create({
+result = client.contract_service.create({
   "contract_text" => # `$STRING`,
   "requirement" => # `$STRING`,
 })
@@ -254,7 +256,7 @@ Return the entity name.
 ## LegalQueryEntity
 
 ```ruby
-legal_query = client.LegalQuery
+legal_query = client.legal_query
 ```
 
 ### Fields
@@ -283,12 +285,12 @@ legal_query = client.LegalQuery
 
 ### Operations
 
-#### `create(reqdata, ctrl = nil) -> result, err`
+#### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Raises on error.
 
 ```ruby
-result, err = client.LegalQuery.create({
+result = client.legal_query.create({
 })
 ```
 

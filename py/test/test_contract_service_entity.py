@@ -44,9 +44,7 @@ class TestContractServiceEntity:
         contract_service_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.contract_service"), "contract_service_ref01"))
 
-        contract_service_ref01_data_result, err = contract_service_ref01_ent.create(contract_service_ref01_data, None)
-        assert err is None
-        contract_service_ref01_data = helpers.to_map(contract_service_ref01_data_result)
+        contract_service_ref01_data = helpers.to_map(contract_service_ref01_ent.create(contract_service_ref01_data, None))
         assert contract_service_ref01_data is not None
 
 

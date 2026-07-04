@@ -144,16 +144,23 @@ class TaiwanLegalAiSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class TaiwanLegalAiSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class TaiwanLegalAiSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def case_analysi(self):
+        """Idiomatic facade: client.case_analysi.list() / client.case_analysi.load({"id": ...})."""
+        from entity.case_analysi_entity import CaseAnalysiEntity
+        cached = getattr(self, "_case_analysi", None)
+        if cached is None:
+            cached = CaseAnalysiEntity(self, None)
+            self._case_analysi = cached
+        return cached
 
     def CaseAnalysi(self, data=None):
+        # Deprecated: use client.case_analysi instead.
         from entity.case_analysi_entity import CaseAnalysiEntity
         return CaseAnalysiEntity(self, data)
 
 
+    @property
+    def contract_service(self):
+        """Idiomatic facade: client.contract_service.list() / client.contract_service.load({"id": ...})."""
+        from entity.contract_service_entity import ContractServiceEntity
+        cached = getattr(self, "_contract_service", None)
+        if cached is None:
+            cached = ContractServiceEntity(self, None)
+            self._contract_service = cached
+        return cached
+
     def ContractService(self, data=None):
+        # Deprecated: use client.contract_service instead.
         from entity.contract_service_entity import ContractServiceEntity
         return ContractServiceEntity(self, data)
 
 
+    @property
+    def legal_query(self):
+        """Idiomatic facade: client.legal_query.list() / client.legal_query.load({"id": ...})."""
+        from entity.legal_query_entity import LegalQueryEntity
+        cached = getattr(self, "_legal_query", None)
+        if cached is None:
+            cached = LegalQueryEntity(self, None)
+            self._legal_query = cached
+        return cached
+
     def LegalQuery(self, data=None):
+        # Deprecated: use client.legal_query instead.
         from entity.legal_query_entity import LegalQueryEntity
         return LegalQueryEntity(self, data)
 

@@ -36,8 +36,7 @@ class LegalQueryEntityTest < Minitest::Test
     legal_query_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.legal_query"), "legal_query_ref01"))
 
-    legal_query_ref01_data_result, err = legal_query_ref01_ent.create(legal_query_ref01_data, nil)
-    assert_nil err
+    legal_query_ref01_data_result = legal_query_ref01_ent.create(legal_query_ref01_data, nil)
     legal_query_ref01_data = Helpers.to_map(legal_query_ref01_data_result)
     assert !legal_query_ref01_data.nil?
 

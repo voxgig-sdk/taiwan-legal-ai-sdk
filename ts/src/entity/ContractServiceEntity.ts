@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ContractService,
+  ContractServiceCreateData,
+} from '../TaiwanLegalAiTypes'
 
 // TODO: needs Entity superclass
-class ContractServiceEntity extends TaiwanLegalAiEntityBase {
+class ContractServiceEntity extends TaiwanLegalAiEntityBase<ContractService> {
 
   constructor(client: TaiwanLegalAiSDK, entopts: any) {
     super(client, entopts)
@@ -34,7 +38,7 @@ class ContractServiceEntity extends TaiwanLegalAiEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: ContractServiceCreateData, ctrl?: Control): Promise<ContractService> {
 
     const utility = this._utility
     const {
@@ -133,7 +137,9 @@ class ContractServiceEntity extends TaiwanLegalAiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ContractService> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

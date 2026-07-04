@@ -36,8 +36,7 @@ class ContractServiceEntityTest < Minitest::Test
     contract_service_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.contract_service"), "contract_service_ref01"))
 
-    contract_service_ref01_data_result, err = contract_service_ref01_ent.create(contract_service_ref01_data, nil)
-    assert_nil err
+    contract_service_ref01_data_result = contract_service_ref01_ent.create(contract_service_ref01_data, nil)
     contract_service_ref01_data = Helpers.to_map(contract_service_ref01_data_result)
     assert !contract_service_ref01_data.nil?
 

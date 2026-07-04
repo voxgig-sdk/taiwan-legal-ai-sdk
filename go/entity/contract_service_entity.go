@@ -85,6 +85,27 @@ func (e *ContractServiceEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an ContractService; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ContractServiceEntity) DataTyped(data ...ContractService) ContractService {
+	if len(data) > 0 {
+		return typedFrom[ContractService](e.Data(asMap(data[0])))
+	}
+	return typedFrom[ContractService](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through ContractService (all fields
+// optional at the wire level).
+func (e *ContractServiceEntity) MatchTyped(match ...ContractService) ContractService {
+	if len(match) > 0 {
+		return typedFrom[ContractService](e.Match(asMap(match[0])))
+	}
+	return typedFrom[ContractService](e.Match())
+}
+
 func (e *ContractServiceEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -116,6 +137,17 @@ func (e *ContractServiceEntity) Create(reqdata map[string]any, ctrl map[string]a
 			}
 		}
 	})
+}
+
+// CreateTyped is the statically-typed variant of Create: it takes an
+// ContractServiceCreateData and returns an ContractService. It delegates to the untyped
+// Create (identical runtime) and converts at the typed boundary.
+func (e *ContractServiceEntity) CreateTyped(reqdata ContractServiceCreateData, ctrl map[string]any) (ContractService, error) {
+	res, err := e.Create(asMap(reqdata), ctrl)
+	if err != nil {
+		return ContractService{}, err
+	}
+	return typedFrom[ContractService](res), nil
 }
 
 

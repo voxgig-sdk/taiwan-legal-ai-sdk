@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:case_analysi():list() / client:case_analysi():load({ id = ... })
+function TaiwanLegalAiSDK:case_analysi(data)
+  local EntityMod = require("entity.case_analysi_entity")
+  if data == nil then
+    if self._case_analysi == nil then
+      self._case_analysi = EntityMod.new(self, nil)
+    end
+    return self._case_analysi
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:case_analysi() instead.
 function TaiwanLegalAiSDK:CaseAnalysi(data)
   local EntityMod = require("entity.case_analysi_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:contract_service():list() / client:contract_service():load({ id = ... })
+function TaiwanLegalAiSDK:contract_service(data)
+  local EntityMod = require("entity.contract_service_entity")
+  if data == nil then
+    if self._contract_service == nil then
+      self._contract_service = EntityMod.new(self, nil)
+    end
+    return self._contract_service
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:contract_service() instead.
 function TaiwanLegalAiSDK:ContractService(data)
   local EntityMod = require("entity.contract_service_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:legal_query():list() / client:legal_query():load({ id = ... })
+function TaiwanLegalAiSDK:legal_query(data)
+  local EntityMod = require("entity.legal_query_entity")
+  if data == nil then
+    if self._legal_query == nil then
+      self._legal_query = EntityMod.new(self, nil)
+    end
+    return self._legal_query
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:legal_query() instead.
 function TaiwanLegalAiSDK:LegalQuery(data)
   local EntityMod = require("entity.legal_query_entity")
   return EntityMod.new(self, data)

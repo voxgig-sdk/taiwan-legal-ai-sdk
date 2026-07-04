@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata ContractServiceCreateData
+---@param ctrl? table
+---@return ContractService
+---@return string? err
 function ContractServiceEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

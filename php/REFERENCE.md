@@ -64,7 +64,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -78,11 +81,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -90,7 +94,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## CaseAnalysiEntity
 
 ```php
-$case_analysi = $client->CaseAnalysi();
+$case_analysi = $client->case_analysi();
 ```
 
 ### Fields
@@ -111,12 +115,12 @@ $case_analysi = $client->CaseAnalysi();
 
 ### Operations
 
-#### `create(array $reqdata, ?array $ctrl = null): array`
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Throws on error.
 
 ```php
-[$result, $err] = $client->CaseAnalysi()->create([
+$result = $client->case_analysi()->create([
   "case_detail" => /* `$STRING` */,
 ]);
 ```
@@ -154,7 +158,7 @@ Return the entity name.
 ## ContractServiceEntity
 
 ```php
-$contract_service = $client->ContractService();
+$contract_service = $client->contract_service();
 ```
 
 ### Fields
@@ -207,12 +211,12 @@ $contract_service = $client->ContractService();
 
 ### Operations
 
-#### `create(array $reqdata, ?array $ctrl = null): array`
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Throws on error.
 
 ```php
-[$result, $err] = $client->ContractService()->create([
+$result = $client->contract_service()->create([
   "contract_text" => /* `$STRING` */,
   "requirement" => /* `$STRING` */,
 ]);
@@ -251,7 +255,7 @@ Return the entity name.
 ## LegalQueryEntity
 
 ```php
-$legal_query = $client->LegalQuery();
+$legal_query = $client->legal_query();
 ```
 
 ### Fields
@@ -280,12 +284,12 @@ $legal_query = $client->LegalQuery();
 
 ### Operations
 
-#### `create(array $reqdata, ?array $ctrl = null): array`
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Throws on error.
 
 ```php
-[$result, $err] = $client->LegalQuery()->create([
+$result = $client->legal_query()->create([
 ]);
 ```
 

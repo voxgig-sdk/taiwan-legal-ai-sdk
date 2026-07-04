@@ -44,9 +44,7 @@ class TestCaseAnalysiEntity:
         case_analysi_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.case_analysi"), "case_analysi_ref01"))
 
-        case_analysi_ref01_data_result, err = case_analysi_ref01_ent.create(case_analysi_ref01_data, None)
-        assert err is None
-        case_analysi_ref01_data = helpers.to_map(case_analysi_ref01_data_result)
+        case_analysi_ref01_data = helpers.to_map(case_analysi_ref01_ent.create(case_analysi_ref01_data, None))
         assert case_analysi_ref01_data is not None
 
 

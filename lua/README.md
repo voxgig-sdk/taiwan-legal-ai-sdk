@@ -9,12 +9,9 @@ The Lua SDK for the TaiwanLegalAi API — an entity-oriented client using Lua co
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-taiwan-legal-ai
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -32,7 +29,7 @@ loading a specific record.
 local sdk = require("taiwan-legal-ai_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("TAIWAN-LEGAL-AI_APIKEY"),
+  apikey = os.getenv("TAIWAN_LEGAL_AI_APIKEY"),
 })
 ```
 
@@ -40,7 +37,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, _ = client:CaseAnalysi():create({ name = "Example" })
+local created, _ = client:caseanalysi():create({ name = "Example" })
 
 ```
 
@@ -87,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:TaiwanLegalAi():load({ id = "test01" })
+local result, err = client:caseanalysi():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +117,8 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-TAIWAN-LEGAL-AI_TEST_LIVE=TRUE
-TAIWAN-LEGAL-AI_APIKEY=<your-key>
+TAIWAN_LEGAL_AI_TEST_LIVE=TRUE
+TAIWAN_LEGAL_AI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -277,7 +274,7 @@ API path: `/query`
 
 ### CaseAnalysi
 
-Create an instance: `const case_analysi = client.CaseAnalysi()`
+Create an instance: `const case_analysi = client.case_analysi`
 
 #### Operations
 
@@ -304,7 +301,7 @@ Create an instance: `const case_analysi = client.CaseAnalysi()`
 #### Example: Create
 
 ```ts
-const case_analysi = await client.CaseAnalysi().create({
+const case_analysi = await client.case_analysi.create({
   case_detail: /* `$STRING` */,
 })
 ```
@@ -312,7 +309,7 @@ const case_analysi = await client.CaseAnalysi().create({
 
 ### ContractService
 
-Create an instance: `const contract_service = client.ContractService()`
+Create an instance: `const contract_service = client.contract_service`
 
 #### Operations
 
@@ -347,7 +344,7 @@ Create an instance: `const contract_service = client.ContractService()`
 #### Example: Create
 
 ```ts
-const contract_service = await client.ContractService().create({
+const contract_service = await client.contract_service.create({
   contract_text: /* `$STRING` */,
   requirement: /* `$STRING` */,
 })
@@ -356,7 +353,7 @@ const contract_service = await client.ContractService().create({
 
 ### LegalQuery
 
-Create an instance: `const legal_query = client.LegalQuery()`
+Create an instance: `const legal_query = client.legal_query`
 
 #### Operations
 
@@ -379,7 +376,7 @@ Create an instance: `const legal_query = client.LegalQuery()`
 #### Example: Create
 
 ```ts
-const legal_query = await client.LegalQuery().create({
+const legal_query = await client.legal_query.create({
 })
 ```
 
@@ -455,11 +452,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local caseanalysi = client:caseanalysi()
+caseanalysi:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- caseanalysi:data_get() now returns the loaded caseanalysi data
+-- caseanalysi:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

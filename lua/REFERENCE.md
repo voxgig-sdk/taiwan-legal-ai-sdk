@@ -92,7 +92,7 @@ same parameters as `direct()`.
 ## CaseAnalysiEntity
 
 ```lua
-local case_analysi = client:CaseAnalysi(nil)
+local case_analysi = client:case_analysi(nil)
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ local case_analysi = client:CaseAnalysi(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:CaseAnalysi():create({
+local result, err = client:case_analysi():create({
   case_detail = --[[ `$STRING` ]],
 })
 ```
@@ -156,7 +156,7 @@ Return the entity name.
 ## ContractServiceEntity
 
 ```lua
-local contract_service = client:ContractService(nil)
+local contract_service = client:contract_service(nil)
 ```
 
 ### Fields
@@ -214,7 +214,7 @@ local contract_service = client:ContractService(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:ContractService():create({
+local result, err = client:contract_service():create({
   contract_text = --[[ `$STRING` ]],
   requirement = --[[ `$STRING` ]],
 })
@@ -253,7 +253,7 @@ Return the entity name.
 ## LegalQueryEntity
 
 ```lua
-local legal_query = client:LegalQuery(nil)
+local legal_query = client:legal_query(nil)
 ```
 
 ### Fields
@@ -287,7 +287,7 @@ local legal_query = client:LegalQuery(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:LegalQuery():create({
+local result, err = client:legal_query():create({
 })
 ```
 

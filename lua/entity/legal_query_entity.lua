@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata LegalQueryCreateData
+---@param ctrl? table
+---@return LegalQuery
+---@return string? err
 function LegalQueryEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -43,8 +43,7 @@ class ContractServiceEntityTest extends TestCase
         $contract_service_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.contract_service"), "contract_service_ref01"));
 
-        [$contract_service_ref01_data_result, $err] = $contract_service_ref01_ent->create($contract_service_ref01_data, null);
-        $this->assertNull($err);
+        $contract_service_ref01_data_result = $contract_service_ref01_ent->create($contract_service_ref01_data, null);
         $contract_service_ref01_data = Helpers::to_map($contract_service_ref01_data_result);
         $this->assertNotNull($contract_service_ref01_data);
 

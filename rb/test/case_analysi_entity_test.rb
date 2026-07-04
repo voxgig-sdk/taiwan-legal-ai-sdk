@@ -36,8 +36,7 @@ class CaseAnalysiEntityTest < Minitest::Test
     case_analysi_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.case_analysi"), "case_analysi_ref01"))
 
-    case_analysi_ref01_data_result, err = case_analysi_ref01_ent.create(case_analysi_ref01_data, nil)
-    assert_nil err
+    case_analysi_ref01_data_result = case_analysi_ref01_ent.create(case_analysi_ref01_data, nil)
     case_analysi_ref01_data = Helpers.to_map(case_analysi_ref01_data_result)
     assert !case_analysi_ref01_data.nil?
 
