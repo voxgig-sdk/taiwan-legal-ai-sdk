@@ -28,12 +28,12 @@ class CaseAnalysi
     public ?string $timestamp = null;
 }
 
-/** Match filter for CaseAnalysi#create (any subset of CaseAnalysi fields). */
+/** Request payload for CaseAnalysi#create. */
 class CaseAnalysiCreateData
 {
     public ?string $analysis_id = null;
     public ?array $applicable_law = null;
-    public ?string $case_detail = null;
+    public string $case_detail;
     public ?string $case_type = null;
     public ?string $language = null;
     public ?array $legal_issue = null;
@@ -68,13 +68,13 @@ class ContractService
     public ?string $timestamp = null;
 }
 
-/** Match filter for ContractService#create (any subset of ContractService fields). */
+/** Request payload for ContractService#create. */
 class ContractServiceCreateData
 {
     public ?array $claus = null;
     public ?array $compliance_check = null;
     public ?string $content = null;
-    public ?string $contract_text = null;
+    public string $contract_text;
     public ?string $contract_type = null;
     public ?string $draft_id = null;
     public ?array $focus_area = null;
@@ -85,7 +85,7 @@ class ContractServiceCreateData
     public ?string $overall_assessment = null;
     public ?array $party = null;
     public ?array $recommendation = null;
-    public ?string $requirement = null;
+    public string $requirement;
     public ?string $review_id = null;
     public ?string $risk_level = null;
     public ?array $specific_claus = null;
@@ -104,7 +104,7 @@ class LegalQuery
     public ?string $timestamp = null;
 }
 
-/** Match filter for LegalQuery#create (any subset of LegalQuery fields). */
+/** Request payload for LegalQuery#create. */
 class LegalQueryCreateData
 {
     public ?string $answer = null;

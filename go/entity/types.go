@@ -23,12 +23,11 @@ type CaseAnalysi struct {
 	Timestamp *string `json:"timestamp,omitempty"`
 }
 
-// CaseAnalysiCreateData mirrors the case_analysi fields as an all-optional match
-// filter (Go analog of Partial<CaseAnalysi>).
+// CaseAnalysiCreateData is the typed request payload for CaseAnalysi.CreateTyped.
 type CaseAnalysiCreateData struct {
 	AnalysisId *string `json:"analysis_id,omitempty"`
 	ApplicableLaw *[]any `json:"applicable_law,omitempty"`
-	CaseDetail *string `json:"case_detail,omitempty"`
+	CaseDetail string `json:"case_detail"`
 	CaseType *string `json:"case_type,omitempty"`
 	Language *string `json:"language,omitempty"`
 	LegalIssue *[]any `json:"legal_issue,omitempty"`
@@ -62,13 +61,12 @@ type ContractService struct {
 	Timestamp *string `json:"timestamp,omitempty"`
 }
 
-// ContractServiceCreateData mirrors the contract_service fields as an all-optional match
-// filter (Go analog of Partial<ContractService>).
+// ContractServiceCreateData is the typed request payload for ContractService.CreateTyped.
 type ContractServiceCreateData struct {
 	Claus *[]any `json:"claus,omitempty"`
 	ComplianceCheck *map[string]any `json:"compliance_check,omitempty"`
 	Content *string `json:"content,omitempty"`
-	ContractText *string `json:"contract_text,omitempty"`
+	ContractText string `json:"contract_text"`
 	ContractType *string `json:"contract_type,omitempty"`
 	DraftId *string `json:"draft_id,omitempty"`
 	FocusArea *[]any `json:"focus_area,omitempty"`
@@ -79,7 +77,7 @@ type ContractServiceCreateData struct {
 	OverallAssessment *string `json:"overall_assessment,omitempty"`
 	Party *map[string]any `json:"party,omitempty"`
 	Recommendation *[]any `json:"recommendation,omitempty"`
-	Requirement *string `json:"requirement,omitempty"`
+	Requirement string `json:"requirement"`
 	ReviewId *string `json:"review_id,omitempty"`
 	RiskLevel *string `json:"risk_level,omitempty"`
 	SpecificClaus *[]any `json:"specific_claus,omitempty"`
@@ -97,8 +95,7 @@ type LegalQuery struct {
 	Timestamp *string `json:"timestamp,omitempty"`
 }
 
-// LegalQueryCreateData mirrors the legal_query fields as an all-optional match
-// filter (Go analog of Partial<LegalQuery>).
+// LegalQueryCreateData is the typed request payload for LegalQuery.CreateTyped.
 type LegalQueryCreateData struct {
 	Answer *string `json:"answer,omitempty"`
 	Category *string `json:"category,omitempty"`

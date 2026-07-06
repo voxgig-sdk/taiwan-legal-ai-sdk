@@ -19,7 +19,19 @@ export interface CaseAnalysi {
   timestamp?: string
 }
 
-export type CaseAnalysiCreateData = Partial<CaseAnalysi>
+export interface CaseAnalysiCreateData {
+  analysis_id?: string
+  applicable_law?: any[]
+  case_detail: string
+  case_type?: string
+  language?: string
+  legal_issue?: any[]
+  party?: Record<string, any>
+  precedent?: any[]
+  recommendation?: string
+  summary?: string
+  timestamp?: string
+}
 
 export interface ContractService {
   claus?: any[]
@@ -43,7 +55,27 @@ export interface ContractService {
   timestamp?: string
 }
 
-export type ContractServiceCreateData = Partial<ContractService>
+export interface ContractServiceCreateData {
+  claus?: any[]
+  compliance_check?: Record<string, any>
+  content?: string
+  contract_text: string
+  contract_type?: string
+  draft_id?: string
+  focus_area?: any[]
+  issue?: any[]
+  language?: string
+  missing_claus?: any[]
+  note?: string
+  overall_assessment?: string
+  party?: Record<string, any>
+  recommendation?: any[]
+  requirement: string
+  review_id?: string
+  risk_level?: string
+  specific_claus?: any[]
+  timestamp?: string
+}
 
 export interface LegalQuery {
   answer?: string
@@ -55,5 +87,13 @@ export interface LegalQuery {
   timestamp?: string
 }
 
-export type LegalQueryCreateData = Partial<LegalQuery>
+export interface LegalQueryCreateData {
+  answer?: string
+  category?: string
+  language?: string
+  query_id?: string
+  question?: string
+  relevant_law?: any[]
+  timestamp?: string
+}
 

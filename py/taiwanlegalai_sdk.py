@@ -221,19 +221,19 @@ class TaiwanLegalAiSDK:
 
 
     def CaseAnalysi(self, data=None) -> "CaseAnalysiEntity":
-        """Entity factory: client.CaseAnalysi().list({}) / client.CaseAnalysi().load({"id": ...})."""
+        """Entity factory: client.CaseAnalysi().list() / client.CaseAnalysi().load({"id": ...})."""
         from entity.case_analysi_entity import CaseAnalysiEntity
         return CaseAnalysiEntity(self, data)
 
 
     def ContractService(self, data=None) -> "ContractServiceEntity":
-        """Entity factory: client.ContractService().list({}) / client.ContractService().load({"id": ...})."""
+        """Entity factory: client.ContractService().list() / client.ContractService().load({"id": ...})."""
         from entity.contract_service_entity import ContractServiceEntity
         return ContractServiceEntity(self, data)
 
 
     def LegalQuery(self, data=None) -> "LegalQueryEntity":
-        """Entity factory: client.LegalQuery().list({}) / client.LegalQuery().load({"id": ...})."""
+        """Entity factory: client.LegalQuery().list() / client.LegalQuery().load({"id": ...})."""
         from entity.legal_query_entity import LegalQueryEntity
         return LegalQueryEntity(self, data)
 

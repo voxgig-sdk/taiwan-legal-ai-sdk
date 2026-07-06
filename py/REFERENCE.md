@@ -8,7 +8,7 @@ Complete API reference for the TaiwanLegalAi Python SDK.
 ### Constructor
 
 ```python
-from taiwan-legal-ai_sdk import TaiwanLegalAiSDK
+from taiwanlegalai_sdk import TaiwanLegalAiSDK
 
 client = TaiwanLegalAiSDK(options)
 ```
@@ -96,17 +96,17 @@ case_analysi = client.CaseAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysis_id` | ``$STRING`` | No |  |
-| `applicable_law` | ``$ARRAY`` | No |  |
-| `case_detail` | ``$STRING`` | Yes |  |
-| `case_type` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `legal_issue` | ``$ARRAY`` | No |  |
-| `party` | ``$OBJECT`` | No |  |
-| `precedent` | ``$ARRAY`` | No |  |
-| `recommendation` | ``$STRING`` | No |  |
-| `summary` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `analysis_id` | `str` | No |  |
+| `applicable_law` | `list` | No |  |
+| `case_detail` | `str` | Yes |  |
+| `case_type` | `str` | No |  |
+| `language` | `str` | No |  |
+| `legal_issue` | `list` | No |  |
+| `party` | `dict` | No |  |
+| `precedent` | `list` | No |  |
+| `recommendation` | `str` | No |  |
+| `summary` | `str` | No |  |
+| `timestamp` | `str` | No |  |
 
 ### Operations
 
@@ -116,7 +116,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.CaseAnalysi().create({
-    "case_detail": ...,  # `$STRING`
+    "case_detail": "example",  # str
 })
 ```
 
@@ -159,49 +159,49 @@ contract_service = client.ContractService()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claus` | ``$ARRAY`` | No |  |
-| `compliance_check` | ``$OBJECT`` | No |  |
-| `content` | ``$STRING`` | No |  |
-| `contract_text` | ``$STRING`` | Yes |  |
-| `contract_type` | ``$STRING`` | No |  |
-| `draft_id` | ``$STRING`` | No |  |
-| `focus_area` | ``$ARRAY`` | No |  |
-| `issue` | ``$ARRAY`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `missing_claus` | ``$ARRAY`` | No |  |
-| `note` | ``$STRING`` | No |  |
-| `overall_assessment` | ``$STRING`` | No |  |
-| `party` | ``$OBJECT`` | No |  |
-| `recommendation` | ``$ARRAY`` | No |  |
-| `requirement` | ``$STRING`` | Yes |  |
-| `review_id` | ``$STRING`` | No |  |
-| `risk_level` | ``$STRING`` | No |  |
-| `specific_claus` | ``$ARRAY`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `claus` | `list` | No |  |
+| `compliance_check` | `dict` | No |  |
+| `content` | `str` | No |  |
+| `contract_text` | `str` | Yes |  |
+| `contract_type` | `str` | No |  |
+| `draft_id` | `str` | No |  |
+| `focus_area` | `list` | No |  |
+| `issue` | `list` | No |  |
+| `language` | `str` | No |  |
+| `missing_claus` | `list` | No |  |
+| `note` | `str` | No |  |
+| `overall_assessment` | `str` | No |  |
+| `party` | `dict` | No |  |
+| `recommendation` | `list` | No |  |
+| `requirement` | `str` | Yes |  |
+| `review_id` | `str` | No |  |
+| `risk_level` | `str` | No |  |
+| `specific_claus` | `list` | No |  |
+| `timestamp` | `str` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `claus` | - | - | - | - | - |
-| `compliance_check` | - | - | - | - | - |
-| `content` | - | - | - | - | - |
-| `contract_text` | - | - | - | - | - |
-| `contract_type` | - | - | Yes | - | - |
-| `draft_id` | - | - | - | - | - |
-| `focus_area` | - | - | - | - | - |
-| `issue` | - | - | - | - | - |
-| `language` | - | - | - | - | - |
-| `missing_claus` | - | - | - | - | - |
-| `note` | - | - | - | - | - |
-| `overall_assessment` | - | - | - | - | - |
-| `party` | - | - | - | - | - |
-| `recommendation` | - | - | - | - | - |
-| `requirement` | - | - | - | - | - |
-| `review_id` | - | - | - | - | - |
-| `risk_level` | - | - | - | - | - |
-| `specific_claus` | - | - | - | - | - |
-| `timestamp` | - | - | - | - | - |
+| Field | create |
+| --- | --- |
+| `claus` | - |
+| `compliance_check` | - |
+| `content` | - |
+| `contract_text` | - |
+| `contract_type` | Yes |
+| `draft_id` | - |
+| `focus_area` | - |
+| `issue` | - |
+| `language` | - |
+| `missing_claus` | - |
+| `note` | - |
+| `overall_assessment` | - |
+| `party` | - |
+| `recommendation` | - |
+| `requirement` | - |
+| `review_id` | - |
+| `risk_level` | - |
+| `specific_claus` | - |
+| `timestamp` | - |
 
 ### Operations
 
@@ -211,8 +211,8 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ContractService().create({
-    "contract_text": ...,  # `$STRING`
-    "requirement": ...,  # `$STRING`
+    "contract_text": "example",  # str
+    "requirement": "example",  # str
 })
 ```
 
@@ -255,25 +255,25 @@ legal_query = client.LegalQuery()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `query_id` | ``$STRING`` | No |  |
-| `question` | ``$STRING`` | No |  |
-| `relevant_law` | ``$ARRAY`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `answer` | `str` | No |  |
+| `category` | `str` | No |  |
+| `language` | `str` | No |  |
+| `query_id` | `str` | No |  |
+| `question` | `str` | No |  |
+| `relevant_law` | `list` | No |  |
+| `timestamp` | `str` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `answer` | - | - | - | - | - |
-| `category` | - | - | - | - | - |
-| `language` | - | - | - | - | - |
-| `query_id` | - | - | - | - | - |
-| `question` | - | - | Yes | - | - |
-| `relevant_law` | - | - | - | - | - |
-| `timestamp` | - | - | - | - | - |
+| Field | create |
+| --- | --- |
+| `answer` | - |
+| `category` | - |
+| `language` | - |
+| `query_id` | - |
+| `question` | Yes |
+| `relevant_law` | - |
+| `timestamp` | - |
 
 ### Operations
 

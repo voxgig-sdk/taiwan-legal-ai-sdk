@@ -4,6 +4,8 @@
 
 The Lua SDK for the TaiwanLegalAi API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:CaseAnalysi()` — each with the same small set of operations (`create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -37,9 +39,31 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:CaseAnalysi():create({ name = "Example" })
+local created, err = client:CaseAnalysi():create({ case_detail = "example" })
 if err then error(err) end
 
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local caseanalysi, err = client:CaseAnalysi():create({ case_detail = "example" })
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -85,8 +109,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:CaseAnalysi():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:CaseAnalysi():create({ case_detail = "example" })
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -176,11 +200,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
 | `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -195,12 +215,11 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
-| `list` | an array (`table`) of entity records |
+| `create` | the entity record (a `table`) |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local case_analysi, err = client:CaseAnalysi():load({ id = "example_id" })
+    local case_analysi, err = client:CaseAnalysi():load()
     if err then error(err) end
     -- case_analysi is the loaded record
 
@@ -292,23 +311,23 @@ Create an instance: `local case_analysi = client:CaseAnalysi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysis_id` | ``$STRING`` |  |
-| `applicable_law` | ``$ARRAY`` |  |
-| `case_detail` | ``$STRING`` |  |
-| `case_type` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `legal_issue` | ``$ARRAY`` |  |
-| `party` | ``$OBJECT`` |  |
-| `precedent` | ``$ARRAY`` |  |
-| `recommendation` | ``$STRING`` |  |
-| `summary` | ``$STRING`` |  |
-| `timestamp` | ``$STRING`` |  |
+| `analysis_id` | `string` |  |
+| `applicable_law` | `table` |  |
+| `case_detail` | `string` |  |
+| `case_type` | `string` |  |
+| `language` | `string` |  |
+| `legal_issue` | `table` |  |
+| `party` | `table` |  |
+| `precedent` | `table` |  |
+| `recommendation` | `string` |  |
+| `summary` | `string` |  |
+| `timestamp` | `string` |  |
 
 #### Example: Create
 
 ```lua
 local case_analysi, err = client:CaseAnalysi():create({
-  case_detail = nil, -- `$STRING`
+  case_detail = nil, -- string
 })
 ```
 
@@ -327,32 +346,32 @@ Create an instance: `local contract_service = client:ContractService(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claus` | ``$ARRAY`` |  |
-| `compliance_check` | ``$OBJECT`` |  |
-| `content` | ``$STRING`` |  |
-| `contract_text` | ``$STRING`` |  |
-| `contract_type` | ``$STRING`` |  |
-| `draft_id` | ``$STRING`` |  |
-| `focus_area` | ``$ARRAY`` |  |
-| `issue` | ``$ARRAY`` |  |
-| `language` | ``$STRING`` |  |
-| `missing_claus` | ``$ARRAY`` |  |
-| `note` | ``$STRING`` |  |
-| `overall_assessment` | ``$STRING`` |  |
-| `party` | ``$OBJECT`` |  |
-| `recommendation` | ``$ARRAY`` |  |
-| `requirement` | ``$STRING`` |  |
-| `review_id` | ``$STRING`` |  |
-| `risk_level` | ``$STRING`` |  |
-| `specific_claus` | ``$ARRAY`` |  |
-| `timestamp` | ``$STRING`` |  |
+| `claus` | `table` |  |
+| `compliance_check` | `table` |  |
+| `content` | `string` |  |
+| `contract_text` | `string` |  |
+| `contract_type` | `string` |  |
+| `draft_id` | `string` |  |
+| `focus_area` | `table` |  |
+| `issue` | `table` |  |
+| `language` | `string` |  |
+| `missing_claus` | `table` |  |
+| `note` | `string` |  |
+| `overall_assessment` | `string` |  |
+| `party` | `table` |  |
+| `recommendation` | `table` |  |
+| `requirement` | `string` |  |
+| `review_id` | `string` |  |
+| `risk_level` | `string` |  |
+| `specific_claus` | `table` |  |
+| `timestamp` | `string` |  |
 
 #### Example: Create
 
 ```lua
 local contract_service, err = client:ContractService():create({
-  contract_text = nil, -- `$STRING`
-  requirement = nil, -- `$STRING`
+  contract_text = nil, -- string
+  requirement = nil, -- string
 })
 ```
 
@@ -371,13 +390,13 @@ Create an instance: `local legal_query = client:LegalQuery(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | ``$STRING`` |  |
-| `category` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `query_id` | ``$STRING`` |  |
-| `question` | ``$STRING`` |  |
-| `relevant_law` | ``$ARRAY`` |  |
-| `timestamp` | ``$STRING`` |  |
+| `answer` | `string` |  |
+| `category` | `string` |  |
+| `language` | `string` |  |
+| `query_id` | `string` |  |
+| `question` | `string` |  |
+| `relevant_law` | `table` |  |
+| `timestamp` | `string` |  |
 
 #### Example: Create
 
@@ -387,12 +406,16 @@ local legal_query, err = client:LegalQuery():create({
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -409,8 +432,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -454,14 +478,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `create`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local caseanalysi = client:CaseAnalysi()
-caseanalysi:load({ id = "example_id" })
+caseanalysi:create({ case_detail = "example" })
 
--- caseanalysi:data_get() now returns the loaded caseanalysi data
+-- caseanalysi:data_get() now returns the caseanalysi data from the last create
 -- caseanalysi:match_get() returns the last match criteria
 ```
 

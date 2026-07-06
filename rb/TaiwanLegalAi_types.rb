@@ -57,7 +57,7 @@ CaseAnalysi = Struct.new(
   keyword_init: true
 )
 
-# Match filter for CaseAnalysi#create (any subset of CaseAnalysi fields).
+# Request payload for CaseAnalysi#create.
 #
 # @!attribute [rw] analysis_id
 #   @return [String, nil]
@@ -66,7 +66,7 @@ CaseAnalysi = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] case_detail
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] case_type
 #   @return [String, nil]
@@ -187,7 +187,7 @@ ContractService = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ContractService#create (any subset of ContractService fields).
+# Request payload for ContractService#create.
 #
 # @!attribute [rw] claus
 #   @return [Array, nil]
@@ -199,7 +199,7 @@ ContractService = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] contract_text
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] contract_type
 #   @return [String, nil]
@@ -232,7 +232,7 @@ ContractService = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] requirement
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] review_id
 #   @return [String, nil]
@@ -301,7 +301,7 @@ LegalQuery = Struct.new(
   keyword_init: true
 )
 
-# Match filter for LegalQuery#create (any subset of LegalQuery fields).
+# Request payload for LegalQuery#create.
 #
 # @!attribute [rw] answer
 #   @return [String, nil]

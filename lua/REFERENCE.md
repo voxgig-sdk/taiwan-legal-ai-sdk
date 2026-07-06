@@ -99,17 +99,17 @@ local case_analysi = client:CaseAnalysi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysis_id` | ``$STRING`` | No |  |
-| `applicable_law` | ``$ARRAY`` | No |  |
-| `case_detail` | ``$STRING`` | Yes |  |
-| `case_type` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `legal_issue` | ``$ARRAY`` | No |  |
-| `party` | ``$OBJECT`` | No |  |
-| `precedent` | ``$ARRAY`` | No |  |
-| `recommendation` | ``$STRING`` | No |  |
-| `summary` | ``$STRING`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `analysis_id` | `string` | No |  |
+| `applicable_law` | `table` | No |  |
+| `case_detail` | `string` | Yes |  |
+| `case_type` | `string` | No |  |
+| `language` | `string` | No |  |
+| `legal_issue` | `table` | No |  |
+| `party` | `table` | No |  |
+| `precedent` | `table` | No |  |
+| `recommendation` | `string` | No |  |
+| `summary` | `string` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Operations
 
@@ -119,7 +119,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:CaseAnalysi():create({
-  case_detail = --[[ `$STRING` ]],
+  case_detail = --[[ string ]],
 })
 ```
 
@@ -163,49 +163,49 @@ local contract_service = client:ContractService(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claus` | ``$ARRAY`` | No |  |
-| `compliance_check` | ``$OBJECT`` | No |  |
-| `content` | ``$STRING`` | No |  |
-| `contract_text` | ``$STRING`` | Yes |  |
-| `contract_type` | ``$STRING`` | No |  |
-| `draft_id` | ``$STRING`` | No |  |
-| `focus_area` | ``$ARRAY`` | No |  |
-| `issue` | ``$ARRAY`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `missing_claus` | ``$ARRAY`` | No |  |
-| `note` | ``$STRING`` | No |  |
-| `overall_assessment` | ``$STRING`` | No |  |
-| `party` | ``$OBJECT`` | No |  |
-| `recommendation` | ``$ARRAY`` | No |  |
-| `requirement` | ``$STRING`` | Yes |  |
-| `review_id` | ``$STRING`` | No |  |
-| `risk_level` | ``$STRING`` | No |  |
-| `specific_claus` | ``$ARRAY`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `claus` | `table` | No |  |
+| `compliance_check` | `table` | No |  |
+| `content` | `string` | No |  |
+| `contract_text` | `string` | Yes |  |
+| `contract_type` | `string` | No |  |
+| `draft_id` | `string` | No |  |
+| `focus_area` | `table` | No |  |
+| `issue` | `table` | No |  |
+| `language` | `string` | No |  |
+| `missing_claus` | `table` | No |  |
+| `note` | `string` | No |  |
+| `overall_assessment` | `string` | No |  |
+| `party` | `table` | No |  |
+| `recommendation` | `table` | No |  |
+| `requirement` | `string` | Yes |  |
+| `review_id` | `string` | No |  |
+| `risk_level` | `string` | No |  |
+| `specific_claus` | `table` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `claus` | - | - | - | - | - |
-| `compliance_check` | - | - | - | - | - |
-| `content` | - | - | - | - | - |
-| `contract_text` | - | - | - | - | - |
-| `contract_type` | - | - | Yes | - | - |
-| `draft_id` | - | - | - | - | - |
-| `focus_area` | - | - | - | - | - |
-| `issue` | - | - | - | - | - |
-| `language` | - | - | - | - | - |
-| `missing_claus` | - | - | - | - | - |
-| `note` | - | - | - | - | - |
-| `overall_assessment` | - | - | - | - | - |
-| `party` | - | - | - | - | - |
-| `recommendation` | - | - | - | - | - |
-| `requirement` | - | - | - | - | - |
-| `review_id` | - | - | - | - | - |
-| `risk_level` | - | - | - | - | - |
-| `specific_claus` | - | - | - | - | - |
-| `timestamp` | - | - | - | - | - |
+| Field | create |
+| --- | --- |
+| `claus` | - |
+| `compliance_check` | - |
+| `content` | - |
+| `contract_text` | - |
+| `contract_type` | Yes |
+| `draft_id` | - |
+| `focus_area` | - |
+| `issue` | - |
+| `language` | - |
+| `missing_claus` | - |
+| `note` | - |
+| `overall_assessment` | - |
+| `party` | - |
+| `recommendation` | - |
+| `requirement` | - |
+| `review_id` | - |
+| `risk_level` | - |
+| `specific_claus` | - |
+| `timestamp` | - |
 
 ### Operations
 
@@ -215,8 +215,8 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ContractService():create({
-  contract_text = --[[ `$STRING` ]],
-  requirement = --[[ `$STRING` ]],
+  contract_text = --[[ string ]],
+  requirement = --[[ string ]],
 })
 ```
 
@@ -260,25 +260,25 @@ local legal_query = client:LegalQuery(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `language` | ``$STRING`` | No |  |
-| `query_id` | ``$STRING`` | No |  |
-| `question` | ``$STRING`` | No |  |
-| `relevant_law` | ``$ARRAY`` | No |  |
-| `timestamp` | ``$STRING`` | No |  |
+| `answer` | `string` | No |  |
+| `category` | `string` | No |  |
+| `language` | `string` | No |  |
+| `query_id` | `string` | No |  |
+| `question` | `string` | No |  |
+| `relevant_law` | `table` | No |  |
+| `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `answer` | - | - | - | - | - |
-| `category` | - | - | - | - | - |
-| `language` | - | - | - | - | - |
-| `query_id` | - | - | - | - | - |
-| `question` | - | - | Yes | - | - |
-| `relevant_law` | - | - | - | - | - |
-| `timestamp` | - | - | - | - | - |
+| Field | create |
+| --- | --- |
+| `answer` | - |
+| `category` | - |
+| `language` | - |
+| `query_id` | - |
+| `question` | Yes |
+| `relevant_law` | - |
+| `timestamp` | - |
 
 ### Operations
 

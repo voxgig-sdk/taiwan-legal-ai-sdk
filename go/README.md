@@ -4,6 +4,8 @@
 
 The Golang SDK for the TaiwanLegalAi API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.CaseAnalysi(nil)` — each with the same small set of operations (`Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -52,12 +54,41 @@ func main() {
     })
 
     // Create a caseanalysi.
-    created, err := client.CaseAnalysi(nil).Create(map[string]any{"name": "Example"}, nil)
+    created, err := client.CaseAnalysi(nil).Create(map[string]any{"case_detail": "example"}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(created)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+caseanalysi, err := client.CaseAnalysi(nil).Create(map[string]any{"case_detail": "example"}, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = caseanalysi
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -107,13 +138,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-caseanalysi, err := client.CaseAnalysi(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+caseanalysi, err := client.CaseAnalysi(nil).Create(
+    map[string]any{"case_detail": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(caseanalysi) // the loaded mock data
+fmt.Println(caseanalysi) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -202,11 +233,7 @@ All entities implement the `TaiwanLegalAiEntity` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
 | `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -219,16 +246,15 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
-| `List` | a `[]any` of entity records |
+| `Create` | the entity record (`map[string]any`) |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    caseanalysi, err := client.CaseAnalysi(nil).Load(map[string]any{"id": "example_id"}, nil)
+    caseanalysi, err := client.CaseAnalysi(nil).Create(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // caseanalysi is the loaded record
+    // caseanalysi is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -318,23 +344,23 @@ Create an instance: `case_analysi := client.CaseAnalysi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysis_id` | ``$STRING`` |  |
-| `applicable_law` | ``$ARRAY`` |  |
-| `case_detail` | ``$STRING`` |  |
-| `case_type` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `legal_issue` | ``$ARRAY`` |  |
-| `party` | ``$OBJECT`` |  |
-| `precedent` | ``$ARRAY`` |  |
-| `recommendation` | ``$STRING`` |  |
-| `summary` | ``$STRING`` |  |
-| `timestamp` | ``$STRING`` |  |
+| `analysis_id` | `string` |  |
+| `applicable_law` | `[]any` |  |
+| `case_detail` | `string` |  |
+| `case_type` | `string` |  |
+| `language` | `string` |  |
+| `legal_issue` | `[]any` |  |
+| `party` | `map[string]any` |  |
+| `precedent` | `[]any` |  |
+| `recommendation` | `string` |  |
+| `summary` | `string` |  |
+| `timestamp` | `string` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.CaseAnalysi(nil).Create(map[string]any{
-    "case_detail": /* `$STRING` */,
+    "case_detail": /* string */,
 }, nil)
 ```
 
@@ -353,32 +379,32 @@ Create an instance: `contract_service := client.ContractService(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claus` | ``$ARRAY`` |  |
-| `compliance_check` | ``$OBJECT`` |  |
-| `content` | ``$STRING`` |  |
-| `contract_text` | ``$STRING`` |  |
-| `contract_type` | ``$STRING`` |  |
-| `draft_id` | ``$STRING`` |  |
-| `focus_area` | ``$ARRAY`` |  |
-| `issue` | ``$ARRAY`` |  |
-| `language` | ``$STRING`` |  |
-| `missing_claus` | ``$ARRAY`` |  |
-| `note` | ``$STRING`` |  |
-| `overall_assessment` | ``$STRING`` |  |
-| `party` | ``$OBJECT`` |  |
-| `recommendation` | ``$ARRAY`` |  |
-| `requirement` | ``$STRING`` |  |
-| `review_id` | ``$STRING`` |  |
-| `risk_level` | ``$STRING`` |  |
-| `specific_claus` | ``$ARRAY`` |  |
-| `timestamp` | ``$STRING`` |  |
+| `claus` | `[]any` |  |
+| `compliance_check` | `map[string]any` |  |
+| `content` | `string` |  |
+| `contract_text` | `string` |  |
+| `contract_type` | `string` |  |
+| `draft_id` | `string` |  |
+| `focus_area` | `[]any` |  |
+| `issue` | `[]any` |  |
+| `language` | `string` |  |
+| `missing_claus` | `[]any` |  |
+| `note` | `string` |  |
+| `overall_assessment` | `string` |  |
+| `party` | `map[string]any` |  |
+| `recommendation` | `[]any` |  |
+| `requirement` | `string` |  |
+| `review_id` | `string` |  |
+| `risk_level` | `string` |  |
+| `specific_claus` | `[]any` |  |
+| `timestamp` | `string` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.ContractService(nil).Create(map[string]any{
-    "contract_text": /* `$STRING` */,
-    "requirement": /* `$STRING` */,
+    "contract_text": /* string */,
+    "requirement": /* string */,
 }, nil)
 ```
 
@@ -397,13 +423,13 @@ Create an instance: `legal_query := client.LegalQuery(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | ``$STRING`` |  |
-| `category` | ``$STRING`` |  |
-| `language` | ``$STRING`` |  |
-| `query_id` | ``$STRING`` |  |
-| `question` | ``$STRING`` |  |
-| `relevant_law` | ``$ARRAY`` |  |
-| `timestamp` | ``$STRING`` |  |
+| `answer` | `string` |  |
+| `category` | `string` |  |
+| `language` | `string` |  |
+| `query_id` | `string` |  |
+| `question` | `string` |  |
+| `relevant_law` | `[]any` |  |
+| `timestamp` | `string` |  |
 
 #### Example: Create
 
@@ -413,12 +439,16 @@ result, err := client.LegalQuery(nil).Create(map[string]any{
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -435,9 +465,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -478,14 +508,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `Create`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 caseanalysi := client.CaseAnalysi(nil)
-caseanalysi.Load(map[string]any{"id": "example_id"}, nil)
+caseanalysi.Create(map[string]any{"case_detail": "example"}, nil)
 
-// caseanalysi.Data() now returns the loaded caseanalysi data
+// caseanalysi.Data() now returns the caseanalysi data from the last create
 // caseanalysi.Match() returns the last match criteria
 ```
 
