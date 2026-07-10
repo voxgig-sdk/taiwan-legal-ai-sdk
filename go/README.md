@@ -53,8 +53,8 @@ func main() {
         "apikey": os.Getenv("TAIWAN_LEGAL_AI_APIKEY"),
     })
 
-    // Create a caseanalysi.
-    created, err := client.CaseAnalysi(nil).Create(map[string]any{"case_detail": "example"}, nil)
+    // Create a caseAnalysi.
+    created, err := client.CaseAnalysi(nil).Create(map[string]any{"case_detail": "example_case_detail"}, nil)
     if err != nil {
         panic(err)
     }
@@ -138,13 +138,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-caseanalysi, err := client.CaseAnalysi(nil).Create(
+caseAnalysi, err := client.CaseAnalysi(nil).Create(
     map[string]any{"case_detail": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(caseanalysi) // the returned mock data
+fmt.Println(caseAnalysi) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -252,9 +252,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    caseanalysi, err := client.CaseAnalysi(nil).Create(map[string]any{/* fields */}, nil)
+    caseAnalysi, err := client.CaseAnalysi(nil).Create(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // caseanalysi is the returned record
+    // caseAnalysi is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -332,7 +332,7 @@ API path: `/query`
 
 ### CaseAnalysi
 
-Create an instance: `case_analysi := client.CaseAnalysi(nil)`
+Create an instance: `caseAnalysi := client.CaseAnalysi(nil)`
 
 #### Operations
 
@@ -360,14 +360,18 @@ Create an instance: `case_analysi := client.CaseAnalysi(nil)`
 
 ```go
 result, err := client.CaseAnalysi(nil).Create(map[string]any{
-    "case_detail": /* string */,
+    "case_detail": "example_case_detail",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
 ### ContractService
 
-Create an instance: `contract_service := client.ContractService(nil)`
+Create an instance: `contractService := client.ContractService(nil)`
 
 #### Operations
 
@@ -403,15 +407,19 @@ Create an instance: `contract_service := client.ContractService(nil)`
 
 ```go
 result, err := client.ContractService(nil).Create(map[string]any{
-    "contract_text": /* string */,
-    "requirement": /* string */,
+    "contract_text": "example_contract_text",
+    "requirement": "example_requirement",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
 ### LegalQuery
 
-Create an instance: `legal_query := client.LegalQuery(nil)`
+Create an instance: `legalQuery := client.LegalQuery(nil)`
 
 #### Operations
 
@@ -436,6 +444,10 @@ Create an instance: `legal_query := client.LegalQuery(nil)`
 ```go
 result, err := client.LegalQuery(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

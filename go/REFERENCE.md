@@ -99,7 +99,8 @@ same parameters as `Direct()`.
 ## CaseAnalysiEntity
 
 ```go
-case_analysi := client.CaseAnalysi(nil)
+caseAnalysi := client.CaseAnalysi(nil)
+fmt.Println(caseAnalysi.GetName()) // "case_analysi"
 ```
 
 ### Fields
@@ -126,8 +127,12 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.CaseAnalysi(nil).Create(map[string]any{
-    "case_detail": /* string */,
+    "case_detail": "example_case_detail",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -157,7 +162,8 @@ Return the entity name.
 ## ContractServiceEntity
 
 ```go
-contract_service := client.ContractService(nil)
+contractService := client.ContractService(nil)
+fmt.Println(contractService.GetName()) // "contract_service"
 ```
 
 ### Fields
@@ -216,9 +222,13 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ContractService(nil).Create(map[string]any{
-    "contract_text": /* string */,
-    "requirement": /* string */,
+    "contract_text": "example_contract_text",
+    "requirement": "example_requirement",
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -248,7 +258,8 @@ Return the entity name.
 ## LegalQueryEntity
 
 ```go
-legal_query := client.LegalQuery(nil)
+legalQuery := client.LegalQuery(nil)
+fmt.Println(legalQuery.GetName()) // "legal_query"
 ```
 
 ### Fields
@@ -284,6 +295,10 @@ Create a new entity with the given data.
 ```go
 result, err := client.LegalQuery(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

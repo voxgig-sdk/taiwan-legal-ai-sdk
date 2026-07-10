@@ -39,7 +39,7 @@ class Config {
     base: 'https://twlawbot.com/api',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

@@ -116,7 +116,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.CaseAnalysi().create({
-    "case_detail": "example",  # str
+    "case_detail": "example_case_detail",  # str
 })
 ```
 
@@ -211,8 +211,8 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ContractService().create({
-    "contract_text": "example",  # str
-    "requirement": "example",  # str
+    "contract_text": "example_contract_text",  # str
+    "requirement": "example_requirement",  # str
 })
 ```
 

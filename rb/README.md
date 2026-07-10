@@ -36,7 +36,7 @@ client = TaiwanLegalAiSDK.new({
 
 ```ruby
 # create returns the bare created CaseAnalysi record.
-created = client.CaseAnalysi.create({ "case_detail" => "example" })
+created = client.CaseAnalysi.create({ "case_detail" => "example_case_detail" })
 
 ```
 
@@ -331,7 +331,7 @@ Create an instance: `case_analysi = client.CaseAnalysi`
 
 ```ruby
 case_analysi = client.CaseAnalysi.create({
-  "case_detail" => "example", # String
+  "case_detail" => "example_case_detail", # String
 })
 ```
 
@@ -374,8 +374,8 @@ Create an instance: `contract_service = client.ContractService`
 
 ```ruby
 contract_service = client.ContractService.create({
-  "contract_text" => "example", # String
-  "requirement" => "example", # String
+  "contract_text" => "example_contract_text", # String
+  "requirement" => "example_requirement", # String
 })
 ```
 

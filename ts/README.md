@@ -384,7 +384,7 @@ Create an instance: `const case_analysi = client.CaseAnalysi()`
 
 ```ts
 const case_analysi = await client.CaseAnalysi().create({
-  case_detail: /* string */,
+  case_detail: 'example_case_detail',
 })
 ```
 
@@ -427,8 +427,8 @@ Create an instance: `const contract_service = client.ContractService()`
 
 ```ts
 const contract_service = await client.ContractService().create({
-  contract_text: /* string */,
-  requirement: /* string */,
+  contract_text: 'example_contract_text',
+  requirement: 'example_requirement',
 })
 ```
 

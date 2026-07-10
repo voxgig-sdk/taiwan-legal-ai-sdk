@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -538,14 +535,24 @@
           "url": "https://twlawbot.com/"
         },
         "description": "TaiLexi AI is a specialized legal AI designed for Taiwan, providing automated assistance in legal queries, case analysis, and contract drafting and review. It offers a comprehensive platform for individuals and legal professionals to access legal information and support 24/7.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "X-API-Key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://twlawbot.com/api"
           }
         ],
+        "summary": "TaiLexi AI is a specialized legal AI designed for Taiwan, providing automated assistance in legal queries, case analysis, and contract drafting and review.",
         "title": "Taiwan Legal AI",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://twlawbot.com"
       },
       "option": {},
       "target": {
@@ -598,6 +605,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -648,6 +658,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

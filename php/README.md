@@ -37,7 +37,7 @@ $client = new TaiwanLegalAiSDK([
 
 ```php
 // create() returns the bare created CaseAnalysi record.
-$created = $client->CaseAnalysi()->create(["case_detail" => "example"]);
+$created = $client->CaseAnalysi()->create(["case_detail" => "example_case_detail"]);
 
 ```
 

@@ -122,7 +122,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.CaseAnalysi.create({
-  "case_detail" => "example", # String
+  "case_detail" => "example_case_detail", # String
 })
 ```
 
@@ -218,8 +218,8 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ContractService.create({
-  "contract_text" => "example", # String
-  "requirement" => "example", # String
+  "contract_text" => "example_contract_text", # String
+  "requirement" => "example_requirement", # String
 })
 ```
 

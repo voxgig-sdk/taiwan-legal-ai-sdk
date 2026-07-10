@@ -39,7 +39,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:CaseAnalysi():create({ case_detail = "example" })
+local created, err = client:CaseAnalysi():create({ case_detail = "example_case_detail" })
 if err then error(err) end
 
 ```
@@ -327,7 +327,7 @@ Create an instance: `local case_analysi = client:CaseAnalysi(nil)`
 
 ```lua
 local case_analysi, err = client:CaseAnalysi():create({
-  case_detail = nil, -- string
+  case_detail = "example_case_detail", -- string
 })
 ```
 
@@ -370,8 +370,8 @@ Create an instance: `local contract_service = client:ContractService(nil)`
 
 ```lua
 local contract_service, err = client:ContractService():create({
-  contract_text = nil, -- string
-  requirement = nil, -- string
+  contract_text = "example_contract_text", -- string
+  requirement = "example_requirement", -- string
 })
 ```
 

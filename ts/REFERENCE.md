@@ -161,7 +161,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.CaseAnalysi().create({
-  case_detail: /* string */,
+  case_detail: 'example_case_detail',
 })
 ```
 
@@ -255,8 +255,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ContractService().create({
-  contract_text: /* string */,
-  requirement: /* string */,
+  contract_text: 'example_contract_text',
+  requirement: 'example_requirement',
 })
 ```
 

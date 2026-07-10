@@ -43,7 +43,7 @@ client = TaiwanLegalAiSDK({
 
 ```python
 # Create — returns the bare created record (a dict)
-created = client.CaseAnalysi().create({"case_detail": "example"})
+created = client.CaseAnalysi().create({"case_detail": "example_case_detail"})
 
 ```
 
@@ -338,7 +338,7 @@ Create an instance: `case_analysi = client.CaseAnalysi()`
 
 ```python
 case_analysi = client.CaseAnalysi().create({
-    "case_detail": "example",  # str
+    "case_detail": "example_case_detail",  # str
 })
 ```
 
@@ -381,8 +381,8 @@ Create an instance: `contract_service = client.ContractService()`
 
 ```python
 contract_service = client.ContractService().create({
-    "contract_text": "example",  # str
-    "requirement": "example",  # str
+    "contract_text": "example_contract_text",  # str
+    "requirement": "example_requirement",  # str
 })
 ```
 
