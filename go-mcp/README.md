@@ -1,50 +1,161 @@
 # taiwan-legal-ai-mcp
 
-MCP server exposing the TaiwanLegalAi SDK as tools, built on the
-[official Go MCP SDK](https://github.com/modelcontextprotocol/go-sdk)
-and the sibling Go SDK at `../go`.
+[MCP](https://modelcontextprotocol.io) server exposing the TaiwanLegalAi SDK as
+two agent tools — `taiwan-legal-ai_list` and `taiwan-legal-ai_load` — built on the
+[official Go MCP SDK](https://github.com/modelcontextprotocol/go-sdk) and the
+sibling Go SDK at `../go`. Runs over **stdio** (default, for spawnable installs)
+or **streamable HTTP** (one shared server for several agents).
 
-## Tools
-
-| Tool | Args | Returns |
-|------|------|---------|
-| `taiwan-legal-ai_list` | `entity`, optional `query` map | First page of records as JSON |
-| `taiwan-legal-ai_load` | `entity`, `query` (e.g. `{id:N}`) | Single record as JSON |
-
-JSON schemas for both tools are emitted by the SDK from the `Args`
-struct's `json` / `jsonschema` tags — no schema is hand-written.
-
-## Entities
-
-case_analysi | contract_service | legal_query
-
-## Build
+## Examples
 
 ```sh
-go build -o taiwan-legal-ai-mcp ./...
-```
+# 1. Build a native binary (-> dist/<os>-<arch>/taiwan-legal-ai-mcp)
+make build
 
-## Run
+# 2. Provide credentials via the environment
+export TAIWAN_LEGAL_AI_APIKEY=sk_live_xxx
 
-```sh
-# stdio transport — for spawnable agent installs (default).
-./taiwan-legal-ai-mcp
+# 3a. Install into Claude Code over stdio (most common)
+claude mcp add --scope user taiwan-legal-ai \
+  -- /absolute/path/to/taiwan-legal-ai-mcp -transport stdio
 
-# streamable HTTP transport — share one running server between agents.
+# 3b. …or run a shared HTTP server instead
 ./taiwan-legal-ai-mcp -transport http -addr :8080
 ```
 
-## Install for Claude Code
+Tool-call arguments (what an agent sends):
 
-```sh
-claude mcp add --scope user taiwan-legal-ai \
-  -- /absolute/path/to/taiwan-legal-ai-mcp -transport stdio
+```jsonc
+// taiwan-legal-ai_list: first page of records
+{ "entity": "case_analysi" }
+{ "entity": "case_analysi", "query": { } }
+
+// taiwan-legal-ai_load: one record by id
+{ "entity": "case_analysi", "query": { "id": 1 } }
 ```
 
-After install, restart Claude Code; the `taiwan-legal-ai_list` and
-`taiwan-legal-ai_load` tools become available in new sessions.
+> The rest of this guide follows the [Diátaxis](https://diataxis.fr) framework:
+> a hands-on **Tutorial**, task-focused **How-to guides**, a factual
+> **Reference**, and background **Explanation**.
 
-## Smoke test via HTTP
+## Tutorial: install and call a tool
+
+1. **Build** the server from this `go-mcp/` directory:
+
+   ```sh
+   make build          # -> dist/<os>-<arch>/taiwan-legal-ai-mcp
+   ```
+
+2. **Set your API key:**
+
+   ```sh
+   export TAIWAN_LEGAL_AI_APIKEY=sk_live_xxx
+   ```
+
+3. **Install it into Claude Code** (stdio transport):
+
+   ```sh
+   claude mcp add --scope user taiwan-legal-ai \
+     -- "$PWD"/dist/*/taiwan-legal-ai-mcp -transport stdio
+   ```
+
+4. **Restart Claude Code.** The `taiwan-legal-ai_list` and `taiwan-legal-ai_load` tools now appear
+   in new sessions. Ask the agent to *"list case_analysi using taiwan-legal-ai"*
+   and it calls `taiwan-legal-ai_list` with `{"entity":"case_analysi"}`.
+
+## How-to guides
+
+### Authenticate and choose an environment
+
+Configuration is read from the environment — nothing is written to disk:
+
+```sh
+export TAIWAN_LEGAL_AI_APIKEY=sk_live_xxx            # API key
+export TAIWAN_LEGAL_AI_BASE=https://api.example.com  # optional: override the API base URL
+```
+
+Set these in the shell that launches the server (or in the `claude mcp add`
+environment) so every tool call is authenticated.
+
+### Run as a shared HTTP server
+
+```sh
+./taiwan-legal-ai-mcp -transport http -addr :8080
+```
+
+Streamable HTTP lets several agents share one running process; stdio (the
+default) spawns a fresh process per client.
+
+### Call the `taiwan-legal-ai_list` tool
+
+Args: `entity` (required), `query` (optional filter map). Returns the first
+page of records as JSON:
+
+```jsonc
+{ "entity": "case_analysi" }
+```
+
+### Call the `taiwan-legal-ai_load` tool
+
+Args: `entity` (required), `query` = `{"id":N}` (required). Returns the single
+record as JSON:
+
+```jsonc
+{ "entity": "case_analysi", "query": { "id": 1 } }
+```
+
+### Cross-compile release binaries
+
+```sh
+make build       # native binary for this machine
+make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
+```
+
+## Reference
+
+### Tools
+
+| Tool | Args | Returns |
+|------|------|---------|
+| `taiwan-legal-ai_list` | `entity` (required), `query` (optional map) | First page of records as JSON |
+| `taiwan-legal-ai_load` | `entity` (required), `query` = `{id:N}` | Single record as JSON |
+
+On error, a tool returns an MCP error result (`isError: true`) whose text is the
+failure message (e.g. unknown entity, or an API error).
+
+### `Args` schema
+
+Both tools take the same argument object:
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `entity` | string | One of the 3 supported entities (see below). |
+| `query` | object | Optional match map. `{"id":N}` for load; omit or `{}` for list. |
+
+JSON schemas are emitted by the SDK from the `Args` struct's `json` /
+`jsonschema` tags — no schema is hand-written.
+
+### Transports & flags
+
+| Flag | Default | Purpose |
+|------|---------|---------|
+| `-transport` | `stdio` | `stdio` (spawnable) or `http` (streamable HTTP). |
+| `-addr` | `:8080` | Listen address for the `http` transport. |
+
+### Environment variables
+
+| Variable | Purpose |
+|----------|---------|
+| `TAIWAN_LEGAL_AI_APIKEY` | API key sent with every request. |
+| `TAIWAN_LEGAL_AI_BASE` | Optional override of the API base URL. |
+
+### Entities
+
+The 3 entities valid as the `entity` argument:
+
+case_analysi | contract_service | legal_query
+
+### Smoke test via HTTP (raw JSON-RPC)
 
 ```sh
 ./taiwan-legal-ai-mcp -transport http -addr :18080 &
@@ -65,8 +176,29 @@ curl -sN -X POST http://localhost:18080 \
   -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"taiwan-legal-ai_load","arguments":{"entity":"case_analysi","query":{"id":1}}}}'
 ```
 
+## Explanation
+
+### How tools map to the SDK
+
+`main.go` builds the SDK client (configured from the environment) and registers
+two tools. Each dispatches on the `entity` argument to the matching entity in
+the sibling Go SDK at `../go`, calls `List` or `Load`, unwraps the `Entity`
+wrappers to plain data, and returns it as pretty-printed JSON.
+
+### Why two transports
+
+**stdio** is the standard for agent hosts that spawn a server per client
+(Claude Code's `claude mcp add`). **streamable HTTP** keeps one process running
+that many agents can share — handy for a long-lived deployment.
+
+### Schema generation
+
+The input schema is derived from the `Args` Go struct's `json` / `jsonschema`
+tags at registration time, so the advertised tool schema can never drift from
+the code that consumes it.
+
 ## Generated by
 
-sdkgen `go-mcp` target. See the target source under
-`.sdk/src/cmp/go-mcp/` in this repo, or upstream at
+sdkgen `go-mcp` target. See the target source under `.sdk/src/cmp/go-mcp/` in
+this repo, or upstream at
 `github.com/voxgig/sdkgen/project/.sdk/src/cmp/go-mcp/`.

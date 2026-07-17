@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- TaiwanLegalAi SDK exists test
 
 local sdk = require("taiwan-legal-ai_sdk")
 
