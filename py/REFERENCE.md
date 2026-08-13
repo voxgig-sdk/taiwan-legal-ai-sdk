@@ -96,15 +96,15 @@ case_analysi = client.CaseAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysis_id` | `str` | No |  |
-| `applicable_law` | `list` | No |  |
-| `case_detail` | `str` | Yes |  |
-| `case_type` | `str` | No |  |
+| `analysisId` | `str` | No |  |
+| `applicableLaws` | `list` | No |  |
+| `caseDetails` | `str` | Yes |  |
+| `caseType` | `str` | No |  |
 | `language` | `str` | No |  |
-| `legal_issue` | `list` | No |  |
-| `party` | `dict` | No |  |
-| `precedent` | `list` | No |  |
-| `recommendation` | `str` | No |  |
+| `legalIssues` | `list` | No |  |
+| `parties` | `dict` | No |  |
+| `precedents` | `list` | No |  |
+| `recommendations` | `str` | No |  |
 | `summary` | `str` | No |  |
 | `timestamp` | `str` | No |  |
 
@@ -116,7 +116,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.CaseAnalysi().create({
-    "case_detail": "example_case_detail",  # str
+    "caseDetails": "example_caseDetails",  # str
 })
 ```
 
@@ -159,48 +159,48 @@ contract_service = client.ContractService()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claus` | `list` | No |  |
-| `compliance_check` | `dict` | No |  |
+| `clauses` | `list` | No |  |
+| `complianceCheck` | `dict` | No |  |
 | `content` | `str` | No |  |
-| `contract_text` | `str` | Yes |  |
-| `contract_type` | `str` | No |  |
-| `draft_id` | `str` | No |  |
-| `focus_area` | `list` | No |  |
-| `issue` | `list` | No |  |
+| `contractText` | `str` | Yes |  |
+| `contractType` | `str` | No |  |
+| `draftId` | `str` | No |  |
+| `focusAreas` | `list` | No |  |
+| `issues` | `list` | No |  |
 | `language` | `str` | No |  |
-| `missing_claus` | `list` | No |  |
-| `note` | `str` | No |  |
-| `overall_assessment` | `str` | No |  |
-| `party` | `dict` | No |  |
-| `recommendation` | `list` | No |  |
-| `requirement` | `str` | Yes |  |
-| `review_id` | `str` | No |  |
-| `risk_level` | `str` | No |  |
-| `specific_claus` | `list` | No |  |
+| `missingClauses` | `list` | No |  |
+| `notes` | `str` | No |  |
+| `overallAssessment` | `str` | No |  |
+| `parties` | `dict` | No |  |
+| `recommendations` | `list` | No |  |
+| `requirements` | `str` | Yes |  |
+| `reviewId` | `str` | No |  |
+| `riskLevel` | `str` | No |  |
+| `specificClauses` | `list` | No |  |
 | `timestamp` | `str` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `claus` | - |
-| `compliance_check` | - |
+| `clauses` | - |
+| `complianceCheck` | - |
 | `content` | - |
-| `contract_text` | - |
-| `contract_type` | Yes |
-| `draft_id` | - |
-| `focus_area` | - |
-| `issue` | - |
+| `contractText` | - |
+| `contractType` | Yes |
+| `draftId` | - |
+| `focusAreas` | - |
+| `issues` | - |
 | `language` | - |
-| `missing_claus` | - |
-| `note` | - |
-| `overall_assessment` | - |
-| `party` | - |
-| `recommendation` | - |
-| `requirement` | - |
-| `review_id` | - |
-| `risk_level` | - |
-| `specific_claus` | - |
+| `missingClauses` | - |
+| `notes` | - |
+| `overallAssessment` | - |
+| `parties` | - |
+| `recommendations` | - |
+| `requirements` | - |
+| `reviewId` | - |
+| `riskLevel` | - |
+| `specificClauses` | - |
 | `timestamp` | - |
 
 ### Operations
@@ -211,8 +211,8 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ContractService().create({
-    "contract_text": "example_contract_text",  # str
-    "requirement": "example_requirement",  # str
+    "contractText": "example_contractText",  # str
+    "requirements": "example_requirements",  # str
 })
 ```
 
@@ -258,9 +258,9 @@ legal_query = client.LegalQuery()
 | `answer` | `str` | No |  |
 | `category` | `str` | No |  |
 | `language` | `str` | No |  |
-| `query_id` | `str` | No |  |
+| `queryId` | `str` | No |  |
 | `question` | `str` | No |  |
-| `relevant_law` | `list` | No |  |
+| `relevantLaws` | `list` | No |  |
 | `timestamp` | `str` | No |  |
 
 ### Field Usage by Operation
@@ -270,9 +270,9 @@ legal_query = client.LegalQuery()
 | `answer` | - |
 | `category` | - |
 | `language` | - |
-| `query_id` | - |
+| `queryId` | - |
 | `question` | Yes |
-| `relevant_law` | - |
+| `relevantLaws` | - |
 | `timestamp` | - |
 
 ### Operations

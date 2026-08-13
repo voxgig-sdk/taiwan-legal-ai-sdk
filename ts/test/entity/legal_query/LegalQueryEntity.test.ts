@@ -26,8 +26,8 @@ import {
 describe('LegalQueryEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when TAIWANLEGALAI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('TAIWANLEGALAI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when TAIWAN_LEGAL_AI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('TAIWAN_LEGAL_AI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = TaiwanLegalAiSDK.test()
@@ -62,7 +62,7 @@ describe('LegalQueryEntity', async () => {
     const legal_query_ref01_ent = client.LegalQuery()
     let legal_query_ref01_data = setup.data.new.legal_query['legal_query_ref01']
 
-    legal_query_ref01_data = await legal_query_ref01_ent.create(legal_query_ref01_data)
+    legal_query_ref01_data = (await legal_query_ref01_ent.create(legal_query_ref01_data)).data()
     assert(null != legal_query_ref01_data)
 
 

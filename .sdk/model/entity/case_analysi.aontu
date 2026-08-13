@@ -6,22 +6,22 @@ main: kit: entity: case_analysi: {
 
   fields: [
     {
-      name: "analysis_id"
+      name: "analysisId"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "applicable_law"
+      name: "applicableLaws"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "case_detail"
+      name: "caseDetails"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "case_type"
+      name: "caseType"
       req: false
       type: "`$STRING`"
     }
@@ -31,22 +31,22 @@ main: kit: entity: case_analysi: {
       type: "`$STRING`"
     }
     {
-      name: "legal_issue"
+      name: "legalIssues"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "party"
+      name: "parties"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "precedent"
+      name: "precedents"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "recommendation"
+      name: "recommendations"
       req: false
       type: "`$STRING`"
     }

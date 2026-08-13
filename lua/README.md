@@ -39,7 +39,7 @@ local client = sdk.new({
 
 ```lua
 -- Create
-local created, err = client:CaseAnalysi():create({ case_detail = "example_case_detail" })
+local created, err = client:CaseAnalysi():create({ caseDetails = "example_caseDetails" })
 if err then error(err) end
 
 ```
@@ -51,7 +51,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local caseanalysi, err = client:CaseAnalysi():create({ case_detail = "example" })
+local caseanalysi, err = client:CaseAnalysi():create({ caseDetails = "example" })
 if err then error(err) end
 ```
 
@@ -109,7 +109,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:CaseAnalysi():create({ case_detail = "example" })
+local result, err = client:CaseAnalysi():create({ caseDetails = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -219,9 +219,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local case_analysi, err = client:CaseAnalysi():load()
+    local case_analysi, err = client:CaseAnalysi():list()
     if err then error(err) end
-    -- case_analysi is the loaded record
+    -- case_analysi is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -232,15 +232,15 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `analysis_id` |  |
-| `applicable_law` |  |
-| `case_detail` |  |
-| `case_type` |  |
+| `analysisId` |  |
+| `applicableLaws` |  |
+| `caseDetails` |  |
+| `caseType` |  |
 | `language` |  |
-| `legal_issue` |  |
-| `party` |  |
-| `precedent` |  |
-| `recommendation` |  |
+| `legalIssues` |  |
+| `parties` |  |
+| `precedents` |  |
+| `recommendations` |  |
 | `summary` |  |
 | `timestamp` |  |
 
@@ -252,24 +252,24 @@ API path: `/case-analysis`
 
 | Field | Description |
 | --- | --- |
-| `claus` |  |
-| `compliance_check` |  |
+| `clauses` |  |
+| `complianceCheck` |  |
 | `content` |  |
-| `contract_text` |  |
-| `contract_type` |  |
-| `draft_id` |  |
-| `focus_area` |  |
-| `issue` |  |
+| `contractText` |  |
+| `contractType` |  |
+| `draftId` |  |
+| `focusAreas` |  |
+| `issues` |  |
 | `language` |  |
-| `missing_claus` |  |
-| `note` |  |
-| `overall_assessment` |  |
-| `party` |  |
-| `recommendation` |  |
-| `requirement` |  |
-| `review_id` |  |
-| `risk_level` |  |
-| `specific_claus` |  |
+| `missingClauses` |  |
+| `notes` |  |
+| `overallAssessment` |  |
+| `parties` |  |
+| `recommendations` |  |
+| `requirements` |  |
+| `reviewId` |  |
+| `riskLevel` |  |
+| `specificClauses` |  |
 | `timestamp` |  |
 
 Operations: Create.
@@ -283,9 +283,9 @@ API path: `/contract/draft`
 | `answer` |  |
 | `category` |  |
 | `language` |  |
-| `query_id` |  |
+| `queryId` |  |
 | `question` |  |
-| `relevant_law` |  |
+| `relevantLaws` |  |
 | `timestamp` |  |
 
 Operations: Create.
@@ -311,15 +311,15 @@ Create an instance: `local case_analysi = client:CaseAnalysi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysis_id` | `string` |  |
-| `applicable_law` | `table` |  |
-| `case_detail` | `string` |  |
-| `case_type` | `string` |  |
+| `analysisId` | `string` |  |
+| `applicableLaws` | `table` |  |
+| `caseDetails` | `string` |  |
+| `caseType` | `string` |  |
 | `language` | `string` |  |
-| `legal_issue` | `table` |  |
-| `party` | `table` |  |
-| `precedent` | `table` |  |
-| `recommendation` | `string` |  |
+| `legalIssues` | `table` |  |
+| `parties` | `table` |  |
+| `precedents` | `table` |  |
+| `recommendations` | `string` |  |
 | `summary` | `string` |  |
 | `timestamp` | `string` |  |
 
@@ -327,7 +327,7 @@ Create an instance: `local case_analysi = client:CaseAnalysi(nil)`
 
 ```lua
 local case_analysi, err = client:CaseAnalysi():create({
-  case_detail = "example_case_detail", -- string
+  caseDetails = "example_caseDetails", -- string
 })
 ```
 
@@ -346,32 +346,32 @@ Create an instance: `local contract_service = client:ContractService(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claus` | `table` |  |
-| `compliance_check` | `table` |  |
+| `clauses` | `table` |  |
+| `complianceCheck` | `table` |  |
 | `content` | `string` |  |
-| `contract_text` | `string` |  |
-| `contract_type` | `string` |  |
-| `draft_id` | `string` |  |
-| `focus_area` | `table` |  |
-| `issue` | `table` |  |
+| `contractText` | `string` |  |
+| `contractType` | `string` |  |
+| `draftId` | `string` |  |
+| `focusAreas` | `table` |  |
+| `issues` | `table` |  |
 | `language` | `string` |  |
-| `missing_claus` | `table` |  |
-| `note` | `string` |  |
-| `overall_assessment` | `string` |  |
-| `party` | `table` |  |
-| `recommendation` | `table` |  |
-| `requirement` | `string` |  |
-| `review_id` | `string` |  |
-| `risk_level` | `string` |  |
-| `specific_claus` | `table` |  |
+| `missingClauses` | `table` |  |
+| `notes` | `string` |  |
+| `overallAssessment` | `string` |  |
+| `parties` | `table` |  |
+| `recommendations` | `table` |  |
+| `requirements` | `string` |  |
+| `reviewId` | `string` |  |
+| `riskLevel` | `string` |  |
+| `specificClauses` | `table` |  |
 | `timestamp` | `string` |  |
 
 #### Example: Create
 
 ```lua
 local contract_service, err = client:ContractService():create({
-  contract_text = "example_contract_text", -- string
-  requirement = "example_requirement", -- string
+  contractText = "example_contractText", -- string
+  requirements = "example_requirements", -- string
 })
 ```
 
@@ -393,9 +393,9 @@ Create an instance: `local legal_query = client:LegalQuery(nil)`
 | `answer` | `string` |  |
 | `category` | `string` |  |
 | `language` | `string` |  |
-| `query_id` | `string` |  |
+| `queryId` | `string` |  |
 | `question` | `string` |  |
-| `relevant_law` | `table` |  |
+| `relevantLaws` | `table` |  |
 | `timestamp` | `string` |  |
 
 #### Example: Create
@@ -483,7 +483,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local caseanalysi = client:CaseAnalysi()
-caseanalysi:create({ case_detail = "example" })
+caseanalysi:create({ caseDetails = "example" })
 
 -- caseanalysi:data_get() now returns the caseanalysi data from the last create
 -- caseanalysi:match_get() returns the last match criteria

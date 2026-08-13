@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.TAIWANLEGALAI_TEST_LIVE ||
-    'TRUE' === process.env.TAIWANLEGALAI_TEST_OVERRIDE
+    'TRUE' === process.env.TAIWAN_LEGAL_AI_TEST_LIVE ||
+    'TRUE' === process.env.TAIWAN_LEGAL_AI_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.TAIWANLEGALAI_TEST_EXPLAIN = process.env.TAIWANLEGALAI_TEST_EXPLAIN || m.TAIWANLEGALAI_TEST_EXPLAIN
+  m.TAIWAN_LEGAL_AI_TEST_EXPLAIN = process.env.TAIWAN_LEGAL_AI_TEST_EXPLAIN || m.TAIWAN_LEGAL_AI_TEST_EXPLAIN
 
   return m
 }

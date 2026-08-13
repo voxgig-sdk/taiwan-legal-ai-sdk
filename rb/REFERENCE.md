@@ -102,15 +102,15 @@ case_analysi = client.CaseAnalysi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysis_id` | `String` | No |  |
-| `applicable_law` | `Array` | No |  |
-| `case_detail` | `String` | Yes |  |
-| `case_type` | `String` | No |  |
+| `analysisId` | `String` | No |  |
+| `applicableLaws` | `Array` | No |  |
+| `caseDetails` | `String` | Yes |  |
+| `caseType` | `String` | No |  |
 | `language` | `String` | No |  |
-| `legal_issue` | `Array` | No |  |
-| `party` | `Hash` | No |  |
-| `precedent` | `Array` | No |  |
-| `recommendation` | `String` | No |  |
+| `legalIssues` | `Array` | No |  |
+| `parties` | `Hash` | No |  |
+| `precedents` | `Array` | No |  |
+| `recommendations` | `String` | No |  |
 | `summary` | `String` | No |  |
 | `timestamp` | `String` | No |  |
 
@@ -122,7 +122,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.CaseAnalysi.create({
-  "case_detail" => "example_case_detail", # String
+  "caseDetails" => "example_caseDetails", # String
 })
 ```
 
@@ -166,48 +166,48 @@ contract_service = client.ContractService
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claus` | `Array` | No |  |
-| `compliance_check` | `Hash` | No |  |
+| `clauses` | `Array` | No |  |
+| `complianceCheck` | `Hash` | No |  |
 | `content` | `String` | No |  |
-| `contract_text` | `String` | Yes |  |
-| `contract_type` | `String` | No |  |
-| `draft_id` | `String` | No |  |
-| `focus_area` | `Array` | No |  |
-| `issue` | `Array` | No |  |
+| `contractText` | `String` | Yes |  |
+| `contractType` | `String` | No |  |
+| `draftId` | `String` | No |  |
+| `focusAreas` | `Array` | No |  |
+| `issues` | `Array` | No |  |
 | `language` | `String` | No |  |
-| `missing_claus` | `Array` | No |  |
-| `note` | `String` | No |  |
-| `overall_assessment` | `String` | No |  |
-| `party` | `Hash` | No |  |
-| `recommendation` | `Array` | No |  |
-| `requirement` | `String` | Yes |  |
-| `review_id` | `String` | No |  |
-| `risk_level` | `String` | No |  |
-| `specific_claus` | `Array` | No |  |
+| `missingClauses` | `Array` | No |  |
+| `notes` | `String` | No |  |
+| `overallAssessment` | `String` | No |  |
+| `parties` | `Hash` | No |  |
+| `recommendations` | `Array` | No |  |
+| `requirements` | `String` | Yes |  |
+| `reviewId` | `String` | No |  |
+| `riskLevel` | `String` | No |  |
+| `specificClauses` | `Array` | No |  |
 | `timestamp` | `String` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `claus` | - |
-| `compliance_check` | - |
+| `clauses` | - |
+| `complianceCheck` | - |
 | `content` | - |
-| `contract_text` | - |
-| `contract_type` | Yes |
-| `draft_id` | - |
-| `focus_area` | - |
-| `issue` | - |
+| `contractText` | - |
+| `contractType` | Yes |
+| `draftId` | - |
+| `focusAreas` | - |
+| `issues` | - |
 | `language` | - |
-| `missing_claus` | - |
-| `note` | - |
-| `overall_assessment` | - |
-| `party` | - |
-| `recommendation` | - |
-| `requirement` | - |
-| `review_id` | - |
-| `risk_level` | - |
-| `specific_claus` | - |
+| `missingClauses` | - |
+| `notes` | - |
+| `overallAssessment` | - |
+| `parties` | - |
+| `recommendations` | - |
+| `requirements` | - |
+| `reviewId` | - |
+| `riskLevel` | - |
+| `specificClauses` | - |
 | `timestamp` | - |
 
 ### Operations
@@ -218,8 +218,8 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ContractService.create({
-  "contract_text" => "example_contract_text", # String
-  "requirement" => "example_requirement", # String
+  "contractText" => "example_contractText", # String
+  "requirements" => "example_requirements", # String
 })
 ```
 
@@ -266,9 +266,9 @@ legal_query = client.LegalQuery
 | `answer` | `String` | No |  |
 | `category` | `String` | No |  |
 | `language` | `String` | No |  |
-| `query_id` | `String` | No |  |
+| `queryId` | `String` | No |  |
 | `question` | `String` | No |  |
-| `relevant_law` | `Array` | No |  |
+| `relevantLaws` | `Array` | No |  |
 | `timestamp` | `String` | No |  |
 
 ### Field Usage by Operation
@@ -278,9 +278,9 @@ legal_query = client.LegalQuery
 | `answer` | - |
 | `category` | - |
 | `language` | - |
-| `query_id` | - |
+| `queryId` | - |
 | `question` | Yes |
-| `relevant_law` | - |
+| `relevantLaws` | - |
 | `timestamp` | - |
 
 ### Operations

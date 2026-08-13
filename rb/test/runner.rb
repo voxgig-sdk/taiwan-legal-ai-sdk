@@ -23,8 +23,8 @@ module TaiwanLegalAiTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("TAIWANLEGALAI_TEST_LIVE")
-    override = getenv("TAIWANLEGALAI_TEST_OVERRIDE")
+    live = getenv("TAIWAN_LEGAL_AI_TEST_LIVE")
+    override = getenv("TAIWAN_LEGAL_AI_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module TaiwanLegalAiTestRunner
       end
     end
 
-    explain = getenv("TAIWANLEGALAI_TEST_EXPLAIN")
-    m["TAIWANLEGALAI_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("TAIWAN_LEGAL_AI_TEST_EXPLAIN")
+    m["TAIWAN_LEGAL_AI_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

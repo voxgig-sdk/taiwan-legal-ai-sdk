@@ -24,7 +24,7 @@ support (`create`):
 ```ts
 const client = new TaiwanLegalAiSDK()
 const caseanalysi = await client.CaseAnalysi().create({
-  case_detail: 'example',
+  caseDetails: 'example',
 })
 ```
 
@@ -40,9 +40,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = TaiwanLegalAiSDK.test()
-const caseanalysi = await client.CaseAnalysi().create({ case_detail: 'example_case_detail' })
-// caseanalysi is a bare CaseAnalysi populated with mock data
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = TaiwanLegalAiSDK.test({
+  entity: {
+    case_analysi: {
+      test01: { id: 'test01', caseDetails: 'example_caseDetails' },
+    },
+  },
+})
+const caseanalysi = await client.CaseAnalysi().create({ caseDetails: 'example_caseDetails' })
+// caseanalysi is the CaseAnalysi entity, populated with mock data
+// — call caseanalysi.data() for the record itself
 console.log(caseanalysi)
 ```
 
@@ -50,7 +59,7 @@ console.log(caseanalysi)
 
 ```python
 client = TaiwanLegalAiSDK.test()
-caseanalysi = client.CaseAnalysi().create({"case_detail": "example"})
+caseanalysi = client.CaseAnalysi().create({"caseDetails": "example"})
 print(caseanalysi)
 ```
 
@@ -61,7 +70,7 @@ print(caseanalysi)
 $client = TaiwanLegalAiSDK::test([
     "entity" => ["caseanalysi" => ["test01" => []]],
 ]);
-$caseanalysi = $client->CaseAnalysi()->create(["case_detail" => "example"]);
+$caseanalysi = $client->CaseAnalysi()->create(["caseDetails" => "example"]);
 ```
 
 ### Golang
@@ -69,7 +78,7 @@ $caseanalysi = $client->CaseAnalysi()->create(["case_detail" => "example"]);
 ```go
 client := sdk.Test()
 result, err := client.CaseAnalysi(nil).Create(
-    map[string]any{"case_detail": "example"}, nil,
+    map[string]any{"caseDetails": "example"}, nil,
 )
 ```
 
@@ -80,14 +89,14 @@ result, err := client.CaseAnalysi(nil).Create(
 client = TaiwanLegalAiSDK.test({
   "entity" => { "caseanalysi" => { "test01" => {} } },
 })
-caseanalysi = client.CaseAnalysi.create({ "case_detail" => "example" })
+caseanalysi = client.CaseAnalysi.create({ "caseDetails" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:CaseAnalysi():create({ case_detail = "example" })
+local result, err = client:CaseAnalysi():create({ caseDetails = "example" })
 ```
 
 ## Packages
@@ -336,6 +345,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://twlawbot.com/](https://twlawbot.com/)
 

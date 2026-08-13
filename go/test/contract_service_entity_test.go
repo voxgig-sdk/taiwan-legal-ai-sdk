@@ -44,7 +44,7 @@ func TestContractServiceEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set TAIWAN_LEGAL_AI_TEST_CONTRACT_SERVICE_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -58,7 +58,7 @@ func TestContractServiceEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		contractServiceRef01Data = core.ToMapAny(contractServiceRef01DataResult)
+		contractServiceRef01Data = core.ToMapAny(entityData(contractServiceRef01DataResult))
 		if contractServiceRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -103,38 +103,38 @@ func contract_serviceBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID")
+	entidEnvRaw := os.Getenv("TAIWAN_LEGAL_AI_TEST_CONTRACT_SERVICE_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID": idmap,
-		"TAIWANLEGALAI_TEST_LIVE":      "FALSE",
-		"TAIWANLEGALAI_TEST_EXPLAIN":   "FALSE",
-		"TAIWANLEGALAI_APIKEY":         "NONE",
+		"TAIWAN_LEGAL_AI_TEST_CONTRACT_SERVICE_ENTID": idmap,
+		"TAIWAN_LEGAL_AI_TEST_LIVE":      "FALSE",
+		"TAIWAN_LEGAL_AI_TEST_EXPLAIN":   "FALSE",
+		"TAIWAN_LEGAL_AI_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID"])
+	idmapResolved := core.ToMapAny(env["TAIWAN_LEGAL_AI_TEST_CONTRACT_SERVICE_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["TAIWANLEGALAI_TEST_LIVE"] == "TRUE" {
+	if env["TAIWAN_LEGAL_AI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["TAIWANLEGALAI_APIKEY"],
+				"apikey": env["TAIWAN_LEGAL_AI_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewTaiwanLegalAiSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["TAIWANLEGALAI_TEST_LIVE"] == "TRUE"
+	live := env["TAIWAN_LEGAL_AI_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["TAIWANLEGALAI_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["TAIWAN_LEGAL_AI_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

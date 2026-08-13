@@ -21,7 +21,7 @@ main: kit: entity: legal_query: {
       type: "`$STRING`"
     }
     {
-      name: "query_id"
+      name: "queryId"
       req: false
       type: "`$STRING`"
     }
@@ -37,7 +37,7 @@ main: kit: entity: legal_query: {
       type: "`$STRING`"
     }
     {
-      name: "relevant_law"
+      name: "relevantLaws"
       req: false
       type: "`$ARRAY`"
     }

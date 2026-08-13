@@ -26,8 +26,8 @@ import {
 describe('ContractServiceEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when TAIWANLEGALAI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('TAIWANLEGALAI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when TAIWAN_LEGAL_AI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('TAIWAN_LEGAL_AI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = TaiwanLegalAiSDK.test()
@@ -62,7 +62,7 @@ describe('ContractServiceEntity', async () => {
     const contract_service_ref01_ent = client.ContractService()
     let contract_service_ref01_data = setup.data.new.contract_service['contract_service_ref01']
 
-    contract_service_ref01_data = await contract_service_ref01_ent.create(contract_service_ref01_data)
+    contract_service_ref01_data = (await contract_service_ref01_ent.create(contract_service_ref01_data)).data()
     assert(null != contract_service_ref01_data)
 
 

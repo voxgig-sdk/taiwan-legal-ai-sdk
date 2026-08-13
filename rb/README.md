@@ -35,8 +35,8 @@ client = TaiwanLegalAiSDK.new({
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created CaseAnalysi record.
-created = client.CaseAnalysi.create({ "case_detail" => "example_case_detail" })
+# create returns the ENTITY — call data_get for the created CaseAnalysi record.
+created = client.CaseAnalysi.create({ "caseDetails" => "example_caseDetails" })
 
 ```
 
@@ -47,7 +47,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  caseanalysi = client.CaseAnalysi.create({ "case_detail" => "example" })
+  caseanalysi = client.CaseAnalysi.create({ "caseDetails" => "example" })
 rescue => err
   warn "create failed: #{err}"
 end
@@ -115,8 +115,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = TaiwanLegalAiSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-caseanalysi = client.CaseAnalysi.create({ "case_detail" => "example" })
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+caseanalysi = client.CaseAnalysi.create({ "caseDetails" => "example" })
 puts caseanalysi
 ```
 
@@ -236,15 +237,15 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `analysis_id` |  |
-| `applicable_law` |  |
-| `case_detail` |  |
-| `case_type` |  |
+| `analysisId` |  |
+| `applicableLaws` |  |
+| `caseDetails` |  |
+| `caseType` |  |
 | `language` |  |
-| `legal_issue` |  |
-| `party` |  |
-| `precedent` |  |
-| `recommendation` |  |
+| `legalIssues` |  |
+| `parties` |  |
+| `precedents` |  |
+| `recommendations` |  |
 | `summary` |  |
 | `timestamp` |  |
 
@@ -256,24 +257,24 @@ API path: `/case-analysis`
 
 | Field | Description |
 | --- | --- |
-| `claus` |  |
-| `compliance_check` |  |
+| `clauses` |  |
+| `complianceCheck` |  |
 | `content` |  |
-| `contract_text` |  |
-| `contract_type` |  |
-| `draft_id` |  |
-| `focus_area` |  |
-| `issue` |  |
+| `contractText` |  |
+| `contractType` |  |
+| `draftId` |  |
+| `focusAreas` |  |
+| `issues` |  |
 | `language` |  |
-| `missing_claus` |  |
-| `note` |  |
-| `overall_assessment` |  |
-| `party` |  |
-| `recommendation` |  |
-| `requirement` |  |
-| `review_id` |  |
-| `risk_level` |  |
-| `specific_claus` |  |
+| `missingClauses` |  |
+| `notes` |  |
+| `overallAssessment` |  |
+| `parties` |  |
+| `recommendations` |  |
+| `requirements` |  |
+| `reviewId` |  |
+| `riskLevel` |  |
+| `specificClauses` |  |
 | `timestamp` |  |
 
 Operations: Create.
@@ -287,9 +288,9 @@ API path: `/contract/draft`
 | `answer` |  |
 | `category` |  |
 | `language` |  |
-| `query_id` |  |
+| `queryId` |  |
 | `question` |  |
-| `relevant_law` |  |
+| `relevantLaws` |  |
 | `timestamp` |  |
 
 Operations: Create.
@@ -315,15 +316,15 @@ Create an instance: `case_analysi = client.CaseAnalysi`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysis_id` | `String` |  |
-| `applicable_law` | `Array` |  |
-| `case_detail` | `String` |  |
-| `case_type` | `String` |  |
+| `analysisId` | `String` |  |
+| `applicableLaws` | `Array` |  |
+| `caseDetails` | `String` |  |
+| `caseType` | `String` |  |
 | `language` | `String` |  |
-| `legal_issue` | `Array` |  |
-| `party` | `Hash` |  |
-| `precedent` | `Array` |  |
-| `recommendation` | `String` |  |
+| `legalIssues` | `Array` |  |
+| `parties` | `Hash` |  |
+| `precedents` | `Array` |  |
+| `recommendations` | `String` |  |
 | `summary` | `String` |  |
 | `timestamp` | `String` |  |
 
@@ -331,7 +332,7 @@ Create an instance: `case_analysi = client.CaseAnalysi`
 
 ```ruby
 case_analysi = client.CaseAnalysi.create({
-  "case_detail" => "example_case_detail", # String
+  "caseDetails" => "example_caseDetails", # String
 })
 ```
 
@@ -350,32 +351,32 @@ Create an instance: `contract_service = client.ContractService`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claus` | `Array` |  |
-| `compliance_check` | `Hash` |  |
+| `clauses` | `Array` |  |
+| `complianceCheck` | `Hash` |  |
 | `content` | `String` |  |
-| `contract_text` | `String` |  |
-| `contract_type` | `String` |  |
-| `draft_id` | `String` |  |
-| `focus_area` | `Array` |  |
-| `issue` | `Array` |  |
+| `contractText` | `String` |  |
+| `contractType` | `String` |  |
+| `draftId` | `String` |  |
+| `focusAreas` | `Array` |  |
+| `issues` | `Array` |  |
 | `language` | `String` |  |
-| `missing_claus` | `Array` |  |
-| `note` | `String` |  |
-| `overall_assessment` | `String` |  |
-| `party` | `Hash` |  |
-| `recommendation` | `Array` |  |
-| `requirement` | `String` |  |
-| `review_id` | `String` |  |
-| `risk_level` | `String` |  |
-| `specific_claus` | `Array` |  |
+| `missingClauses` | `Array` |  |
+| `notes` | `String` |  |
+| `overallAssessment` | `String` |  |
+| `parties` | `Hash` |  |
+| `recommendations` | `Array` |  |
+| `requirements` | `String` |  |
+| `reviewId` | `String` |  |
+| `riskLevel` | `String` |  |
+| `specificClauses` | `Array` |  |
 | `timestamp` | `String` |  |
 
 #### Example: Create
 
 ```ruby
 contract_service = client.ContractService.create({
-  "contract_text" => "example_contract_text", # String
-  "requirement" => "example_requirement", # String
+  "contractText" => "example_contractText", # String
+  "requirements" => "example_requirements", # String
 })
 ```
 
@@ -397,9 +398,9 @@ Create an instance: `legal_query = client.LegalQuery`
 | `answer` | `String` |  |
 | `category` | `String` |  |
 | `language` | `String` |  |
-| `query_id` | `String` |  |
+| `queryId` | `String` |  |
 | `question` | `String` |  |
-| `relevant_law` | `Array` |  |
+| `relevantLaws` | `Array` |  |
 | `timestamp` | `String` |  |
 
 #### Example: Create
@@ -487,7 +488,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 caseanalysi = client.CaseAnalysi
-caseanalysi.create({ "case_detail" => "example" })
+caseanalysi.create({ "caseDetails" => "example" })
 
 # caseanalysi.data_get now returns the caseanalysi data from the last create
 # caseanalysi.match_get returns the last match criteria

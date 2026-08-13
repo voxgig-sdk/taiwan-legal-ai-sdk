@@ -26,7 +26,7 @@ class CaseAnalysiEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set TAIWANLEGALAI_TEST_CASE_ANALYSI_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -37,7 +37,7 @@ class CaseAnalysiEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.case_analysi"), "case_analysi_ref01"))
 
     case_analysi_ref01_data_result = case_analysi_ref01_ent.create(case_analysi_ref01_data, nil)
-    case_analysi_ref01_data = Helpers.to_map(case_analysi_ref01_data_result)
+    case_analysi_ref01_data = Helpers.to_map(case_analysi_ref01_data_result.respond_to?(:data_get) ? case_analysi_ref01_data_result.data_get : case_analysi_ref01_data_result)
     assert !case_analysi_ref01_data.nil?
 
   end
@@ -69,39 +69,39 @@ def case_analysi_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["TAIWANLEGALAI_TEST_CASE_ANALYSI_ENTID"]
+  entid_env_raw = ENV["TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "TAIWANLEGALAI_TEST_CASE_ANALYSI_ENTID" => idmap,
-    "TAIWANLEGALAI_TEST_LIVE" => "FALSE",
-    "TAIWANLEGALAI_TEST_EXPLAIN" => "FALSE",
-    "TAIWANLEGALAI_APIKEY" => "NONE",
+    "TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID" => idmap,
+    "TAIWAN_LEGAL_AI_TEST_LIVE" => "FALSE",
+    "TAIWAN_LEGAL_AI_TEST_EXPLAIN" => "FALSE",
+    "TAIWAN_LEGAL_AI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["TAIWANLEGALAI_TEST_CASE_ANALYSI_ENTID"])
+    env["TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["TAIWANLEGALAI_TEST_LIVE"] == "TRUE"
+  if env["TAIWAN_LEGAL_AI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["TAIWANLEGALAI_APIKEY"],
+        "apikey" => env["TAIWAN_LEGAL_AI_APIKEY"],
       },
       extra || {},
     ])
     client = TaiwanLegalAiSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["TAIWANLEGALAI_TEST_LIVE"] == "TRUE"
+  live = env["TAIWAN_LEGAL_AI_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["TAIWANLEGALAI_TEST_EXPLAIN"] == "TRUE",
+    explain: env["TAIWAN_LEGAL_AI_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

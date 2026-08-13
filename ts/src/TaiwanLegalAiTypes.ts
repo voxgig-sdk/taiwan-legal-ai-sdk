@@ -6,74 +6,74 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface CaseAnalysi {
-  analysis_id?: string
-  applicable_law?: any[]
-  case_detail: string
-  case_type?: string
+  analysisId?: string
+  applicableLaws?: any[]
+  caseDetails: string
+  caseType?: string
   language?: string
-  legal_issue?: any[]
-  party?: Record<string, any>
-  precedent?: any[]
-  recommendation?: string
+  legalIssues?: any[]
+  parties?: Record<string, any>
+  precedents?: any[]
+  recommendations?: string
   summary?: string
   timestamp?: string
 }
 
 export interface CaseAnalysiCreateData {
-  analysis_id?: string
-  applicable_law?: any[]
-  case_detail: string
-  case_type?: string
+  analysisId?: string
+  applicableLaws?: any[]
+  caseDetails: string
+  caseType?: string
   language?: string
-  legal_issue?: any[]
-  party?: Record<string, any>
-  precedent?: any[]
-  recommendation?: string
+  legalIssues?: any[]
+  parties?: Record<string, any>
+  precedents?: any[]
+  recommendations?: string
   summary?: string
   timestamp?: string
 }
 
 export interface ContractService {
-  claus?: any[]
-  compliance_check?: Record<string, any>
+  clauses?: any[]
+  complianceCheck?: Record<string, any>
   content?: string
-  contract_text: string
-  contract_type?: string
-  draft_id?: string
-  focus_area?: any[]
-  issue?: any[]
+  contractText: string
+  contractType?: string
+  draftId?: string
+  focusAreas?: any[]
+  issues?: any[]
   language?: string
-  missing_claus?: any[]
-  note?: string
-  overall_assessment?: string
-  party?: Record<string, any>
-  recommendation?: any[]
-  requirement: string
-  review_id?: string
-  risk_level?: string
-  specific_claus?: any[]
+  missingClauses?: any[]
+  notes?: string
+  overallAssessment?: string
+  parties?: Record<string, any>
+  recommendations?: any[]
+  requirements: string
+  reviewId?: string
+  riskLevel?: string
+  specificClauses?: any[]
   timestamp?: string
 }
 
 export interface ContractServiceCreateData {
-  claus?: any[]
-  compliance_check?: Record<string, any>
+  clauses?: any[]
+  complianceCheck?: Record<string, any>
   content?: string
-  contract_text: string
-  contract_type?: string
-  draft_id?: string
-  focus_area?: any[]
-  issue?: any[]
+  contractText: string
+  contractType?: string
+  draftId?: string
+  focusAreas?: any[]
+  issues?: any[]
   language?: string
-  missing_claus?: any[]
-  note?: string
-  overall_assessment?: string
-  party?: Record<string, any>
-  recommendation?: any[]
-  requirement: string
-  review_id?: string
-  risk_level?: string
-  specific_claus?: any[]
+  missingClauses?: any[]
+  notes?: string
+  overallAssessment?: string
+  parties?: Record<string, any>
+  recommendations?: any[]
+  requirements: string
+  reviewId?: string
+  riskLevel?: string
+  specificClauses?: any[]
   timestamp?: string
 }
 
@@ -81,9 +81,9 @@ export interface LegalQuery {
   answer?: string
   category?: string
   language?: string
-  query_id?: string
+  queryId?: string
   question?: string
-  relevant_law?: any[]
+  relevantLaws?: any[]
   timestamp?: string
 }
 
@@ -91,9 +91,9 @@ export interface LegalQueryCreateData {
   answer?: string
   category?: string
   language?: string
-  query_id?: string
+  queryId?: string
   question?: string
-  relevant_law?: any[]
+  relevantLaws?: any[]
   timestamp?: string
 }
 

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# TaiwanLegalAi SDK exists test
 
 import pytest
 from taiwanlegalai_sdk import TaiwanLegalAiSDK

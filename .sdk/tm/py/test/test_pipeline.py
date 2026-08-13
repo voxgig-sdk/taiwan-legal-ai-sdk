@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import TaiwanLegalAiSDK
-from core.error import TaiwanLegalAiError
-from core.result import TaiwanLegalAiResult
-from core.response import TaiwanLegalAiResponse
-from core.spec import TaiwanLegalAiSpec
-from feature.base_feature import TaiwanLegalAiBaseFeature
+from projectname_sdk.core.error import TaiwanLegalAiError
+from projectname_sdk.core.result import TaiwanLegalAiResult
+from projectname_sdk.core.response import TaiwanLegalAiResponse
+from projectname_sdk.core.spec import TaiwanLegalAiSpec
+from projectname_sdk.feature.base_feature import TaiwanLegalAiBaseFeature
 
 
 def _client():

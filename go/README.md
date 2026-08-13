@@ -54,7 +54,7 @@ func main() {
     })
 
     // Create a caseAnalysi.
-    created, err := client.CaseAnalysi(nil).Create(map[string]any{"case_detail": "example_case_detail"}, nil)
+    created, err := client.CaseAnalysi(nil).Create(map[string]any{"caseDetails": "example_caseDetails"}, nil)
     if err != nil {
         panic(err)
     }
@@ -69,7 +69,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-caseanalysi, err := client.CaseAnalysi(nil).Create(map[string]any{"case_detail": "example"}, nil)
+caseanalysi, err := client.CaseAnalysi(nil).Create(map[string]any{"caseDetails": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -139,7 +139,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 caseAnalysi, err := client.CaseAnalysi(nil).Create(
-    map[string]any{"case_detail": "example"}, nil,
+    map[string]any{"caseDetails": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -265,15 +265,15 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"analysis_id"` |  |
-| `"applicable_law"` |  |
-| `"case_detail"` |  |
-| `"case_type"` |  |
+| `"analysisId"` |  |
+| `"applicableLaws"` |  |
+| `"caseDetails"` |  |
+| `"caseType"` |  |
 | `"language"` |  |
-| `"legal_issue"` |  |
-| `"party"` |  |
-| `"precedent"` |  |
-| `"recommendation"` |  |
+| `"legalIssues"` |  |
+| `"parties"` |  |
+| `"precedents"` |  |
+| `"recommendations"` |  |
 | `"summary"` |  |
 | `"timestamp"` |  |
 
@@ -285,24 +285,24 @@ API path: `/case-analysis`
 
 | Field | Description |
 | --- | --- |
-| `"claus"` |  |
-| `"compliance_check"` |  |
+| `"clauses"` |  |
+| `"complianceCheck"` |  |
 | `"content"` |  |
-| `"contract_text"` |  |
-| `"contract_type"` |  |
-| `"draft_id"` |  |
-| `"focus_area"` |  |
-| `"issue"` |  |
+| `"contractText"` |  |
+| `"contractType"` |  |
+| `"draftId"` |  |
+| `"focusAreas"` |  |
+| `"issues"` |  |
 | `"language"` |  |
-| `"missing_claus"` |  |
-| `"note"` |  |
-| `"overall_assessment"` |  |
-| `"party"` |  |
-| `"recommendation"` |  |
-| `"requirement"` |  |
-| `"review_id"` |  |
-| `"risk_level"` |  |
-| `"specific_claus"` |  |
+| `"missingClauses"` |  |
+| `"notes"` |  |
+| `"overallAssessment"` |  |
+| `"parties"` |  |
+| `"recommendations"` |  |
+| `"requirements"` |  |
+| `"reviewId"` |  |
+| `"riskLevel"` |  |
+| `"specificClauses"` |  |
 | `"timestamp"` |  |
 
 Operations: Create.
@@ -316,9 +316,9 @@ API path: `/contract/draft`
 | `"answer"` |  |
 | `"category"` |  |
 | `"language"` |  |
-| `"query_id"` |  |
+| `"queryId"` |  |
 | `"question"` |  |
-| `"relevant_law"` |  |
+| `"relevantLaws"` |  |
 | `"timestamp"` |  |
 
 Operations: Create.
@@ -344,15 +344,15 @@ Create an instance: `caseAnalysi := client.CaseAnalysi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysis_id` | `string` |  |
-| `applicable_law` | `[]any` |  |
-| `case_detail` | `string` |  |
-| `case_type` | `string` |  |
+| `analysisId` | `string` |  |
+| `applicableLaws` | `[]any` |  |
+| `caseDetails` | `string` |  |
+| `caseType` | `string` |  |
 | `language` | `string` |  |
-| `legal_issue` | `[]any` |  |
-| `party` | `map[string]any` |  |
-| `precedent` | `[]any` |  |
-| `recommendation` | `string` |  |
+| `legalIssues` | `[]any` |  |
+| `parties` | `map[string]any` |  |
+| `precedents` | `[]any` |  |
+| `recommendations` | `string` |  |
 | `summary` | `string` |  |
 | `timestamp` | `string` |  |
 
@@ -360,7 +360,7 @@ Create an instance: `caseAnalysi := client.CaseAnalysi(nil)`
 
 ```go
 result, err := client.CaseAnalysi(nil).Create(map[string]any{
-    "case_detail": "example_case_detail",
+    "caseDetails": "example_caseDetails",
 }, nil)
 if err != nil {
     panic(err)
@@ -383,32 +383,32 @@ Create an instance: `contractService := client.ContractService(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claus` | `[]any` |  |
-| `compliance_check` | `map[string]any` |  |
+| `clauses` | `[]any` |  |
+| `complianceCheck` | `map[string]any` |  |
 | `content` | `string` |  |
-| `contract_text` | `string` |  |
-| `contract_type` | `string` |  |
-| `draft_id` | `string` |  |
-| `focus_area` | `[]any` |  |
-| `issue` | `[]any` |  |
+| `contractText` | `string` |  |
+| `contractType` | `string` |  |
+| `draftId` | `string` |  |
+| `focusAreas` | `[]any` |  |
+| `issues` | `[]any` |  |
 | `language` | `string` |  |
-| `missing_claus` | `[]any` |  |
-| `note` | `string` |  |
-| `overall_assessment` | `string` |  |
-| `party` | `map[string]any` |  |
-| `recommendation` | `[]any` |  |
-| `requirement` | `string` |  |
-| `review_id` | `string` |  |
-| `risk_level` | `string` |  |
-| `specific_claus` | `[]any` |  |
+| `missingClauses` | `[]any` |  |
+| `notes` | `string` |  |
+| `overallAssessment` | `string` |  |
+| `parties` | `map[string]any` |  |
+| `recommendations` | `[]any` |  |
+| `requirements` | `string` |  |
+| `reviewId` | `string` |  |
+| `riskLevel` | `string` |  |
+| `specificClauses` | `[]any` |  |
 | `timestamp` | `string` |  |
 
 #### Example: Create
 
 ```go
 result, err := client.ContractService(nil).Create(map[string]any{
-    "contract_text": "example_contract_text",
-    "requirement": "example_requirement",
+    "contractText": "example_contractText",
+    "requirements": "example_requirements",
 }, nil)
 if err != nil {
     panic(err)
@@ -434,9 +434,9 @@ Create an instance: `legalQuery := client.LegalQuery(nil)`
 | `answer` | `string` |  |
 | `category` | `string` |  |
 | `language` | `string` |  |
-| `query_id` | `string` |  |
+| `queryId` | `string` |  |
 | `question` | `string` |  |
-| `relevant_law` | `[]any` |  |
+| `relevantLaws` | `[]any` |  |
 | `timestamp` | `string` |  |
 
 #### Example: Create
@@ -525,7 +525,7 @@ stores the returned data and match criteria internally.
 
 ```go
 caseanalysi := client.CaseAnalysi(nil)
-caseanalysi.Create(map[string]any{"case_detail": "example"}, nil)
+caseanalysi.Create(map[string]any{"caseDetails": "example"}, nil)
 
 // caseanalysi.Data() now returns the caseanalysi data from the last create
 // caseanalysi.Match() returns the last match criteria

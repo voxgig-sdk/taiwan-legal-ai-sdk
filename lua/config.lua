@@ -31,28 +31,28 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "analysis_id",
+            ["name"] = "analysisId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "applicable_law",
+            ["name"] = "applicableLaws",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "case_detail",
+            ["name"] = "caseDetails",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "case_type",
+            ["name"] = "caseType",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
@@ -66,28 +66,28 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "legal_issue",
+            ["name"] = "legalIssues",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "party",
+            ["name"] = "parties",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "precedent",
+            ["name"] = "precedents",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 7,
           },
           {
             ["active"] = true,
-            ["name"] = "recommendation",
+            ["name"] = "recommendations",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 8,
@@ -116,6 +116,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/case-analysis",
                 ["parts"] = {
@@ -140,14 +141,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "claus",
+            ["name"] = "clauses",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "compliance_check",
+            ["name"] = "complianceCheck",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 1,
@@ -161,14 +162,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "contract_text",
+            ["name"] = "contractText",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "contract_type",
+            ["name"] = "contractType",
             ["op"] = {
               ["create"] = {
                 ["req"] = true,
@@ -181,21 +182,21 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "draft_id",
+            ["name"] = "draftId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "focus_area",
+            ["name"] = "focusAreas",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "issue",
+            ["name"] = "issues",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 7,
@@ -209,63 +210,63 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "missing_claus",
+            ["name"] = "missingClauses",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
           },
           {
             ["active"] = true,
-            ["name"] = "note",
+            ["name"] = "notes",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 10,
           },
           {
             ["active"] = true,
-            ["name"] = "overall_assessment",
+            ["name"] = "overallAssessment",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 11,
           },
           {
             ["active"] = true,
-            ["name"] = "party",
+            ["name"] = "parties",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 12,
           },
           {
             ["active"] = true,
-            ["name"] = "recommendation",
+            ["name"] = "recommendations",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 13,
           },
           {
             ["active"] = true,
-            ["name"] = "requirement",
+            ["name"] = "requirements",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 14,
           },
           {
             ["active"] = true,
-            ["name"] = "review_id",
+            ["name"] = "reviewId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 15,
           },
           {
             ["active"] = true,
-            ["name"] = "risk_level",
+            ["name"] = "riskLevel",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 16,
           },
           {
             ["active"] = true,
-            ["name"] = "specific_claus",
+            ["name"] = "specificClauses",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 17,
@@ -287,6 +288,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/contract/draft",
                 ["parts"] = {
@@ -303,6 +305,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/contract/review",
                 ["parts"] = {
@@ -349,7 +352,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "query_id",
+            ["name"] = "queryId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
@@ -369,7 +372,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "relevant_law",
+            ["name"] = "relevantLaws",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 5,
@@ -391,6 +394,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/query",
                 ["parts"] = {

@@ -101,15 +101,15 @@ $case_analysi = $client->CaseAnalysi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysis_id` | `string` | No |  |
-| `applicable_law` | `array` | No |  |
-| `case_detail` | `string` | Yes |  |
-| `case_type` | `string` | No |  |
+| `analysisId` | `string` | No |  |
+| `applicableLaws` | `array` | No |  |
+| `caseDetails` | `string` | Yes |  |
+| `caseType` | `string` | No |  |
 | `language` | `string` | No |  |
-| `legal_issue` | `array` | No |  |
-| `party` | `array` | No |  |
-| `precedent` | `array` | No |  |
-| `recommendation` | `string` | No |  |
+| `legalIssues` | `array` | No |  |
+| `parties` | `array` | No |  |
+| `precedents` | `array` | No |  |
+| `recommendations` | `string` | No |  |
 | `summary` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 
@@ -121,7 +121,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->CaseAnalysi()->create([
-  "case_detail" => null, // string
+  "caseDetails" => null, // string
 ]);
 ```
 
@@ -165,48 +165,48 @@ $contract_service = $client->ContractService();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claus` | `array` | No |  |
-| `compliance_check` | `array` | No |  |
+| `clauses` | `array` | No |  |
+| `complianceCheck` | `array` | No |  |
 | `content` | `string` | No |  |
-| `contract_text` | `string` | Yes |  |
-| `contract_type` | `string` | No |  |
-| `draft_id` | `string` | No |  |
-| `focus_area` | `array` | No |  |
-| `issue` | `array` | No |  |
+| `contractText` | `string` | Yes |  |
+| `contractType` | `string` | No |  |
+| `draftId` | `string` | No |  |
+| `focusAreas` | `array` | No |  |
+| `issues` | `array` | No |  |
 | `language` | `string` | No |  |
-| `missing_claus` | `array` | No |  |
-| `note` | `string` | No |  |
-| `overall_assessment` | `string` | No |  |
-| `party` | `array` | No |  |
-| `recommendation` | `array` | No |  |
-| `requirement` | `string` | Yes |  |
-| `review_id` | `string` | No |  |
-| `risk_level` | `string` | No |  |
-| `specific_claus` | `array` | No |  |
+| `missingClauses` | `array` | No |  |
+| `notes` | `string` | No |  |
+| `overallAssessment` | `string` | No |  |
+| `parties` | `array` | No |  |
+| `recommendations` | `array` | No |  |
+| `requirements` | `string` | Yes |  |
+| `reviewId` | `string` | No |  |
+| `riskLevel` | `string` | No |  |
+| `specificClauses` | `array` | No |  |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `claus` | - |
-| `compliance_check` | - |
+| `clauses` | - |
+| `complianceCheck` | - |
 | `content` | - |
-| `contract_text` | - |
-| `contract_type` | Yes |
-| `draft_id` | - |
-| `focus_area` | - |
-| `issue` | - |
+| `contractText` | - |
+| `contractType` | Yes |
+| `draftId` | - |
+| `focusAreas` | - |
+| `issues` | - |
 | `language` | - |
-| `missing_claus` | - |
-| `note` | - |
-| `overall_assessment` | - |
-| `party` | - |
-| `recommendation` | - |
-| `requirement` | - |
-| `review_id` | - |
-| `risk_level` | - |
-| `specific_claus` | - |
+| `missingClauses` | - |
+| `notes` | - |
+| `overallAssessment` | - |
+| `parties` | - |
+| `recommendations` | - |
+| `requirements` | - |
+| `reviewId` | - |
+| `riskLevel` | - |
+| `specificClauses` | - |
 | `timestamp` | - |
 
 ### Operations
@@ -217,8 +217,8 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ContractService()->create([
-  "contract_text" => null, // string
-  "requirement" => null, // string
+  "contractText" => null, // string
+  "requirements" => null, // string
 ]);
 ```
 
@@ -265,9 +265,9 @@ $legal_query = $client->LegalQuery();
 | `answer` | `string` | No |  |
 | `category` | `string` | No |  |
 | `language` | `string` | No |  |
-| `query_id` | `string` | No |  |
+| `queryId` | `string` | No |  |
 | `question` | `string` | No |  |
-| `relevant_law` | `array` | No |  |
+| `relevantLaws` | `array` | No |  |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
@@ -277,9 +277,9 @@ $legal_query = $client->LegalQuery();
 | `answer` | - |
 | `category` | - |
 | `language` | - |
-| `query_id` | - |
+| `queryId` | - |
 | `question` | Yes |
-| `relevant_law` | - |
+| `relevantLaws` | - |
 | `timestamp` | - |
 
 ### Operations

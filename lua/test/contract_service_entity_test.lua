@@ -29,7 +29,7 @@ describe("ContractServiceEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set TAIWAN_LEGAL_AI_TEST_CONTRACT_SERVICE_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -41,7 +41,7 @@ describe("ContractServiceEntity", function()
 
     local contract_service_ref01_data_result, err = contract_service_ref01_ent:create(contract_service_ref01_data, nil)
     assert.is_nil(err)
-    contract_service_ref01_data = helpers.to_map(contract_service_ref01_data_result)
+    contract_service_ref01_data = helpers.to_map(type(contract_service_ref01_data_result) == 'table' and contract_service_ref01_data_result.data_get and contract_service_ref01_data_result:data_get() or contract_service_ref01_data_result)
     assert.is_not_nil(contract_service_ref01_data)
 
   end)
@@ -79,39 +79,39 @@ function contract_service_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID")
+  local entid_env_raw = os.getenv("TAIWAN_LEGAL_AI_TEST_CONTRACT_SERVICE_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID"] = idmap,
-    ["TAIWANLEGALAI_TEST_LIVE"] = "FALSE",
-    ["TAIWANLEGALAI_TEST_EXPLAIN"] = "FALSE",
-    ["TAIWANLEGALAI_APIKEY"] = "NONE",
+    ["TAIWAN_LEGAL_AI_TEST_CONTRACT_SERVICE_ENTID"] = idmap,
+    ["TAIWAN_LEGAL_AI_TEST_LIVE"] = "FALSE",
+    ["TAIWAN_LEGAL_AI_TEST_EXPLAIN"] = "FALSE",
+    ["TAIWAN_LEGAL_AI_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["TAIWANLEGALAI_TEST_CONTRACT_SERVICE_ENTID"])
+    env["TAIWAN_LEGAL_AI_TEST_CONTRACT_SERVICE_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["TAIWANLEGALAI_TEST_LIVE"] == "TRUE" then
+  if env["TAIWAN_LEGAL_AI_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["TAIWANLEGALAI_APIKEY"],
+        apikey = env["TAIWAN_LEGAL_AI_APIKEY"],
       },
       extra or {},
     })
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["TAIWANLEGALAI_TEST_LIVE"] == "TRUE"
+  local live = env["TAIWAN_LEGAL_AI_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["TAIWANLEGALAI_TEST_EXPLAIN"] == "TRUE",
+    explain = env["TAIWAN_LEGAL_AI_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

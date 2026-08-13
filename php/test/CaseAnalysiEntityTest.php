@@ -33,7 +33,7 @@ class CaseAnalysiEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set TAIWANLEGALAI_TEST_CASE_ANALYSI_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -44,7 +44,7 @@ class CaseAnalysiEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.case_analysi"), "case_analysi_ref01"));
 
         $case_analysi_ref01_data_result = $case_analysi_ref01_ent->create($case_analysi_ref01_data, null);
-        $case_analysi_ref01_data = Helpers::to_map($case_analysi_ref01_data_result);
+        $case_analysi_ref01_data = Helpers::to_map(is_object($case_analysi_ref01_data_result) && method_exists($case_analysi_ref01_data_result, 'data_get') ? $case_analysi_ref01_data_result->data_get() : $case_analysi_ref01_data_result);
         $this->assertNotNull($case_analysi_ref01_data);
 
     }
@@ -72,39 +72,39 @@ function case_analysi_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("TAIWANLEGALAI_TEST_CASE_ANALYSI_ENTID");
+    $entid_env_raw = getenv("TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "TAIWANLEGALAI_TEST_CASE_ANALYSI_ENTID" => $idmap,
-        "TAIWANLEGALAI_TEST_LIVE" => "FALSE",
-        "TAIWANLEGALAI_TEST_EXPLAIN" => "FALSE",
-        "TAIWANLEGALAI_APIKEY" => "NONE",
+        "TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID" => $idmap,
+        "TAIWAN_LEGAL_AI_TEST_LIVE" => "FALSE",
+        "TAIWAN_LEGAL_AI_TEST_EXPLAIN" => "FALSE",
+        "TAIWAN_LEGAL_AI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["TAIWANLEGALAI_TEST_CASE_ANALYSI_ENTID"]);
+        $env["TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["TAIWANLEGALAI_TEST_LIVE"] === "TRUE") {
+    if ($env["TAIWAN_LEGAL_AI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["TAIWANLEGALAI_APIKEY"],
+                "apikey" => $env["TAIWAN_LEGAL_AI_APIKEY"],
             ],
             $extra ?? [],
         ]);
         $client = new TaiwanLegalAiSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["TAIWANLEGALAI_TEST_LIVE"] === "TRUE";
+    $live = $env["TAIWAN_LEGAL_AI_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["TAIWANLEGALAI_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["TAIWAN_LEGAL_AI_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

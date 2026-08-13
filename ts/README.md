@@ -38,9 +38,9 @@ const client = new TaiwanLegalAiSDK({
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created CaseAnalysi
+// Create — returns the created CaseAnalysi ENTITY (.data() for the record)
 const created = await client.CaseAnalysi().create({
-  case_detail: 'example_case_detail',
+  caseDetails: 'example_caseDetails',
 })
 
 ```
@@ -52,7 +52,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const caseanalysi = await client.CaseAnalysi().create({ case_detail: "example" })
+  const caseanalysi = await client.CaseAnalysi().create({ caseDetails: "example" })
   console.log(caseanalysi)
 } catch (err) {
   console.error('create failed:', err)
@@ -119,8 +119,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = TaiwanLegalAiSDK.test()
 
-const caseanalysi = await client.CaseAnalysi().create({ case_detail: 'example_case_detail' })
-// caseanalysi is a bare entity populated with mock response data
+const caseanalysi = await client.CaseAnalysi().create({ caseDetails: 'example_caseDetails' })
+// caseanalysi is the entity, populated with mock response data
+// — call caseanalysi.data() for the record itself
 console.log(caseanalysi)
 ```
 
@@ -139,7 +140,7 @@ Entity instances remember their last match and data:
 const entity = client.CaseAnalysi()
 
 // First call runs the operation and stores its result
-await entity.create({ case_detail: 'example_case_detail' })
+await entity.create({ caseDetails: 'example_caseDetails' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -289,15 +290,15 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `analysis_id` |  |
-| `applicable_law` |  |
-| `case_detail` |  |
-| `case_type` |  |
+| `analysisId` |  |
+| `applicableLaws` |  |
+| `caseDetails` |  |
+| `caseType` |  |
 | `language` |  |
-| `legal_issue` |  |
-| `party` |  |
-| `precedent` |  |
-| `recommendation` |  |
+| `legalIssues` |  |
+| `parties` |  |
+| `precedents` |  |
+| `recommendations` |  |
 | `summary` |  |
 | `timestamp` |  |
 
@@ -309,24 +310,24 @@ API path: `/case-analysis`
 
 | Field | Description |
 | --- | --- |
-| `claus` |  |
-| `compliance_check` |  |
+| `clauses` |  |
+| `complianceCheck` |  |
 | `content` |  |
-| `contract_text` |  |
-| `contract_type` |  |
-| `draft_id` |  |
-| `focus_area` |  |
-| `issue` |  |
+| `contractText` |  |
+| `contractType` |  |
+| `draftId` |  |
+| `focusAreas` |  |
+| `issues` |  |
 | `language` |  |
-| `missing_claus` |  |
-| `note` |  |
-| `overall_assessment` |  |
-| `party` |  |
-| `recommendation` |  |
-| `requirement` |  |
-| `review_id` |  |
-| `risk_level` |  |
-| `specific_claus` |  |
+| `missingClauses` |  |
+| `notes` |  |
+| `overallAssessment` |  |
+| `parties` |  |
+| `recommendations` |  |
+| `requirements` |  |
+| `reviewId` |  |
+| `riskLevel` |  |
+| `specificClauses` |  |
 | `timestamp` |  |
 
 Operations: create.
@@ -340,9 +341,9 @@ API path: `/contract/draft`
 | `answer` |  |
 | `category` |  |
 | `language` |  |
-| `query_id` |  |
+| `queryId` |  |
 | `question` |  |
-| `relevant_law` |  |
+| `relevantLaws` |  |
 | `timestamp` |  |
 
 Operations: create.
@@ -368,15 +369,15 @@ Create an instance: `const case_analysi = client.CaseAnalysi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysis_id` | `string` |  |
-| `applicable_law` | `any[]` |  |
-| `case_detail` | `string` |  |
-| `case_type` | `string` |  |
+| `analysisId` | `string` |  |
+| `applicableLaws` | `any[]` |  |
+| `caseDetails` | `string` |  |
+| `caseType` | `string` |  |
 | `language` | `string` |  |
-| `legal_issue` | `any[]` |  |
-| `party` | `Record<string, any>` |  |
-| `precedent` | `any[]` |  |
-| `recommendation` | `string` |  |
+| `legalIssues` | `any[]` |  |
+| `parties` | `Record<string, any>` |  |
+| `precedents` | `any[]` |  |
+| `recommendations` | `string` |  |
 | `summary` | `string` |  |
 | `timestamp` | `string` |  |
 
@@ -384,7 +385,7 @@ Create an instance: `const case_analysi = client.CaseAnalysi()`
 
 ```ts
 const case_analysi = await client.CaseAnalysi().create({
-  case_detail: 'example_case_detail',
+  caseDetails: 'example_caseDetails',
 })
 ```
 
@@ -403,32 +404,32 @@ Create an instance: `const contract_service = client.ContractService()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claus` | `any[]` |  |
-| `compliance_check` | `Record<string, any>` |  |
+| `clauses` | `any[]` |  |
+| `complianceCheck` | `Record<string, any>` |  |
 | `content` | `string` |  |
-| `contract_text` | `string` |  |
-| `contract_type` | `string` |  |
-| `draft_id` | `string` |  |
-| `focus_area` | `any[]` |  |
-| `issue` | `any[]` |  |
+| `contractText` | `string` |  |
+| `contractType` | `string` |  |
+| `draftId` | `string` |  |
+| `focusAreas` | `any[]` |  |
+| `issues` | `any[]` |  |
 | `language` | `string` |  |
-| `missing_claus` | `any[]` |  |
-| `note` | `string` |  |
-| `overall_assessment` | `string` |  |
-| `party` | `Record<string, any>` |  |
-| `recommendation` | `any[]` |  |
-| `requirement` | `string` |  |
-| `review_id` | `string` |  |
-| `risk_level` | `string` |  |
-| `specific_claus` | `any[]` |  |
+| `missingClauses` | `any[]` |  |
+| `notes` | `string` |  |
+| `overallAssessment` | `string` |  |
+| `parties` | `Record<string, any>` |  |
+| `recommendations` | `any[]` |  |
+| `requirements` | `string` |  |
+| `reviewId` | `string` |  |
+| `riskLevel` | `string` |  |
+| `specificClauses` | `any[]` |  |
 | `timestamp` | `string` |  |
 
 #### Example: Create
 
 ```ts
 const contract_service = await client.ContractService().create({
-  contract_text: 'example_contract_text',
-  requirement: 'example_requirement',
+  contractText: 'example_contractText',
+  requirements: 'example_requirements',
 })
 ```
 
@@ -450,9 +451,9 @@ Create an instance: `const legal_query = client.LegalQuery()`
 | `answer` | `string` |  |
 | `category` | `string` |  |
 | `language` | `string` |  |
-| `query_id` | `string` |  |
+| `queryId` | `string` |  |
 | `question` | `string` |  |
-| `relevant_law` | `any[]` |  |
+| `relevantLaws` | `any[]` |  |
 | `timestamp` | `string` |  |
 
 #### Example: Create
@@ -533,7 +534,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const caseanalysi = client.CaseAnalysi()
-await caseanalysi.create({ case_detail: "example" })
+await caseanalysi.create({ caseDetails: "example" })
 
 // caseanalysi.data() now returns the caseanalysi data from the last `create`
 // caseanalysi.match() returns the last match criteria

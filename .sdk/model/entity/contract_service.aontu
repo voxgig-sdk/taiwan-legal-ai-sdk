@@ -6,12 +6,12 @@ main: kit: entity: contract_service: {
 
   fields: [
     {
-      name: "claus"
+      name: "clauses"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "compliance_check"
+      name: "complianceCheck"
       req: false
       type: "`$OBJECT`"
     }
@@ -21,12 +21,12 @@ main: kit: entity: contract_service: {
       type: "`$STRING`"
     }
     {
-      name: "contract_text"
+      name: "contractText"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "contract_type"
+      name: "contractType"
       op: {
         create: {
           req: true
@@ -37,17 +37,17 @@ main: kit: entity: contract_service: {
       type: "`$STRING`"
     }
     {
-      name: "draft_id"
+      name: "draftId"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "focus_area"
+      name: "focusAreas"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "issue"
+      name: "issues"
       req: false
       type: "`$ARRAY`"
     }
@@ -57,47 +57,47 @@ main: kit: entity: contract_service: {
       type: "`$STRING`"
     }
     {
-      name: "missing_claus"
+      name: "missingClauses"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "note"
+      name: "notes"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "overall_assessment"
+      name: "overallAssessment"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "party"
+      name: "parties"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "recommendation"
+      name: "recommendations"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "requirement"
+      name: "requirements"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "review_id"
+      name: "reviewId"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "risk_level"
+      name: "riskLevel"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "specific_claus"
+      name: "specificClauses"
       req: false
       type: "`$ARRAY`"
     }

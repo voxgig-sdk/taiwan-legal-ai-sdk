@@ -141,15 +141,15 @@ const case_analysi = client.CaseAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysis_id` | `string` | No |  |
-| `applicable_law` | `any[]` | No |  |
-| `case_detail` | `string` | Yes |  |
-| `case_type` | `string` | No |  |
+| `analysisId` | `string` | No |  |
+| `applicableLaws` | `any[]` | No |  |
+| `caseDetails` | `string` | Yes |  |
+| `caseType` | `string` | No |  |
 | `language` | `string` | No |  |
-| `legal_issue` | `any[]` | No |  |
-| `party` | `Record<string, any>` | No |  |
-| `precedent` | `any[]` | No |  |
-| `recommendation` | `string` | No |  |
+| `legalIssues` | `any[]` | No |  |
+| `parties` | `Record<string, any>` | No |  |
+| `precedents` | `any[]` | No |  |
+| `recommendations` | `string` | No |  |
 | `summary` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 
@@ -161,7 +161,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.CaseAnalysi().create({
-  case_detail: 'example_case_detail',
+  caseDetails: 'example_caseDetails',
 })
 ```
 
@@ -203,48 +203,48 @@ const contract_service = client.ContractService()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claus` | `any[]` | No |  |
-| `compliance_check` | `Record<string, any>` | No |  |
+| `clauses` | `any[]` | No |  |
+| `complianceCheck` | `Record<string, any>` | No |  |
 | `content` | `string` | No |  |
-| `contract_text` | `string` | Yes |  |
-| `contract_type` | `string` | No |  |
-| `draft_id` | `string` | No |  |
-| `focus_area` | `any[]` | No |  |
-| `issue` | `any[]` | No |  |
+| `contractText` | `string` | Yes |  |
+| `contractType` | `string` | No |  |
+| `draftId` | `string` | No |  |
+| `focusAreas` | `any[]` | No |  |
+| `issues` | `any[]` | No |  |
 | `language` | `string` | No |  |
-| `missing_claus` | `any[]` | No |  |
-| `note` | `string` | No |  |
-| `overall_assessment` | `string` | No |  |
-| `party` | `Record<string, any>` | No |  |
-| `recommendation` | `any[]` | No |  |
-| `requirement` | `string` | Yes |  |
-| `review_id` | `string` | No |  |
-| `risk_level` | `string` | No |  |
-| `specific_claus` | `any[]` | No |  |
+| `missingClauses` | `any[]` | No |  |
+| `notes` | `string` | No |  |
+| `overallAssessment` | `string` | No |  |
+| `parties` | `Record<string, any>` | No |  |
+| `recommendations` | `any[]` | No |  |
+| `requirements` | `string` | Yes |  |
+| `reviewId` | `string` | No |  |
+| `riskLevel` | `string` | No |  |
+| `specificClauses` | `any[]` | No |  |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `claus` | - |
-| `compliance_check` | - |
+| `clauses` | - |
+| `complianceCheck` | - |
 | `content` | - |
-| `contract_text` | - |
-| `contract_type` | Yes |
-| `draft_id` | - |
-| `focus_area` | - |
-| `issue` | - |
+| `contractText` | - |
+| `contractType` | Yes |
+| `draftId` | - |
+| `focusAreas` | - |
+| `issues` | - |
 | `language` | - |
-| `missing_claus` | - |
-| `note` | - |
-| `overall_assessment` | - |
-| `party` | - |
-| `recommendation` | - |
-| `requirement` | - |
-| `review_id` | - |
-| `risk_level` | - |
-| `specific_claus` | - |
+| `missingClauses` | - |
+| `notes` | - |
+| `overallAssessment` | - |
+| `parties` | - |
+| `recommendations` | - |
+| `requirements` | - |
+| `reviewId` | - |
+| `riskLevel` | - |
+| `specificClauses` | - |
 | `timestamp` | - |
 
 ### Operations
@@ -255,8 +255,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ContractService().create({
-  contract_text: 'example_contract_text',
-  requirement: 'example_requirement',
+  contractText: 'example_contractText',
+  requirements: 'example_requirements',
 })
 ```
 
@@ -301,9 +301,9 @@ const legal_query = client.LegalQuery()
 | `answer` | `string` | No |  |
 | `category` | `string` | No |  |
 | `language` | `string` | No |  |
-| `query_id` | `string` | No |  |
+| `queryId` | `string` | No |  |
 | `question` | `string` | No |  |
-| `relevant_law` | `any[]` | No |  |
+| `relevantLaws` | `any[]` | No |  |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
@@ -313,9 +313,9 @@ const legal_query = client.LegalQuery()
 | `answer` | - |
 | `category` | - |
 | `language` | - |
-| `query_id` | - |
+| `queryId` | - |
 | `question` | Yes |
-| `relevant_law` | - |
+| `relevantLaws` | - |
 | `timestamp` | - |
 
 ### Operations

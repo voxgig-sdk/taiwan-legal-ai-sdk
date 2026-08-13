@@ -31,28 +31,28 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "analysis_id",
+						"name": "analysisId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "applicable_law",
+						"name": "applicableLaws",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "case_detail",
+						"name": "caseDetails",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "case_type",
+						"name": "caseType",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -66,28 +66,28 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "legal_issue",
+						"name": "legalIssues",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "party",
+						"name": "parties",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "precedent",
+						"name": "precedents",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 7,
 					},
 					map[string]any{
 						"active": true,
-						"name": "recommendation",
+						"name": "recommendations",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 8,
@@ -116,6 +116,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/case-analysis",
 								"parts": []any{
@@ -129,7 +130,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{
@@ -140,14 +140,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "claus",
+						"name": "clauses",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "compliance_check",
+						"name": "complianceCheck",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 1,
@@ -161,14 +161,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "contract_text",
+						"name": "contractText",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "contract_type",
+						"name": "contractType",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": true,
@@ -181,21 +181,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "draft_id",
+						"name": "draftId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "focus_area",
+						"name": "focusAreas",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "issue",
+						"name": "issues",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 7,
@@ -209,63 +209,63 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "missing_claus",
+						"name": "missingClauses",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
 					},
 					map[string]any{
 						"active": true,
-						"name": "note",
+						"name": "notes",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 10,
 					},
 					map[string]any{
 						"active": true,
-						"name": "overall_assessment",
+						"name": "overallAssessment",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 11,
 					},
 					map[string]any{
 						"active": true,
-						"name": "party",
+						"name": "parties",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 12,
 					},
 					map[string]any{
 						"active": true,
-						"name": "recommendation",
+						"name": "recommendations",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 13,
 					},
 					map[string]any{
 						"active": true,
-						"name": "requirement",
+						"name": "requirements",
 						"req": true,
 						"type": "`$STRING`",
 						"index$": 14,
 					},
 					map[string]any{
 						"active": true,
-						"name": "review_id",
+						"name": "reviewId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 15,
 					},
 					map[string]any{
 						"active": true,
-						"name": "risk_level",
+						"name": "riskLevel",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 16,
 					},
 					map[string]any{
 						"active": true,
-						"name": "specific_claus",
+						"name": "specificClauses",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 17,
@@ -287,6 +287,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/contract/draft",
 								"parts": []any{
@@ -303,6 +304,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/contract/review",
 								"parts": []any{
@@ -317,7 +319,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{
@@ -349,7 +350,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "query_id",
+						"name": "queryId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -369,7 +370,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "relevant_law",
+						"name": "relevantLaws",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 5,
@@ -391,6 +392,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/query",
 								"parts": []any{
@@ -404,7 +406,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{

@@ -5,9 +5,9 @@
         "answer": "s46",
         "category": "s47",
         "language": "s48",
-        "query_id": "QUERY01",
+        "queryId": "s49",
         "question": "s4a",
-        "relevant_law": [],
+        "relevantLaws": [],
         "timestamp": "s4c",
         "id": "LEGAL_QUERY00"
       },
@@ -15,9 +15,9 @@
         "answer": "s8c",
         "category": "s8d",
         "language": "s8e",
-        "query_id": "QUERY01",
+        "queryId": "s8f",
         "question": "s90",
-        "relevant_law": [],
+        "relevantLaws": [],
         "timestamp": "s92",
         "id": "LEGAL_QUERY01"
       },
@@ -25,9 +25,9 @@
         "answer": "sd2",
         "category": "sd3",
         "language": "sd4",
-        "query_id": "QUERY01",
+        "queryId": "sd5",
         "question": "sd6",
-        "relevant_law": [],
+        "relevantLaws": [],
         "timestamp": "sd8",
         "id": "LEGAL_QUERY02"
       }
@@ -39,9 +39,9 @@
         "answer": "s118",
         "category": "s119",
         "language": "s11a",
-        "query_id": "QUERY01",
+        "queryId": "s11b",
         "question": "s11c",
-        "relevant_law": [],
+        "relevantLaws": [],
         "timestamp": "s11e"
       }
     }

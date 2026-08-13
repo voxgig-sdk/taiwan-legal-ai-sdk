@@ -99,15 +99,15 @@ local case_analysi = client:CaseAnalysi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysis_id` | `string` | No |  |
-| `applicable_law` | `table` | No |  |
-| `case_detail` | `string` | Yes |  |
-| `case_type` | `string` | No |  |
+| `analysisId` | `string` | No |  |
+| `applicableLaws` | `table` | No |  |
+| `caseDetails` | `string` | Yes |  |
+| `caseType` | `string` | No |  |
 | `language` | `string` | No |  |
-| `legal_issue` | `table` | No |  |
-| `party` | `table` | No |  |
-| `precedent` | `table` | No |  |
-| `recommendation` | `string` | No |  |
+| `legalIssues` | `table` | No |  |
+| `parties` | `table` | No |  |
+| `precedents` | `table` | No |  |
+| `recommendations` | `string` | No |  |
 | `summary` | `string` | No |  |
 | `timestamp` | `string` | No |  |
 
@@ -119,7 +119,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:CaseAnalysi():create({
-  case_detail = --[[ string ]],
+  caseDetails = --[[ string ]],
 })
 ```
 
@@ -163,48 +163,48 @@ local contract_service = client:ContractService(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claus` | `table` | No |  |
-| `compliance_check` | `table` | No |  |
+| `clauses` | `table` | No |  |
+| `complianceCheck` | `table` | No |  |
 | `content` | `string` | No |  |
-| `contract_text` | `string` | Yes |  |
-| `contract_type` | `string` | No |  |
-| `draft_id` | `string` | No |  |
-| `focus_area` | `table` | No |  |
-| `issue` | `table` | No |  |
+| `contractText` | `string` | Yes |  |
+| `contractType` | `string` | No |  |
+| `draftId` | `string` | No |  |
+| `focusAreas` | `table` | No |  |
+| `issues` | `table` | No |  |
 | `language` | `string` | No |  |
-| `missing_claus` | `table` | No |  |
-| `note` | `string` | No |  |
-| `overall_assessment` | `string` | No |  |
-| `party` | `table` | No |  |
-| `recommendation` | `table` | No |  |
-| `requirement` | `string` | Yes |  |
-| `review_id` | `string` | No |  |
-| `risk_level` | `string` | No |  |
-| `specific_claus` | `table` | No |  |
+| `missingClauses` | `table` | No |  |
+| `notes` | `string` | No |  |
+| `overallAssessment` | `string` | No |  |
+| `parties` | `table` | No |  |
+| `recommendations` | `table` | No |  |
+| `requirements` | `string` | Yes |  |
+| `reviewId` | `string` | No |  |
+| `riskLevel` | `string` | No |  |
+| `specificClauses` | `table` | No |  |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
 
 | Field | create |
 | --- | --- |
-| `claus` | - |
-| `compliance_check` | - |
+| `clauses` | - |
+| `complianceCheck` | - |
 | `content` | - |
-| `contract_text` | - |
-| `contract_type` | Yes |
-| `draft_id` | - |
-| `focus_area` | - |
-| `issue` | - |
+| `contractText` | - |
+| `contractType` | Yes |
+| `draftId` | - |
+| `focusAreas` | - |
+| `issues` | - |
 | `language` | - |
-| `missing_claus` | - |
-| `note` | - |
-| `overall_assessment` | - |
-| `party` | - |
-| `recommendation` | - |
-| `requirement` | - |
-| `review_id` | - |
-| `risk_level` | - |
-| `specific_claus` | - |
+| `missingClauses` | - |
+| `notes` | - |
+| `overallAssessment` | - |
+| `parties` | - |
+| `recommendations` | - |
+| `requirements` | - |
+| `reviewId` | - |
+| `riskLevel` | - |
+| `specificClauses` | - |
 | `timestamp` | - |
 
 ### Operations
@@ -215,8 +215,8 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ContractService():create({
-  contract_text = --[[ string ]],
-  requirement = --[[ string ]],
+  contractText = --[[ string ]],
+  requirements = --[[ string ]],
 })
 ```
 
@@ -263,9 +263,9 @@ local legal_query = client:LegalQuery(nil)
 | `answer` | `string` | No |  |
 | `category` | `string` | No |  |
 | `language` | `string` | No |  |
-| `query_id` | `string` | No |  |
+| `queryId` | `string` | No |  |
 | `question` | `string` | No |  |
-| `relevant_law` | `table` | No |  |
+| `relevantLaws` | `table` | No |  |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
@@ -275,9 +275,9 @@ local legal_query = client:LegalQuery(nil)
 | `answer` | - |
 | `category` | - |
 | `language` | - |
-| `query_id` | - |
+| `queryId` | - |
 | `question` | Yes |
-| `relevant_law` | - |
+| `relevantLaws` | - |
 | `timestamp` | - |
 
 ### Operations

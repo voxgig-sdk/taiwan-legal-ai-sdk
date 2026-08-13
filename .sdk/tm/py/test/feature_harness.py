@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import TaiwanLegalAiControl
-from core.error import TaiwanLegalAiError
-from core.result import TaiwanLegalAiResult
-from core.spec import TaiwanLegalAiSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import TaiwanLegalAiControl
+from projectname_sdk.core.error import TaiwanLegalAiError
+from projectname_sdk.core.result import TaiwanLegalAiResult
+from projectname_sdk.core.spec import TaiwanLegalAiSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -36,8 +36,8 @@ $client = new TaiwanLegalAiSDK([
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created CaseAnalysi record.
-$created = $client->CaseAnalysi()->create(["case_detail" => "example_case_detail"]);
+// create() returns the ENTITY — call data_get() for the created CaseAnalysi record.
+$created = $client->CaseAnalysi()->create(["caseDetails" => "example_caseDetails"]);
 
 ```
 
@@ -49,7 +49,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $caseanalysi = $client->CaseAnalysi()->create(["case_detail" => "example"]);
+    $caseanalysi = $client->CaseAnalysi()->create(["caseDetails" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -121,8 +121,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = TaiwanLegalAiSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$caseanalysi = $client->CaseAnalysi()->create(["case_detail" => "example"]);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$caseanalysi = $client->CaseAnalysi()->create(["caseDetails" => "example"]);
 print_r($caseanalysi);
 ```
 
@@ -224,7 +225,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -246,15 +247,15 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `analysis_id` |  |
-| `applicable_law` |  |
-| `case_detail` |  |
-| `case_type` |  |
+| `analysisId` |  |
+| `applicableLaws` |  |
+| `caseDetails` |  |
+| `caseType` |  |
 | `language` |  |
-| `legal_issue` |  |
-| `party` |  |
-| `precedent` |  |
-| `recommendation` |  |
+| `legalIssues` |  |
+| `parties` |  |
+| `precedents` |  |
+| `recommendations` |  |
 | `summary` |  |
 | `timestamp` |  |
 
@@ -266,24 +267,24 @@ API path: `/case-analysis`
 
 | Field | Description |
 | --- | --- |
-| `claus` |  |
-| `compliance_check` |  |
+| `clauses` |  |
+| `complianceCheck` |  |
 | `content` |  |
-| `contract_text` |  |
-| `contract_type` |  |
-| `draft_id` |  |
-| `focus_area` |  |
-| `issue` |  |
+| `contractText` |  |
+| `contractType` |  |
+| `draftId` |  |
+| `focusAreas` |  |
+| `issues` |  |
 | `language` |  |
-| `missing_claus` |  |
-| `note` |  |
-| `overall_assessment` |  |
-| `party` |  |
-| `recommendation` |  |
-| `requirement` |  |
-| `review_id` |  |
-| `risk_level` |  |
-| `specific_claus` |  |
+| `missingClauses` |  |
+| `notes` |  |
+| `overallAssessment` |  |
+| `parties` |  |
+| `recommendations` |  |
+| `requirements` |  |
+| `reviewId` |  |
+| `riskLevel` |  |
+| `specificClauses` |  |
 | `timestamp` |  |
 
 Operations: Create.
@@ -297,9 +298,9 @@ API path: `/contract/draft`
 | `answer` |  |
 | `category` |  |
 | `language` |  |
-| `query_id` |  |
+| `queryId` |  |
 | `question` |  |
-| `relevant_law` |  |
+| `relevantLaws` |  |
 | `timestamp` |  |
 
 Operations: Create.
@@ -325,15 +326,15 @@ Create an instance: `$case_analysi = $client->CaseAnalysi();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysis_id` | `string` |  |
-| `applicable_law` | `array` |  |
-| `case_detail` | `string` |  |
-| `case_type` | `string` |  |
+| `analysisId` | `string` |  |
+| `applicableLaws` | `array` |  |
+| `caseDetails` | `string` |  |
+| `caseType` | `string` |  |
 | `language` | `string` |  |
-| `legal_issue` | `array` |  |
-| `party` | `array` |  |
-| `precedent` | `array` |  |
-| `recommendation` | `string` |  |
+| `legalIssues` | `array` |  |
+| `parties` | `array` |  |
+| `precedents` | `array` |  |
+| `recommendations` | `string` |  |
 | `summary` | `string` |  |
 | `timestamp` | `string` |  |
 
@@ -341,7 +342,7 @@ Create an instance: `$case_analysi = $client->CaseAnalysi();`
 
 ```php
 $case_analysi = $client->CaseAnalysi()->create([
-    "case_detail" => null, // string
+    "caseDetails" => null, // string
 ]);
 ```
 
@@ -360,32 +361,32 @@ Create an instance: `$contract_service = $client->ContractService();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claus` | `array` |  |
-| `compliance_check` | `array` |  |
+| `clauses` | `array` |  |
+| `complianceCheck` | `array` |  |
 | `content` | `string` |  |
-| `contract_text` | `string` |  |
-| `contract_type` | `string` |  |
-| `draft_id` | `string` |  |
-| `focus_area` | `array` |  |
-| `issue` | `array` |  |
+| `contractText` | `string` |  |
+| `contractType` | `string` |  |
+| `draftId` | `string` |  |
+| `focusAreas` | `array` |  |
+| `issues` | `array` |  |
 | `language` | `string` |  |
-| `missing_claus` | `array` |  |
-| `note` | `string` |  |
-| `overall_assessment` | `string` |  |
-| `party` | `array` |  |
-| `recommendation` | `array` |  |
-| `requirement` | `string` |  |
-| `review_id` | `string` |  |
-| `risk_level` | `string` |  |
-| `specific_claus` | `array` |  |
+| `missingClauses` | `array` |  |
+| `notes` | `string` |  |
+| `overallAssessment` | `string` |  |
+| `parties` | `array` |  |
+| `recommendations` | `array` |  |
+| `requirements` | `string` |  |
+| `reviewId` | `string` |  |
+| `riskLevel` | `string` |  |
+| `specificClauses` | `array` |  |
 | `timestamp` | `string` |  |
 
 #### Example: Create
 
 ```php
 $contract_service = $client->ContractService()->create([
-    "contract_text" => null, // string
-    "requirement" => null, // string
+    "contractText" => null, // string
+    "requirements" => null, // string
 ]);
 ```
 
@@ -407,9 +408,9 @@ Create an instance: `$legal_query = $client->LegalQuery();`
 | `answer` | `string` |  |
 | `category` | `string` |  |
 | `language` | `string` |  |
-| `query_id` | `string` |  |
+| `queryId` | `string` |  |
 | `question` | `string` |  |
-| `relevant_law` | `array` |  |
+| `relevantLaws` | `array` |  |
 | `timestamp` | `string` |  |
 
 #### Example: Create
@@ -497,7 +498,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $caseanalysi = $client->CaseAnalysi();
-$caseanalysi->create(["case_detail" => "example"]);
+$caseanalysi->create(["caseDetails" => "example"]);
 
 // $caseanalysi->data_get() now returns the caseanalysi data from the last create
 // $caseanalysi->match_get() returns the last match criteria

@@ -42,8 +42,8 @@ client = TaiwanLegalAiSDK({
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
-created = client.CaseAnalysi().create({"case_detail": "example_case_detail"})
+# Create — returns the ENTITY (call data_get() for the record)
+created = client.CaseAnalysi().create({"caseDetails": "example_caseDetails"})
 
 ```
 
@@ -54,7 +54,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    caseanalysi = client.CaseAnalysi().create({ "case_detail": "example" })
+    caseanalysi = client.CaseAnalysi().create({ "caseDetails": "example" })
     print(caseanalysi)
 except Exception as err:
     print(f"create failed: {err}")
@@ -121,8 +121,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = TaiwanLegalAiSDK.test()
 
-# Entity ops return the bare record and raise on error.
-caseanalysi = client.CaseAnalysi().create({"case_detail": "example"})
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+caseanalysi = client.CaseAnalysi().create({"caseDetails": "example"})
 # caseanalysi contains the mock response record
 ```
 
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -243,15 +244,15 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `analysis_id` |  |
-| `applicable_law` |  |
-| `case_detail` |  |
-| `case_type` |  |
+| `analysisId` |  |
+| `applicableLaws` |  |
+| `caseDetails` |  |
+| `caseType` |  |
 | `language` |  |
-| `legal_issue` |  |
-| `party` |  |
-| `precedent` |  |
-| `recommendation` |  |
+| `legalIssues` |  |
+| `parties` |  |
+| `precedents` |  |
+| `recommendations` |  |
 | `summary` |  |
 | `timestamp` |  |
 
@@ -263,24 +264,24 @@ API path: `/case-analysis`
 
 | Field | Description |
 | --- | --- |
-| `claus` |  |
-| `compliance_check` |  |
+| `clauses` |  |
+| `complianceCheck` |  |
 | `content` |  |
-| `contract_text` |  |
-| `contract_type` |  |
-| `draft_id` |  |
-| `focus_area` |  |
-| `issue` |  |
+| `contractText` |  |
+| `contractType` |  |
+| `draftId` |  |
+| `focusAreas` |  |
+| `issues` |  |
 | `language` |  |
-| `missing_claus` |  |
-| `note` |  |
-| `overall_assessment` |  |
-| `party` |  |
-| `recommendation` |  |
-| `requirement` |  |
-| `review_id` |  |
-| `risk_level` |  |
-| `specific_claus` |  |
+| `missingClauses` |  |
+| `notes` |  |
+| `overallAssessment` |  |
+| `parties` |  |
+| `recommendations` |  |
+| `requirements` |  |
+| `reviewId` |  |
+| `riskLevel` |  |
+| `specificClauses` |  |
 | `timestamp` |  |
 
 Operations: Create.
@@ -294,9 +295,9 @@ API path: `/contract/draft`
 | `answer` |  |
 | `category` |  |
 | `language` |  |
-| `query_id` |  |
+| `queryId` |  |
 | `question` |  |
-| `relevant_law` |  |
+| `relevantLaws` |  |
 | `timestamp` |  |
 
 Operations: Create.
@@ -322,15 +323,15 @@ Create an instance: `case_analysi = client.CaseAnalysi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysis_id` | `str` |  |
-| `applicable_law` | `list` |  |
-| `case_detail` | `str` |  |
-| `case_type` | `str` |  |
+| `analysisId` | `str` |  |
+| `applicableLaws` | `list` |  |
+| `caseDetails` | `str` |  |
+| `caseType` | `str` |  |
 | `language` | `str` |  |
-| `legal_issue` | `list` |  |
-| `party` | `dict` |  |
-| `precedent` | `list` |  |
-| `recommendation` | `str` |  |
+| `legalIssues` | `list` |  |
+| `parties` | `dict` |  |
+| `precedents` | `list` |  |
+| `recommendations` | `str` |  |
 | `summary` | `str` |  |
 | `timestamp` | `str` |  |
 
@@ -338,7 +339,7 @@ Create an instance: `case_analysi = client.CaseAnalysi()`
 
 ```python
 case_analysi = client.CaseAnalysi().create({
-    "case_detail": "example_case_detail",  # str
+    "caseDetails": "example_caseDetails",  # str
 })
 ```
 
@@ -357,32 +358,32 @@ Create an instance: `contract_service = client.ContractService()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claus` | `list` |  |
-| `compliance_check` | `dict` |  |
+| `clauses` | `list` |  |
+| `complianceCheck` | `dict` |  |
 | `content` | `str` |  |
-| `contract_text` | `str` |  |
-| `contract_type` | `str` |  |
-| `draft_id` | `str` |  |
-| `focus_area` | `list` |  |
-| `issue` | `list` |  |
+| `contractText` | `str` |  |
+| `contractType` | `str` |  |
+| `draftId` | `str` |  |
+| `focusAreas` | `list` |  |
+| `issues` | `list` |  |
 | `language` | `str` |  |
-| `missing_claus` | `list` |  |
-| `note` | `str` |  |
-| `overall_assessment` | `str` |  |
-| `party` | `dict` |  |
-| `recommendation` | `list` |  |
-| `requirement` | `str` |  |
-| `review_id` | `str` |  |
-| `risk_level` | `str` |  |
-| `specific_claus` | `list` |  |
+| `missingClauses` | `list` |  |
+| `notes` | `str` |  |
+| `overallAssessment` | `str` |  |
+| `parties` | `dict` |  |
+| `recommendations` | `list` |  |
+| `requirements` | `str` |  |
+| `reviewId` | `str` |  |
+| `riskLevel` | `str` |  |
+| `specificClauses` | `list` |  |
 | `timestamp` | `str` |  |
 
 #### Example: Create
 
 ```python
 contract_service = client.ContractService().create({
-    "contract_text": "example_contract_text",  # str
-    "requirement": "example_requirement",  # str
+    "contractText": "example_contractText",  # str
+    "requirements": "example_requirements",  # str
 })
 ```
 
@@ -404,9 +405,9 @@ Create an instance: `legal_query = client.LegalQuery()`
 | `answer` | `str` |  |
 | `category` | `str` |  |
 | `language` | `str` |  |
-| `query_id` | `str` |  |
+| `queryId` | `str` |  |
 | `question` | `str` |  |
-| `relevant_law` | `list` |  |
+| `relevantLaws` | `list` |  |
 | `timestamp` | `str` |  |
 
 #### Example: Create
@@ -493,7 +494,7 @@ stores the returned data and match criteria internally.
 
 ```python
 caseanalysi = client.CaseAnalysi()
-caseanalysi.create({ "case_detail": "example" })
+caseanalysi.create({ "caseDetails": "example" })
 
 # caseanalysi.data_get() now returns the caseanalysi data from the last create
 # caseanalysi.match_get() returns the last match criteria

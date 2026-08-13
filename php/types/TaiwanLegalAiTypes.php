@@ -15,15 +15,15 @@ declare(strict_types=1);
 /** CaseAnalysi entity data model. */
 class CaseAnalysi
 {
-    public ?string $analysis_id = null;
-    public ?array $applicable_law = null;
-    public string $case_detail;
-    public ?string $case_type = null;
+    public ?string $analysisId = null;
+    public ?array $applicableLaws = null;
+    public string $caseDetails;
+    public ?string $caseType = null;
     public ?string $language = null;
-    public ?array $legal_issue = null;
-    public ?array $party = null;
-    public ?array $precedent = null;
-    public ?string $recommendation = null;
+    public ?array $legalIssues = null;
+    public ?array $parties = null;
+    public ?array $precedents = null;
+    public ?string $recommendations = null;
     public ?string $summary = null;
     public ?string $timestamp = null;
 }
@@ -31,15 +31,15 @@ class CaseAnalysi
 /** Request payload for CaseAnalysi#create. */
 class CaseAnalysiCreateData
 {
-    public ?string $analysis_id = null;
-    public ?array $applicable_law = null;
-    public string $case_detail;
-    public ?string $case_type = null;
+    public ?string $analysisId = null;
+    public ?array $applicableLaws = null;
+    public string $caseDetails;
+    public ?string $caseType = null;
     public ?string $language = null;
-    public ?array $legal_issue = null;
-    public ?array $party = null;
-    public ?array $precedent = null;
-    public ?string $recommendation = null;
+    public ?array $legalIssues = null;
+    public ?array $parties = null;
+    public ?array $precedents = null;
+    public ?string $recommendations = null;
     public ?string $summary = null;
     public ?string $timestamp = null;
 }
@@ -47,48 +47,48 @@ class CaseAnalysiCreateData
 /** ContractService entity data model. */
 class ContractService
 {
-    public ?array $claus = null;
-    public ?array $compliance_check = null;
+    public ?array $clauses = null;
+    public ?array $complianceCheck = null;
     public ?string $content = null;
-    public string $contract_text;
-    public ?string $contract_type = null;
-    public ?string $draft_id = null;
-    public ?array $focus_area = null;
-    public ?array $issue = null;
+    public string $contractText;
+    public ?string $contractType = null;
+    public ?string $draftId = null;
+    public ?array $focusAreas = null;
+    public ?array $issues = null;
     public ?string $language = null;
-    public ?array $missing_claus = null;
-    public ?string $note = null;
-    public ?string $overall_assessment = null;
-    public ?array $party = null;
-    public ?array $recommendation = null;
-    public string $requirement;
-    public ?string $review_id = null;
-    public ?string $risk_level = null;
-    public ?array $specific_claus = null;
+    public ?array $missingClauses = null;
+    public ?string $notes = null;
+    public ?string $overallAssessment = null;
+    public ?array $parties = null;
+    public ?array $recommendations = null;
+    public string $requirements;
+    public ?string $reviewId = null;
+    public ?string $riskLevel = null;
+    public ?array $specificClauses = null;
     public ?string $timestamp = null;
 }
 
 /** Request payload for ContractService#create. */
 class ContractServiceCreateData
 {
-    public ?array $claus = null;
-    public ?array $compliance_check = null;
+    public ?array $clauses = null;
+    public ?array $complianceCheck = null;
     public ?string $content = null;
-    public string $contract_text;
-    public ?string $contract_type = null;
-    public ?string $draft_id = null;
-    public ?array $focus_area = null;
-    public ?array $issue = null;
+    public string $contractText;
+    public ?string $contractType = null;
+    public ?string $draftId = null;
+    public ?array $focusAreas = null;
+    public ?array $issues = null;
     public ?string $language = null;
-    public ?array $missing_claus = null;
-    public ?string $note = null;
-    public ?string $overall_assessment = null;
-    public ?array $party = null;
-    public ?array $recommendation = null;
-    public string $requirement;
-    public ?string $review_id = null;
-    public ?string $risk_level = null;
-    public ?array $specific_claus = null;
+    public ?array $missingClauses = null;
+    public ?string $notes = null;
+    public ?string $overallAssessment = null;
+    public ?array $parties = null;
+    public ?array $recommendations = null;
+    public string $requirements;
+    public ?string $reviewId = null;
+    public ?string $riskLevel = null;
+    public ?array $specificClauses = null;
     public ?string $timestamp = null;
 }
 
@@ -98,9 +98,9 @@ class LegalQuery
     public ?string $answer = null;
     public ?string $category = null;
     public ?string $language = null;
-    public ?string $query_id = null;
+    public ?string $queryId = null;
     public ?string $question = null;
-    public ?array $relevant_law = null;
+    public ?array $relevantLaws = null;
     public ?string $timestamp = null;
 }
 
@@ -110,9 +110,9 @@ class LegalQueryCreateData
     public ?string $answer = null;
     public ?string $category = null;
     public ?string $language = null;
-    public ?string $query_id = null;
+    public ?string $queryId = null;
     public ?string $question = null;
-    public ?array $relevant_law = null;
+    public ?array $relevantLaws = null;
     public ?string $timestamp = null;
 }
 
