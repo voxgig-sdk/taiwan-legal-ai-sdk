@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from taiwanlegalai_sdk.config import make_config
+from taiwanlegalai_sdk.config import shared_config
 from taiwanlegalai_sdk.features import _make_feature
 from taiwanlegalai_sdk.core.control import TaiwanLegalAiControl
 from taiwanlegalai_sdk.core.error import TaiwanLegalAiError
@@ -24,7 +24,7 @@ from taiwanlegalai_sdk.core.spec import TaiwanLegalAiSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

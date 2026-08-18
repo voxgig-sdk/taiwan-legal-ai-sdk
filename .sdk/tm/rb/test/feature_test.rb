@@ -15,7 +15,7 @@ require_relative "../TaiwanLegalAi_sdk"
 module TaiwanLegalAiFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = TaiwanLegalAiConfig.make_config["feature"]
+    f = TaiwanLegalAiConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

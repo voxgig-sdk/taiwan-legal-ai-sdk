@@ -1,6 +1,20 @@
 # TaiwanLegalAi SDK configuration
 
 module TaiwanLegalAiConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -31,81 +45,49 @@ module TaiwanLegalAiConfig
         "case_analysi" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "analysisId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "applicableLaws",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "caseDetails",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "caseType",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "language",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "legalIssues",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "parties",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 6,
             },
             {
-              "active" => true,
               "name" => "precedents",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 7,
             },
             {
-              "active" => true,
               "name" => "recommendations",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 8,
             },
             {
-              "active" => true,
               "name" => "summary",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 9,
             },
             {
-              "active" => true,
               "name" => "timestamp",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 10,
             },
           ],
           "name" => "case_analysi",
@@ -115,7 +97,6 @@ module TaiwanLegalAiConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -128,10 +109,8 @@ module TaiwanLegalAiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
           },
           "relations" => {
@@ -141,35 +120,23 @@ module TaiwanLegalAiConfig
         "contract_service" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "clauses",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "complianceCheck",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "content",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "contractText",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "contractType",
               "op" => {
                 "create" => {
@@ -177,107 +144,64 @@ module TaiwanLegalAiConfig
                   "type" => "`$STRING`",
                 },
               },
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "draftId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "focusAreas",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 6,
             },
             {
-              "active" => true,
               "name" => "issues",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 7,
             },
             {
-              "active" => true,
               "name" => "language",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 8,
             },
             {
-              "active" => true,
               "name" => "missingClauses",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 9,
             },
             {
-              "active" => true,
               "name" => "notes",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 10,
             },
             {
-              "active" => true,
               "name" => "overallAssessment",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 11,
             },
             {
-              "active" => true,
               "name" => "parties",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 12,
             },
             {
-              "active" => true,
               "name" => "recommendations",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 13,
             },
             {
-              "active" => true,
               "name" => "requirements",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 14,
             },
             {
-              "active" => true,
               "name" => "reviewId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 15,
             },
             {
-              "active" => true,
               "name" => "riskLevel",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 16,
             },
             {
-              "active" => true,
               "name" => "specificClauses",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 17,
             },
             {
-              "active" => true,
               "name" => "timestamp",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 18,
             },
           ],
           "name" => "contract_service",
@@ -287,7 +211,6 @@ module TaiwanLegalAiConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -301,10 +224,8 @@ module TaiwanLegalAiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -318,10 +239,8 @@ module TaiwanLegalAiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
               ],
-              "key$" => "create",
             },
           },
           "relations" => {
@@ -331,35 +250,22 @@ module TaiwanLegalAiConfig
         "legal_query" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "answer",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "category",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "language",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "queryId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "question",
               "op" => {
                 "create" => {
@@ -367,23 +273,15 @@ module TaiwanLegalAiConfig
                   "type" => "`$STRING`",
                 },
               },
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "relevantLaws",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "timestamp",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
             },
           ],
           "name" => "legal_query",
@@ -393,7 +291,6 @@ module TaiwanLegalAiConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -406,10 +303,8 @@ module TaiwanLegalAiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
           },
           "relations" => {

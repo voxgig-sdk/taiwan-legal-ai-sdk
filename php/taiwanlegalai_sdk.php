@@ -40,7 +40,7 @@ class TaiwanLegalAiSDK
         $utility = new TaiwanLegalAiUtility();
         $this->_utility = $utility;
 
-        $config = TaiwanLegalAiConfig::make_config();
+        $config = TaiwanLegalAiConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

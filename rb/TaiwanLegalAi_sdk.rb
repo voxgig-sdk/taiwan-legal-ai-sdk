@@ -28,7 +28,7 @@ class TaiwanLegalAiSDK
     utility = TaiwanLegalAiUtility.new
     @_utility = utility
 
-    config = TaiwanLegalAiConfig.make_config
+    config = TaiwanLegalAiConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

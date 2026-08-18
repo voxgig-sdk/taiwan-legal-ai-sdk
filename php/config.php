@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class TaiwanLegalAiConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -36,81 +59,49 @@ class TaiwanLegalAiConfig
         'case_analysi' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'analysisId',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'applicableLaws',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'caseDetails',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'caseType',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'language',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'legalIssues',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'parties',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'precedents',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'recommendations',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'summary',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 9,
             ],
             [
-              'active' => true,
               'name' => 'timestamp',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 10,
             ],
           ],
           'name' => 'case_analysi',
@@ -120,7 +111,6 @@ class TaiwanLegalAiConfig
               'name' => 'create',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
@@ -133,10 +123,8 @@ class TaiwanLegalAiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'create',
             ],
           ],
           'relations' => [
@@ -146,35 +134,23 @@ class TaiwanLegalAiConfig
         'contract_service' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'clauses',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'complianceCheck',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'content',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'contractText',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'contractType',
               'op' => [
                 'create' => [
@@ -182,107 +158,64 @@ class TaiwanLegalAiConfig
                   'type' => '`$STRING`',
                 ],
               ],
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'draftId',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'focusAreas',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'issues',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'language',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'missingClauses',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 9,
             ],
             [
-              'active' => true,
               'name' => 'notes',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 10,
             ],
             [
-              'active' => true,
               'name' => 'overallAssessment',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 11,
             ],
             [
-              'active' => true,
               'name' => 'parties',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 12,
             ],
             [
-              'active' => true,
               'name' => 'recommendations',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 13,
             ],
             [
-              'active' => true,
               'name' => 'requirements',
               'req' => true,
               'type' => '`$STRING`',
-              'index$' => 14,
             ],
             [
-              'active' => true,
               'name' => 'reviewId',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 15,
             ],
             [
-              'active' => true,
               'name' => 'riskLevel',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 16,
             ],
             [
-              'active' => true,
               'name' => 'specificClauses',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 17,
             ],
             [
-              'active' => true,
               'name' => 'timestamp',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 18,
             ],
           ],
           'name' => 'contract_service',
@@ -292,7 +225,6 @@ class TaiwanLegalAiConfig
               'name' => 'create',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
@@ -306,10 +238,8 @@ class TaiwanLegalAiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
@@ -323,10 +253,8 @@ class TaiwanLegalAiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'create',
             ],
           ],
           'relations' => [
@@ -336,35 +264,22 @@ class TaiwanLegalAiConfig
         'legal_query' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'answer',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'category',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'language',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'queryId',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'question',
               'op' => [
                 'create' => [
@@ -372,23 +287,15 @@ class TaiwanLegalAiConfig
                   'type' => '`$STRING`',
                 ],
               ],
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'relevantLaws',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'timestamp',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 6,
             ],
           ],
           'name' => 'legal_query',
@@ -398,7 +305,6 @@ class TaiwanLegalAiConfig
               'name' => 'create',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
@@ -411,10 +317,8 @@ class TaiwanLegalAiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'create',
             ],
           ],
           'relations' => [
