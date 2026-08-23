@@ -8,21 +8,25 @@ main: kit: entity: legal_query: {
     {
       name: "answer"
       req: false
+      short: "AI-generated legal guidance"
       type: "`$STRING`"
     }
     {
       name: "category"
       req: false
+      short: "Category of legal question"
       type: "`$STRING`"
     }
     {
       name: "language"
       req: false
+      short: "Response language preference"
       type: "`$STRING`"
     }
     {
       name: "queryId"
       req: false
+      short: "Unique identifier for the query"
       type: "`$STRING`"
     }
     {
@@ -34,16 +38,19 @@ main: kit: entity: legal_query: {
         }
       }
       req: false
+      short: "The submitted question"
       type: "`$STRING`"
     }
     {
       name: "relevantLaws"
       req: false
+      short: "List of relevant legal statutes"
       type: "`$ARRAY`"
     }
     {
       name: "timestamp"
       req: false
+      short: "Timestamp of the response"
       type: "`$STRING`"
     }
   ]

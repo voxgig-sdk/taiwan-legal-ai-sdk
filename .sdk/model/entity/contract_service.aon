@@ -8,21 +8,25 @@ main: kit: entity: contract_service: {
     {
       name: "clauses"
       req: false
+      short: "List of contract clauses"
       type: "`$ARRAY`"
     }
     {
       name: "complianceCheck"
       req: false
+      short: "Compliance with Taiwan laws"
       type: "`$OBJECT`"
     }
     {
       name: "content"
       req: false
+      short: "The complete contract draft text"
       type: "`$STRING`"
     }
     {
       name: "contractText"
       req: true
+      short: "The complete contract text to be reviewed"
       type: "`$STRING`"
     }
     {
@@ -34,21 +38,25 @@ main: kit: entity: contract_service: {
         }
       }
       req: false
+      short: "Type of contract to draft"
       type: "`$STRING`"
     }
     {
       name: "draftId"
       req: false
+      short: "Unique identifier for the contract draft"
       type: "`$STRING`"
     }
     {
       name: "focusAreas"
       req: false
+      short: "Specific areas to focus the review on"
       type: "`$ARRAY`"
     }
     {
       name: "issues"
       req: false
+      short: "Identified issues and concerns"
       type: "`$ARRAY`"
     }
     {
@@ -59,46 +67,55 @@ main: kit: entity: contract_service: {
     {
       name: "missingClauses"
       req: false
+      short: "Important clauses that are missing"
       type: "`$ARRAY`"
     }
     {
       name: "notes"
       req: false
+      short: "Important notes and considerations"
       type: "`$STRING`"
     }
     {
       name: "overallAssessment"
       req: false
+      short: "Overall assessment of the contract"
       type: "`$STRING`"
     }
     {
       name: "parties"
       req: false
+      short: "Information about contracting parties"
       type: "`$OBJECT`"
     }
     {
       name: "recommendations"
       req: false
+      short: "Recommended changes and improvements"
       type: "`$ARRAY`"
     }
     {
       name: "requirements"
       req: true
+      short: "Specific requirements and terms for the contract"
       type: "`$STRING`"
     }
     {
       name: "reviewId"
       req: false
+      short: "Unique identifier for the review"
       type: "`$STRING`"
     }
     {
       name: "riskLevel"
       req: false
+      short: "Overall risk level assessment"
       type: "`$STRING`"
     }
     {
       name: "specificClauses"
       req: false
+      short: "Specific clauses to include"
       type: "`$ARRAY`"
     }
     {

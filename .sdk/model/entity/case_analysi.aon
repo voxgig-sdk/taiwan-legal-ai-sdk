@@ -8,21 +8,25 @@ main: kit: entity: case_analysi: {
     {
       name: "analysisId"
       req: false
+      short: "Unique identifier for the analysis"
       type: "`$STRING`"
     }
     {
       name: "applicableLaws"
       req: false
+      short: "Laws applicable to this case"
       type: "`$ARRAY`"
     }
     {
       name: "caseDetails"
       req: true
+      short: "Detailed description of the case"
       type: "`$STRING`"
     }
     {
       name: "caseType"
       req: false
+      short: "Type of legal case"
       type: "`$STRING`"
     }
     {
@@ -33,26 +37,31 @@ main: kit: entity: case_analysi: {
     {
       name: "legalIssues"
       req: false
+      short: "Identified legal issues"
       type: "`$ARRAY`"
     }
     {
       name: "parties"
       req: false
+      short: "Information about parties involved"
       type: "`$OBJECT`"
     }
     {
       name: "precedents"
       req: false
+      short: "Relevant legal precedents"
       type: "`$ARRAY`"
     }
     {
       name: "recommendations"
       req: false
+      short: "AI recommendations for case strategy"
       type: "`$STRING`"
     }
     {
       name: "summary"
       req: false
+      short: "Summary of the case analysis"
       type: "`$STRING`"
     }
     {

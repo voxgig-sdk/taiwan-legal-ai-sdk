@@ -237,16 +237,16 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `analysisId` |  |
-| `applicableLaws` |  |
-| `caseDetails` |  |
-| `caseType` |  |
+| `analysisId` | Unique identifier for the analysis |
+| `applicableLaws` | Laws applicable to this case |
+| `caseDetails` | Detailed description of the case |
+| `caseType` | Type of legal case |
 | `language` |  |
-| `legalIssues` |  |
-| `parties` |  |
-| `precedents` |  |
-| `recommendations` |  |
-| `summary` |  |
+| `legalIssues` | Identified legal issues |
+| `parties` | Information about parties involved |
+| `precedents` | Relevant legal precedents |
+| `recommendations` | AI recommendations for case strategy |
+| `summary` | Summary of the case analysis |
 | `timestamp` |  |
 
 Operations: Create.
@@ -257,24 +257,24 @@ API path: `/case-analysis`
 
 | Field | Description |
 | --- | --- |
-| `clauses` |  |
-| `complianceCheck` |  |
-| `content` |  |
-| `contractText` |  |
-| `contractType` |  |
-| `draftId` |  |
-| `focusAreas` |  |
-| `issues` |  |
+| `clauses` | List of contract clauses |
+| `complianceCheck` | Compliance with Taiwan laws |
+| `content` | The complete contract draft text |
+| `contractText` | The complete contract text to be reviewed |
+| `contractType` | Type of contract to draft |
+| `draftId` | Unique identifier for the contract draft |
+| `focusAreas` | Specific areas to focus the review on |
+| `issues` | Identified issues and concerns |
 | `language` |  |
-| `missingClauses` |  |
-| `notes` |  |
-| `overallAssessment` |  |
-| `parties` |  |
-| `recommendations` |  |
-| `requirements` |  |
-| `reviewId` |  |
-| `riskLevel` |  |
-| `specificClauses` |  |
+| `missingClauses` | Important clauses that are missing |
+| `notes` | Important notes and considerations |
+| `overallAssessment` | Overall assessment of the contract |
+| `parties` | Information about contracting parties |
+| `recommendations` | Recommended changes and improvements |
+| `requirements` | Specific requirements and terms for the contract |
+| `reviewId` | Unique identifier for the review |
+| `riskLevel` | Overall risk level assessment |
+| `specificClauses` | Specific clauses to include |
 | `timestamp` |  |
 
 Operations: Create.
@@ -285,13 +285,13 @@ API path: `/contract/draft`
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
-| `category` |  |
-| `language` |  |
-| `queryId` |  |
-| `question` |  |
-| `relevantLaws` |  |
-| `timestamp` |  |
+| `answer` | AI-generated legal guidance |
+| `category` | Category of legal question |
+| `language` | Response language preference |
+| `queryId` | Unique identifier for the query |
+| `question` | The submitted question |
+| `relevantLaws` | List of relevant legal statutes |
+| `timestamp` | Timestamp of the response |
 
 Operations: Create.
 
@@ -316,16 +316,16 @@ Create an instance: `case_analysi = client.CaseAnalysi`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysisId` | `String` |  |
-| `applicableLaws` | `Array` |  |
-| `caseDetails` | `String` |  |
-| `caseType` | `String` |  |
+| `analysisId` | `String` | Unique identifier for the analysis |
+| `applicableLaws` | `Array` | Laws applicable to this case |
+| `caseDetails` | `String` | Detailed description of the case |
+| `caseType` | `String` | Type of legal case |
 | `language` | `String` |  |
-| `legalIssues` | `Array` |  |
-| `parties` | `Hash` |  |
-| `precedents` | `Array` |  |
-| `recommendations` | `String` |  |
-| `summary` | `String` |  |
+| `legalIssues` | `Array` | Identified legal issues |
+| `parties` | `Hash` | Information about parties involved |
+| `precedents` | `Array` | Relevant legal precedents |
+| `recommendations` | `String` | AI recommendations for case strategy |
+| `summary` | `String` | Summary of the case analysis |
 | `timestamp` | `String` |  |
 
 #### Example: Create
@@ -351,24 +351,24 @@ Create an instance: `contract_service = client.ContractService`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `clauses` | `Array` |  |
-| `complianceCheck` | `Hash` |  |
-| `content` | `String` |  |
-| `contractText` | `String` |  |
-| `contractType` | `String` |  |
-| `draftId` | `String` |  |
-| `focusAreas` | `Array` |  |
-| `issues` | `Array` |  |
+| `clauses` | `Array` | List of contract clauses |
+| `complianceCheck` | `Hash` | Compliance with Taiwan laws |
+| `content` | `String` | The complete contract draft text |
+| `contractText` | `String` | The complete contract text to be reviewed |
+| `contractType` | `String` | Type of contract to draft |
+| `draftId` | `String` | Unique identifier for the contract draft |
+| `focusAreas` | `Array` | Specific areas to focus the review on |
+| `issues` | `Array` | Identified issues and concerns |
 | `language` | `String` |  |
-| `missingClauses` | `Array` |  |
-| `notes` | `String` |  |
-| `overallAssessment` | `String` |  |
-| `parties` | `Hash` |  |
-| `recommendations` | `Array` |  |
-| `requirements` | `String` |  |
-| `reviewId` | `String` |  |
-| `riskLevel` | `String` |  |
-| `specificClauses` | `Array` |  |
+| `missingClauses` | `Array` | Important clauses that are missing |
+| `notes` | `String` | Important notes and considerations |
+| `overallAssessment` | `String` | Overall assessment of the contract |
+| `parties` | `Hash` | Information about contracting parties |
+| `recommendations` | `Array` | Recommended changes and improvements |
+| `requirements` | `String` | Specific requirements and terms for the contract |
+| `reviewId` | `String` | Unique identifier for the review |
+| `riskLevel` | `String` | Overall risk level assessment |
+| `specificClauses` | `Array` | Specific clauses to include |
 | `timestamp` | `String` |  |
 
 #### Example: Create
@@ -395,13 +395,13 @@ Create an instance: `legal_query = client.LegalQuery`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `String` |  |
-| `category` | `String` |  |
-| `language` | `String` |  |
-| `queryId` | `String` |  |
-| `question` | `String` |  |
-| `relevantLaws` | `Array` |  |
-| `timestamp` | `String` |  |
+| `answer` | `String` | AI-generated legal guidance |
+| `category` | `String` | Category of legal question |
+| `language` | `String` | Response language preference |
+| `queryId` | `String` | Unique identifier for the query |
+| `question` | `String` | The submitted question |
+| `relevantLaws` | `Array` | List of relevant legal statutes |
+| `timestamp` | `String` | Timestamp of the response |
 
 #### Example: Create
 

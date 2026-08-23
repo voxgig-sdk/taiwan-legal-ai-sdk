@@ -96,16 +96,16 @@ case_analysi = client.CaseAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysisId` | `str` | No |  |
-| `applicableLaws` | `list` | No |  |
-| `caseDetails` | `str` | Yes |  |
-| `caseType` | `str` | No |  |
+| `analysisId` | `str` | No | Unique identifier for the analysis |
+| `applicableLaws` | `list` | No | Laws applicable to this case |
+| `caseDetails` | `str` | Yes | Detailed description of the case |
+| `caseType` | `str` | No | Type of legal case |
 | `language` | `str` | No |  |
-| `legalIssues` | `list` | No |  |
-| `parties` | `dict` | No |  |
-| `precedents` | `list` | No |  |
-| `recommendations` | `str` | No |  |
-| `summary` | `str` | No |  |
+| `legalIssues` | `list` | No | Identified legal issues |
+| `parties` | `dict` | No | Information about parties involved |
+| `precedents` | `list` | No | Relevant legal precedents |
+| `recommendations` | `str` | No | AI recommendations for case strategy |
+| `summary` | `str` | No | Summary of the case analysis |
 | `timestamp` | `str` | No |  |
 
 ### Operations
@@ -159,24 +159,24 @@ contract_service = client.ContractService()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `clauses` | `list` | No |  |
-| `complianceCheck` | `dict` | No |  |
-| `content` | `str` | No |  |
-| `contractText` | `str` | Yes |  |
-| `contractType` | `str` | No |  |
-| `draftId` | `str` | No |  |
-| `focusAreas` | `list` | No |  |
-| `issues` | `list` | No |  |
+| `clauses` | `list` | No | List of contract clauses |
+| `complianceCheck` | `dict` | No | Compliance with Taiwan laws |
+| `content` | `str` | No | The complete contract draft text |
+| `contractText` | `str` | Yes | The complete contract text to be reviewed |
+| `contractType` | `str` | No | Type of contract to draft |
+| `draftId` | `str` | No | Unique identifier for the contract draft |
+| `focusAreas` | `list` | No | Specific areas to focus the review on |
+| `issues` | `list` | No | Identified issues and concerns |
 | `language` | `str` | No |  |
-| `missingClauses` | `list` | No |  |
-| `notes` | `str` | No |  |
-| `overallAssessment` | `str` | No |  |
-| `parties` | `dict` | No |  |
-| `recommendations` | `list` | No |  |
-| `requirements` | `str` | Yes |  |
-| `reviewId` | `str` | No |  |
-| `riskLevel` | `str` | No |  |
-| `specificClauses` | `list` | No |  |
+| `missingClauses` | `list` | No | Important clauses that are missing |
+| `notes` | `str` | No | Important notes and considerations |
+| `overallAssessment` | `str` | No | Overall assessment of the contract |
+| `parties` | `dict` | No | Information about contracting parties |
+| `recommendations` | `list` | No | Recommended changes and improvements |
+| `requirements` | `str` | Yes | Specific requirements and terms for the contract |
+| `reviewId` | `str` | No | Unique identifier for the review |
+| `riskLevel` | `str` | No | Overall risk level assessment |
+| `specificClauses` | `list` | No | Specific clauses to include |
 | `timestamp` | `str` | No |  |
 
 ### Field Usage by Operation
@@ -255,13 +255,13 @@ legal_query = client.LegalQuery()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `str` | No |  |
-| `category` | `str` | No |  |
-| `language` | `str` | No |  |
-| `queryId` | `str` | No |  |
-| `question` | `str` | No |  |
-| `relevantLaws` | `list` | No |  |
-| `timestamp` | `str` | No |  |
+| `answer` | `str` | No | AI-generated legal guidance |
+| `category` | `str` | No | Category of legal question |
+| `language` | `str` | No | Response language preference |
+| `queryId` | `str` | No | Unique identifier for the query |
+| `question` | `str` | No | The submitted question |
+| `relevantLaws` | `list` | No | List of relevant legal statutes |
+| `timestamp` | `str` | No | Timestamp of the response |
 
 ### Field Usage by Operation
 

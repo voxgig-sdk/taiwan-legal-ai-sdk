@@ -19,6 +19,9 @@ module TaiwanLegalAiConfig
     {
       "main" => {
         "name" => "TaiwanLegalAi",
+        "slug" => "taiwan-legal-ai",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -46,19 +49,23 @@ module TaiwanLegalAiConfig
           "fields" => [
             {
               "name" => "analysisId",
+              "short" => "Unique identifier for the analysis",
               "type" => "`$STRING`",
             },
             {
               "name" => "applicableLaws",
+              "short" => "Laws applicable to this case",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "caseDetails",
               "req" => true,
+              "short" => "Detailed description of the case",
               "type" => "`$STRING`",
             },
             {
               "name" => "caseType",
+              "short" => "Type of legal case",
               "type" => "`$STRING`",
             },
             {
@@ -67,22 +74,27 @@ module TaiwanLegalAiConfig
             },
             {
               "name" => "legalIssues",
+              "short" => "Identified legal issues",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "parties",
+              "short" => "Information about parties involved",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "precedents",
+              "short" => "Relevant legal precedents",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "recommendations",
+              "short" => "AI recommendations for case strategy",
               "type" => "`$STRING`",
             },
             {
               "name" => "summary",
+              "short" => "Summary of the case analysis",
               "type" => "`$STRING`",
             },
             {
@@ -121,19 +133,23 @@ module TaiwanLegalAiConfig
           "fields" => [
             {
               "name" => "clauses",
+              "short" => "List of contract clauses",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "complianceCheck",
+              "short" => "Compliance with Taiwan laws",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "content",
+              "short" => "The complete contract draft text",
               "type" => "`$STRING`",
             },
             {
               "name" => "contractText",
               "req" => true,
+              "short" => "The complete contract text to be reviewed",
               "type" => "`$STRING`",
             },
             {
@@ -144,18 +160,22 @@ module TaiwanLegalAiConfig
                   "type" => "`$STRING`",
                 },
               },
+              "short" => "Type of contract to draft",
               "type" => "`$STRING`",
             },
             {
               "name" => "draftId",
+              "short" => "Unique identifier for the contract draft",
               "type" => "`$STRING`",
             },
             {
               "name" => "focusAreas",
+              "short" => "Specific areas to focus the review on",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "issues",
+              "short" => "Identified issues and concerns",
               "type" => "`$ARRAY`",
             },
             {
@@ -164,39 +184,48 @@ module TaiwanLegalAiConfig
             },
             {
               "name" => "missingClauses",
+              "short" => "Important clauses that are missing",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "notes",
+              "short" => "Important notes and considerations",
               "type" => "`$STRING`",
             },
             {
               "name" => "overallAssessment",
+              "short" => "Overall assessment of the contract",
               "type" => "`$STRING`",
             },
             {
               "name" => "parties",
+              "short" => "Information about contracting parties",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "recommendations",
+              "short" => "Recommended changes and improvements",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "requirements",
               "req" => true,
+              "short" => "Specific requirements and terms for the contract",
               "type" => "`$STRING`",
             },
             {
               "name" => "reviewId",
+              "short" => "Unique identifier for the review",
               "type" => "`$STRING`",
             },
             {
               "name" => "riskLevel",
+              "short" => "Overall risk level assessment",
               "type" => "`$STRING`",
             },
             {
               "name" => "specificClauses",
+              "short" => "Specific clauses to include",
               "type" => "`$ARRAY`",
             },
             {
@@ -251,18 +280,22 @@ module TaiwanLegalAiConfig
           "fields" => [
             {
               "name" => "answer",
+              "short" => "AI-generated legal guidance",
               "type" => "`$STRING`",
             },
             {
               "name" => "category",
+              "short" => "Category of legal question",
               "type" => "`$STRING`",
             },
             {
               "name" => "language",
+              "short" => "Response language preference",
               "type" => "`$STRING`",
             },
             {
               "name" => "queryId",
+              "short" => "Unique identifier for the query",
               "type" => "`$STRING`",
             },
             {
@@ -273,14 +306,17 @@ module TaiwanLegalAiConfig
                   "type" => "`$STRING`",
                 },
               },
+              "short" => "The submitted question",
               "type" => "`$STRING`",
             },
             {
               "name" => "relevantLaws",
+              "short" => "List of relevant legal statutes",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "timestamp",
+              "short" => "Timestamp of the response",
               "type" => "`$STRING`",
             },
           ],

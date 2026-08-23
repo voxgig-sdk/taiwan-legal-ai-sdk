@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -290,16 +290,16 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `analysisId` |  |
-| `applicableLaws` |  |
-| `caseDetails` |  |
-| `caseType` |  |
+| `analysisId` | Unique identifier for the analysis |
+| `applicableLaws` | Laws applicable to this case |
+| `caseDetails` | Detailed description of the case |
+| `caseType` | Type of legal case |
 | `language` |  |
-| `legalIssues` |  |
-| `parties` |  |
-| `precedents` |  |
-| `recommendations` |  |
-| `summary` |  |
+| `legalIssues` | Identified legal issues |
+| `parties` | Information about parties involved |
+| `precedents` | Relevant legal precedents |
+| `recommendations` | AI recommendations for case strategy |
+| `summary` | Summary of the case analysis |
 | `timestamp` |  |
 
 Operations: create.
@@ -310,24 +310,24 @@ API path: `/case-analysis`
 
 | Field | Description |
 | --- | --- |
-| `clauses` |  |
-| `complianceCheck` |  |
-| `content` |  |
-| `contractText` |  |
-| `contractType` |  |
-| `draftId` |  |
-| `focusAreas` |  |
-| `issues` |  |
+| `clauses` | List of contract clauses |
+| `complianceCheck` | Compliance with Taiwan laws |
+| `content` | The complete contract draft text |
+| `contractText` | The complete contract text to be reviewed |
+| `contractType` | Type of contract to draft |
+| `draftId` | Unique identifier for the contract draft |
+| `focusAreas` | Specific areas to focus the review on |
+| `issues` | Identified issues and concerns |
 | `language` |  |
-| `missingClauses` |  |
-| `notes` |  |
-| `overallAssessment` |  |
-| `parties` |  |
-| `recommendations` |  |
-| `requirements` |  |
-| `reviewId` |  |
-| `riskLevel` |  |
-| `specificClauses` |  |
+| `missingClauses` | Important clauses that are missing |
+| `notes` | Important notes and considerations |
+| `overallAssessment` | Overall assessment of the contract |
+| `parties` | Information about contracting parties |
+| `recommendations` | Recommended changes and improvements |
+| `requirements` | Specific requirements and terms for the contract |
+| `reviewId` | Unique identifier for the review |
+| `riskLevel` | Overall risk level assessment |
+| `specificClauses` | Specific clauses to include |
 | `timestamp` |  |
 
 Operations: create.
@@ -338,13 +338,13 @@ API path: `/contract/draft`
 
 | Field | Description |
 | --- | --- |
-| `answer` |  |
-| `category` |  |
-| `language` |  |
-| `queryId` |  |
-| `question` |  |
-| `relevantLaws` |  |
-| `timestamp` |  |
+| `answer` | AI-generated legal guidance |
+| `category` | Category of legal question |
+| `language` | Response language preference |
+| `queryId` | Unique identifier for the query |
+| `question` | The submitted question |
+| `relevantLaws` | List of relevant legal statutes |
+| `timestamp` | Timestamp of the response |
 
 Operations: create.
 
@@ -369,16 +369,16 @@ Create an instance: `const case_analysi = client.CaseAnalysi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `analysisId` | `string` |  |
-| `applicableLaws` | `any[]` |  |
-| `caseDetails` | `string` |  |
-| `caseType` | `string` |  |
+| `analysisId` | `string` | Unique identifier for the analysis |
+| `applicableLaws` | `any[]` | Laws applicable to this case |
+| `caseDetails` | `string` | Detailed description of the case |
+| `caseType` | `string` | Type of legal case |
 | `language` | `string` |  |
-| `legalIssues` | `any[]` |  |
-| `parties` | `Record<string, any>` |  |
-| `precedents` | `any[]` |  |
-| `recommendations` | `string` |  |
-| `summary` | `string` |  |
+| `legalIssues` | `any[]` | Identified legal issues |
+| `parties` | `Record<string, any>` | Information about parties involved |
+| `precedents` | `any[]` | Relevant legal precedents |
+| `recommendations` | `string` | AI recommendations for case strategy |
+| `summary` | `string` | Summary of the case analysis |
 | `timestamp` | `string` |  |
 
 #### Example: Create
@@ -404,24 +404,24 @@ Create an instance: `const contract_service = client.ContractService()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `clauses` | `any[]` |  |
-| `complianceCheck` | `Record<string, any>` |  |
-| `content` | `string` |  |
-| `contractText` | `string` |  |
-| `contractType` | `string` |  |
-| `draftId` | `string` |  |
-| `focusAreas` | `any[]` |  |
-| `issues` | `any[]` |  |
+| `clauses` | `any[]` | List of contract clauses |
+| `complianceCheck` | `Record<string, any>` | Compliance with Taiwan laws |
+| `content` | `string` | The complete contract draft text |
+| `contractText` | `string` | The complete contract text to be reviewed |
+| `contractType` | `string` | Type of contract to draft |
+| `draftId` | `string` | Unique identifier for the contract draft |
+| `focusAreas` | `any[]` | Specific areas to focus the review on |
+| `issues` | `any[]` | Identified issues and concerns |
 | `language` | `string` |  |
-| `missingClauses` | `any[]` |  |
-| `notes` | `string` |  |
-| `overallAssessment` | `string` |  |
-| `parties` | `Record<string, any>` |  |
-| `recommendations` | `any[]` |  |
-| `requirements` | `string` |  |
-| `reviewId` | `string` |  |
-| `riskLevel` | `string` |  |
-| `specificClauses` | `any[]` |  |
+| `missingClauses` | `any[]` | Important clauses that are missing |
+| `notes` | `string` | Important notes and considerations |
+| `overallAssessment` | `string` | Overall assessment of the contract |
+| `parties` | `Record<string, any>` | Information about contracting parties |
+| `recommendations` | `any[]` | Recommended changes and improvements |
+| `requirements` | `string` | Specific requirements and terms for the contract |
+| `reviewId` | `string` | Unique identifier for the review |
+| `riskLevel` | `string` | Overall risk level assessment |
+| `specificClauses` | `any[]` | Specific clauses to include |
 | `timestamp` | `string` |  |
 
 #### Example: Create
@@ -448,13 +448,13 @@ Create an instance: `const legal_query = client.LegalQuery()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `answer` | `string` |  |
-| `category` | `string` |  |
-| `language` | `string` |  |
-| `queryId` | `string` |  |
-| `question` | `string` |  |
-| `relevantLaws` | `any[]` |  |
-| `timestamp` | `string` |  |
+| `answer` | `string` | AI-generated legal guidance |
+| `category` | `string` | Category of legal question |
+| `language` | `string` | Response language preference |
+| `queryId` | `string` | Unique identifier for the query |
+| `question` | `string` | The submitted question |
+| `relevantLaws` | `any[]` | List of relevant legal statutes |
+| `timestamp` | `string` | Timestamp of the response |
 
 #### Example: Create
 

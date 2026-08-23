@@ -101,16 +101,16 @@ $case_analysi = $client->CaseAnalysi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysisId` | `string` | No |  |
-| `applicableLaws` | `array` | No |  |
-| `caseDetails` | `string` | Yes |  |
-| `caseType` | `string` | No |  |
+| `analysisId` | `string` | No | Unique identifier for the analysis |
+| `applicableLaws` | `array` | No | Laws applicable to this case |
+| `caseDetails` | `string` | Yes | Detailed description of the case |
+| `caseType` | `string` | No | Type of legal case |
 | `language` | `string` | No |  |
-| `legalIssues` | `array` | No |  |
-| `parties` | `array` | No |  |
-| `precedents` | `array` | No |  |
-| `recommendations` | `string` | No |  |
-| `summary` | `string` | No |  |
+| `legalIssues` | `array` | No | Identified legal issues |
+| `parties` | `array` | No | Information about parties involved |
+| `precedents` | `array` | No | Relevant legal precedents |
+| `recommendations` | `string` | No | AI recommendations for case strategy |
+| `summary` | `string` | No | Summary of the case analysis |
 | `timestamp` | `string` | No |  |
 
 ### Operations
@@ -165,24 +165,24 @@ $contract_service = $client->ContractService();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `clauses` | `array` | No |  |
-| `complianceCheck` | `array` | No |  |
-| `content` | `string` | No |  |
-| `contractText` | `string` | Yes |  |
-| `contractType` | `string` | No |  |
-| `draftId` | `string` | No |  |
-| `focusAreas` | `array` | No |  |
-| `issues` | `array` | No |  |
+| `clauses` | `array` | No | List of contract clauses |
+| `complianceCheck` | `array` | No | Compliance with Taiwan laws |
+| `content` | `string` | No | The complete contract draft text |
+| `contractText` | `string` | Yes | The complete contract text to be reviewed |
+| `contractType` | `string` | No | Type of contract to draft |
+| `draftId` | `string` | No | Unique identifier for the contract draft |
+| `focusAreas` | `array` | No | Specific areas to focus the review on |
+| `issues` | `array` | No | Identified issues and concerns |
 | `language` | `string` | No |  |
-| `missingClauses` | `array` | No |  |
-| `notes` | `string` | No |  |
-| `overallAssessment` | `string` | No |  |
-| `parties` | `array` | No |  |
-| `recommendations` | `array` | No |  |
-| `requirements` | `string` | Yes |  |
-| `reviewId` | `string` | No |  |
-| `riskLevel` | `string` | No |  |
-| `specificClauses` | `array` | No |  |
+| `missingClauses` | `array` | No | Important clauses that are missing |
+| `notes` | `string` | No | Important notes and considerations |
+| `overallAssessment` | `string` | No | Overall assessment of the contract |
+| `parties` | `array` | No | Information about contracting parties |
+| `recommendations` | `array` | No | Recommended changes and improvements |
+| `requirements` | `string` | Yes | Specific requirements and terms for the contract |
+| `reviewId` | `string` | No | Unique identifier for the review |
+| `riskLevel` | `string` | No | Overall risk level assessment |
+| `specificClauses` | `array` | No | Specific clauses to include |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
@@ -262,13 +262,13 @@ $legal_query = $client->LegalQuery();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `string` | No |  |
-| `category` | `string` | No |  |
-| `language` | `string` | No |  |
-| `queryId` | `string` | No |  |
-| `question` | `string` | No |  |
-| `relevantLaws` | `array` | No |  |
-| `timestamp` | `string` | No |  |
+| `answer` | `string` | No | AI-generated legal guidance |
+| `category` | `string` | No | Category of legal question |
+| `language` | `string` | No | Response language preference |
+| `queryId` | `string` | No | Unique identifier for the query |
+| `question` | `string` | No | The submitted question |
+| `relevantLaws` | `array` | No | List of relevant legal statutes |
+| `timestamp` | `string` | No | Timestamp of the response |
 
 ### Field Usage by Operation
 

@@ -99,16 +99,16 @@ local case_analysi = client:CaseAnalysi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysisId` | `string` | No |  |
-| `applicableLaws` | `table` | No |  |
-| `caseDetails` | `string` | Yes |  |
-| `caseType` | `string` | No |  |
+| `analysisId` | `string` | No | Unique identifier for the analysis |
+| `applicableLaws` | `table` | No | Laws applicable to this case |
+| `caseDetails` | `string` | Yes | Detailed description of the case |
+| `caseType` | `string` | No | Type of legal case |
 | `language` | `string` | No |  |
-| `legalIssues` | `table` | No |  |
-| `parties` | `table` | No |  |
-| `precedents` | `table` | No |  |
-| `recommendations` | `string` | No |  |
-| `summary` | `string` | No |  |
+| `legalIssues` | `table` | No | Identified legal issues |
+| `parties` | `table` | No | Information about parties involved |
+| `precedents` | `table` | No | Relevant legal precedents |
+| `recommendations` | `string` | No | AI recommendations for case strategy |
+| `summary` | `string` | No | Summary of the case analysis |
 | `timestamp` | `string` | No |  |
 
 ### Operations
@@ -163,24 +163,24 @@ local contract_service = client:ContractService(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `clauses` | `table` | No |  |
-| `complianceCheck` | `table` | No |  |
-| `content` | `string` | No |  |
-| `contractText` | `string` | Yes |  |
-| `contractType` | `string` | No |  |
-| `draftId` | `string` | No |  |
-| `focusAreas` | `table` | No |  |
-| `issues` | `table` | No |  |
+| `clauses` | `table` | No | List of contract clauses |
+| `complianceCheck` | `table` | No | Compliance with Taiwan laws |
+| `content` | `string` | No | The complete contract draft text |
+| `contractText` | `string` | Yes | The complete contract text to be reviewed |
+| `contractType` | `string` | No | Type of contract to draft |
+| `draftId` | `string` | No | Unique identifier for the contract draft |
+| `focusAreas` | `table` | No | Specific areas to focus the review on |
+| `issues` | `table` | No | Identified issues and concerns |
 | `language` | `string` | No |  |
-| `missingClauses` | `table` | No |  |
-| `notes` | `string` | No |  |
-| `overallAssessment` | `string` | No |  |
-| `parties` | `table` | No |  |
-| `recommendations` | `table` | No |  |
-| `requirements` | `string` | Yes |  |
-| `reviewId` | `string` | No |  |
-| `riskLevel` | `string` | No |  |
-| `specificClauses` | `table` | No |  |
+| `missingClauses` | `table` | No | Important clauses that are missing |
+| `notes` | `string` | No | Important notes and considerations |
+| `overallAssessment` | `string` | No | Overall assessment of the contract |
+| `parties` | `table` | No | Information about contracting parties |
+| `recommendations` | `table` | No | Recommended changes and improvements |
+| `requirements` | `string` | Yes | Specific requirements and terms for the contract |
+| `reviewId` | `string` | No | Unique identifier for the review |
+| `riskLevel` | `string` | No | Overall risk level assessment |
+| `specificClauses` | `table` | No | Specific clauses to include |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
@@ -260,13 +260,13 @@ local legal_query = client:LegalQuery(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `string` | No |  |
-| `category` | `string` | No |  |
-| `language` | `string` | No |  |
-| `queryId` | `string` | No |  |
-| `question` | `string` | No |  |
-| `relevantLaws` | `table` | No |  |
-| `timestamp` | `string` | No |  |
+| `answer` | `string` | No | AI-generated legal guidance |
+| `category` | `string` | No | Category of legal question |
+| `language` | `string` | No | Response language preference |
+| `queryId` | `string` | No | Unique identifier for the query |
+| `question` | `string` | No | The submitted question |
+| `relevantLaws` | `table` | No | List of relevant legal statutes |
+| `timestamp` | `string` | No | Timestamp of the response |
 
 ### Field Usage by Operation
 

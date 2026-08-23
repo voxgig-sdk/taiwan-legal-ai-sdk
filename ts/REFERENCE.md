@@ -141,16 +141,16 @@ const case_analysi = client.CaseAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `analysisId` | `string` | No |  |
-| `applicableLaws` | `any[]` | No |  |
-| `caseDetails` | `string` | Yes |  |
-| `caseType` | `string` | No |  |
+| `analysisId` | `string` | No | Unique identifier for the analysis |
+| `applicableLaws` | `any[]` | No | Laws applicable to this case |
+| `caseDetails` | `string` | Yes | Detailed description of the case |
+| `caseType` | `string` | No | Type of legal case |
 | `language` | `string` | No |  |
-| `legalIssues` | `any[]` | No |  |
-| `parties` | `Record<string, any>` | No |  |
-| `precedents` | `any[]` | No |  |
-| `recommendations` | `string` | No |  |
-| `summary` | `string` | No |  |
+| `legalIssues` | `any[]` | No | Identified legal issues |
+| `parties` | `Record<string, any>` | No | Information about parties involved |
+| `precedents` | `any[]` | No | Relevant legal precedents |
+| `recommendations` | `string` | No | AI recommendations for case strategy |
+| `summary` | `string` | No | Summary of the case analysis |
 | `timestamp` | `string` | No |  |
 
 ### Operations
@@ -203,24 +203,24 @@ const contract_service = client.ContractService()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `clauses` | `any[]` | No |  |
-| `complianceCheck` | `Record<string, any>` | No |  |
-| `content` | `string` | No |  |
-| `contractText` | `string` | Yes |  |
-| `contractType` | `string` | No |  |
-| `draftId` | `string` | No |  |
-| `focusAreas` | `any[]` | No |  |
-| `issues` | `any[]` | No |  |
+| `clauses` | `any[]` | No | List of contract clauses |
+| `complianceCheck` | `Record<string, any>` | No | Compliance with Taiwan laws |
+| `content` | `string` | No | The complete contract draft text |
+| `contractText` | `string` | Yes | The complete contract text to be reviewed |
+| `contractType` | `string` | No | Type of contract to draft |
+| `draftId` | `string` | No | Unique identifier for the contract draft |
+| `focusAreas` | `any[]` | No | Specific areas to focus the review on |
+| `issues` | `any[]` | No | Identified issues and concerns |
 | `language` | `string` | No |  |
-| `missingClauses` | `any[]` | No |  |
-| `notes` | `string` | No |  |
-| `overallAssessment` | `string` | No |  |
-| `parties` | `Record<string, any>` | No |  |
-| `recommendations` | `any[]` | No |  |
-| `requirements` | `string` | Yes |  |
-| `reviewId` | `string` | No |  |
-| `riskLevel` | `string` | No |  |
-| `specificClauses` | `any[]` | No |  |
+| `missingClauses` | `any[]` | No | Important clauses that are missing |
+| `notes` | `string` | No | Important notes and considerations |
+| `overallAssessment` | `string` | No | Overall assessment of the contract |
+| `parties` | `Record<string, any>` | No | Information about contracting parties |
+| `recommendations` | `any[]` | No | Recommended changes and improvements |
+| `requirements` | `string` | Yes | Specific requirements and terms for the contract |
+| `reviewId` | `string` | No | Unique identifier for the review |
+| `riskLevel` | `string` | No | Overall risk level assessment |
+| `specificClauses` | `any[]` | No | Specific clauses to include |
 | `timestamp` | `string` | No |  |
 
 ### Field Usage by Operation
@@ -298,13 +298,13 @@ const legal_query = client.LegalQuery()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `answer` | `string` | No |  |
-| `category` | `string` | No |  |
-| `language` | `string` | No |  |
-| `queryId` | `string` | No |  |
-| `question` | `string` | No |  |
-| `relevantLaws` | `any[]` | No |  |
-| `timestamp` | `string` | No |  |
+| `answer` | `string` | No | AI-generated legal guidance |
+| `category` | `string` | No | Category of legal question |
+| `language` | `string` | No | Response language preference |
+| `queryId` | `string` | No | Unique identifier for the query |
+| `question` | `string` | No | The submitted question |
+| `relevantLaws` | `any[]` | No | List of relevant legal statutes |
+| `timestamp` | `string` | No | Timestamp of the response |
 
 ### Field Usage by Operation
 

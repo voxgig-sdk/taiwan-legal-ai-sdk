@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "TaiwanLegalAi",
+			"slug": "taiwan-legal-ai",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -38,19 +41,23 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "analysisId",
+						"short": "Unique identifier for the analysis",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "applicableLaws",
+						"short": "Laws applicable to this case",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "caseDetails",
 						"req": true,
+						"short": "Detailed description of the case",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "caseType",
+						"short": "Type of legal case",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -59,22 +66,27 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "legalIssues",
+						"short": "Identified legal issues",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "parties",
+						"short": "Information about parties involved",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "precedents",
+						"short": "Relevant legal precedents",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "recommendations",
+						"short": "AI recommendations for case strategy",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "summary",
+						"short": "Summary of the case analysis",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -113,19 +125,23 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "clauses",
+						"short": "List of contract clauses",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "complianceCheck",
+						"short": "Compliance with Taiwan laws",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "content",
+						"short": "The complete contract draft text",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "contractText",
 						"req": true,
+						"short": "The complete contract text to be reviewed",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -136,18 +152,22 @@ func MakeConfig() map[string]any {
 								"type": "`$STRING`",
 							},
 						},
+						"short": "Type of contract to draft",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "draftId",
+						"short": "Unique identifier for the contract draft",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "focusAreas",
+						"short": "Specific areas to focus the review on",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "issues",
+						"short": "Identified issues and concerns",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -156,39 +176,48 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "missingClauses",
+						"short": "Important clauses that are missing",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "notes",
+						"short": "Important notes and considerations",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "overallAssessment",
+						"short": "Overall assessment of the contract",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "parties",
+						"short": "Information about contracting parties",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "recommendations",
+						"short": "Recommended changes and improvements",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "requirements",
 						"req": true,
+						"short": "Specific requirements and terms for the contract",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reviewId",
+						"short": "Unique identifier for the review",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "riskLevel",
+						"short": "Overall risk level assessment",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "specificClauses",
+						"short": "Specific clauses to include",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -243,18 +272,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "answer",
+						"short": "AI-generated legal guidance",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "category",
+						"short": "Category of legal question",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "language",
+						"short": "Response language preference",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "queryId",
+						"short": "Unique identifier for the query",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -265,14 +298,17 @@ func MakeConfig() map[string]any {
 								"type": "`$STRING`",
 							},
 						},
+						"short": "The submitted question",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "relevantLaws",
+						"short": "List of relevant legal statutes",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "timestamp",
+						"short": "Timestamp of the response",
 						"type": "`$STRING`",
 					},
 				},
