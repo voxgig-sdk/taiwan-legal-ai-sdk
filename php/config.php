@@ -42,6 +42,7 @@ class TaiwanLegalAiConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
