@@ -91,6 +91,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "timestamp",
 						"type": "`$STRING`",
 					},
@@ -106,13 +107,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/case-analysis",
-								"parts": []any{
-									"case-analysis",
+								"segments": []any{
+									map[string]any{
+										"lit": "case-analysis",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"case-analysis",
 								},
 							},
 						},
@@ -222,6 +228,7 @@ func MakeConfig() map[string]any {
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "timestamp",
 						"type": "`$STRING`",
 					},
@@ -237,14 +244,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/contract/draft",
-								"parts": []any{
-									"contract",
-									"draft",
+								"segments": []any{
+									map[string]any{
+										"lit": "contract",
+									},
+									map[string]any{
+										"lit": "draft",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"contract",
+									"draft",
 								},
 							},
 							map[string]any{
@@ -252,14 +267,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/contract/review",
-								"parts": []any{
-									"contract",
-									"review",
+								"segments": []any{
+									map[string]any{
+										"lit": "contract",
+									},
+									map[string]any{
+										"lit": "review",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"contract",
+									"review",
 								},
 							},
 						},
@@ -308,6 +331,7 @@ func MakeConfig() map[string]any {
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "timestamp",
 						"short": "Timestamp of the response",
 						"type": "`$STRING`",
@@ -324,13 +348,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/query",
-								"parts": []any{
-									"query",
+								"segments": []any{
+									map[string]any{
+										"lit": "query",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"query",
 								},
 							},
 						},
@@ -342,6 +371,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

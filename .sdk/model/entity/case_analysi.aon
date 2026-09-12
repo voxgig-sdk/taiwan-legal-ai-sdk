@@ -65,6 +65,7 @@ main: kit: entity: case_analysi: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       type: "`$STRING`"
@@ -79,8 +80,10 @@ main: kit: entity: case_analysi: {
         {
           method: "POST"
           orig: "/case-analysis"
-          parts: [
-            "case-analysis"
+          segments: [
+            {
+              lit: "case-analysis"
+            }
           ]
           transform: {
             req: "`reqdata`"

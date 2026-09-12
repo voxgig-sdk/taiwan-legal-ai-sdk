@@ -76,7 +76,7 @@ def legal_query_basic_setup(extra)
     "TAIWAN_LEGAL_AI_TEST_LEGAL_QUERY_ENTID" => idmap,
     "TAIWAN_LEGAL_AI_TEST_LIVE" => "FALSE",
     "TAIWAN_LEGAL_AI_TEST_EXPLAIN" => "FALSE",
-    "TAIWAN_LEGAL_AI_APIKEY" => "NONE",
+    "TAIWAN_LEGAL_AI_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -87,6 +87,9 @@ def legal_query_basic_setup(extra)
 
   if env["TAIWAN_LEGAL_AI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["TAIWAN_LEGAL_AI_APIKEY"],
       },

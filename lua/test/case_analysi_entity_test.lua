@@ -86,7 +86,7 @@ function case_analysi_basic_setup(extra)
     ["TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID"] = idmap,
     ["TAIWAN_LEGAL_AI_TEST_LIVE"] = "FALSE",
     ["TAIWAN_LEGAL_AI_TEST_EXPLAIN"] = "FALSE",
-    ["TAIWAN_LEGAL_AI_APIKEY"] = "NONE",
+    ["TAIWAN_LEGAL_AI_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -97,6 +97,9 @@ function case_analysi_basic_setup(extra)
 
   if env["TAIWAN_LEGAL_AI_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["TAIWAN_LEGAL_AI_APIKEY"],
       },

@@ -48,6 +48,7 @@ main: kit: entity: legal_query: {
       type: "`$ARRAY`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       short: "Timestamp of the response"
@@ -63,8 +64,10 @@ main: kit: entity: legal_query: {
         {
           method: "POST"
           orig: "/query"
-          parts: [
-            "query"
+          segments: [
+            {
+              lit: "query"
+            }
           ]
           transform: {
             req: "`reqdata`"

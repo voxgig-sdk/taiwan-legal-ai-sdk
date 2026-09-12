@@ -1,6 +1,14 @@
 # TaiwanLegalAi SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -108,6 +116,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "timestamp",
             "type": "`$STRING`",
           },
@@ -123,14 +132,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/case-analysis",
-                "parts": [
-                  "case-analysis",
+                "segments": [
+                  {
+                    "lit": "case-analysis",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "case-analysis",
+                ],
               },
             ],
           },
@@ -239,6 +253,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "date-time",
             "name": "timestamp",
             "type": "`$STRING`",
           },
@@ -254,30 +269,46 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/contract/draft",
-                "parts": [
-                  "contract",
-                  "draft",
+                "segments": [
+                  {
+                    "lit": "contract",
+                  },
+                  {
+                    "lit": "draft",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "contract",
+                  "draft",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/contract/review",
-                "parts": [
-                  "contract",
-                  "review",
+                "segments": [
+                  {
+                    "lit": "contract",
+                  },
+                  {
+                    "lit": "review",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "contract",
+                  "review",
+                ],
               },
             ],
           },
@@ -325,6 +356,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "date-time",
             "name": "timestamp",
             "short": "Timestamp of the response",
             "type": "`$STRING`",
@@ -341,14 +373,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/query",
-                "parts": [
-                  "query",
+                "segments": [
+                  {
+                    "lit": "query",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "query",
+                ],
               },
             ],
           },

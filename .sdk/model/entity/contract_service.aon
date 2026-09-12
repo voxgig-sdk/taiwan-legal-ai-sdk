@@ -119,6 +119,7 @@ main: kit: entity: contract_service: {
       type: "`$ARRAY`"
     }
     {
+      format: "date-time"
       name: "timestamp"
       req: false
       type: "`$STRING`"
@@ -133,9 +134,13 @@ main: kit: entity: contract_service: {
         {
           method: "POST"
           orig: "/contract/draft"
-          parts: [
-            "contract"
-            "draft"
+          segments: [
+            {
+              lit: "contract"
+            }
+            {
+              lit: "draft"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -145,9 +150,13 @@ main: kit: entity: contract_service: {
         {
           method: "POST"
           orig: "/contract/review"
-          parts: [
-            "contract"
-            "review"
+          segments: [
+            {
+              lit: "contract"
+            }
+            {
+              lit: "review"
+            }
           ]
           transform: {
             req: "`reqdata`"

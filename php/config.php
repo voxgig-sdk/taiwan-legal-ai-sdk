@@ -113,6 +113,7 @@ class TaiwanLegalAiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'type' => '`$STRING`',
             ],
@@ -128,13 +129,18 @@ class TaiwanLegalAiConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/case-analysis',
-                  'parts' => [
-                    'case-analysis',
+                  'segments' => [
+                    [
+                      'lit' => 'case-analysis',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'case-analysis',
                   ],
                 ],
               ],
@@ -244,6 +250,7 @@ class TaiwanLegalAiConfig
               'type' => '`$ARRAY`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'type' => '`$STRING`',
             ],
@@ -259,14 +266,22 @@ class TaiwanLegalAiConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/contract/draft',
-                  'parts' => [
-                    'contract',
-                    'draft',
+                  'segments' => [
+                    [
+                      'lit' => 'contract',
+                    ],
+                    [
+                      'lit' => 'draft',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'contract',
+                    'draft',
                   ],
                 ],
                 [
@@ -274,14 +289,22 @@ class TaiwanLegalAiConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/contract/review',
-                  'parts' => [
-                    'contract',
-                    'review',
+                  'segments' => [
+                    [
+                      'lit' => 'contract',
+                    ],
+                    [
+                      'lit' => 'review',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'contract',
+                    'review',
                   ],
                 ],
               ],
@@ -330,6 +353,7 @@ class TaiwanLegalAiConfig
               'type' => '`$ARRAY`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'timestamp',
               'short' => 'Timestamp of the response',
               'type' => '`$STRING`',
@@ -346,13 +370,18 @@ class TaiwanLegalAiConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/query',
-                  'parts' => [
-                    'query',
+                  'segments' => [
+                    [
+                      'lit' => 'query',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'query',
                   ],
                 ],
               ],
