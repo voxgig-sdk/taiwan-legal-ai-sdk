@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/taiwan-legal-ai",
+  "name": "@voxgig-sdk/taiwan-legal-ai-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Taiwan Legal AI public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { TaiwanLegalAiSDK } from '@voxgig-sdk/taiwan-legal-ai'
+import { TaiwanLegalAiSDK } from '@voxgig-sdk/taiwan-legal-ai-sdk'
 
 const client = new TaiwanLegalAiSDK({
   apikey: process.env.TAIWAN_LEGAL_AI_APIKEY,
@@ -546,7 +546,7 @@ taiwan-legal-ai/
 Import the SDK from the package root:
 
 ```ts
-import { TaiwanLegalAiSDK } from '@voxgig-sdk/taiwan-legal-ai'
+import { TaiwanLegalAiSDK } from '@voxgig-sdk/taiwan-legal-ai-sdk'
 ```
 
 ### Entity state

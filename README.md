@@ -107,7 +107,7 @@ local result, err = client:CaseAnalysi():create({ caseDetails = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
+| TypeScript | `@voxgig-sdk/taiwan-legal-ai-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
 | Python | `voxgig-sdk-taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
 | PHP | `voxgig-sdk/taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/taiwan-legal-ai-sdk/go` | `go get github.com/voxgig-sdk/taiwan-legal-ai-sdk/go@latest` |
@@ -121,7 +121,7 @@ local result, err = client:CaseAnalysi():create({ caseDetails = "example" })
 ### TypeScript
 
 ```ts
-import { TaiwanLegalAiSDK } from '@voxgig-sdk/taiwan-legal-ai'
+import { TaiwanLegalAiSDK } from '@voxgig-sdk/taiwan-legal-ai-sdk'
 
 const client = new TaiwanLegalAiSDK({
   apikey: process.env.TAIWAN_LEGAL_AI_APIKEY,
