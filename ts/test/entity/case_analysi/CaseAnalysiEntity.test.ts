@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { TaiwanLegalAiSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('CaseAnalysiEntity', async () => {
 
     const live = 'TRUE' === process.env.TAIWAN_LEGAL_AI_TEST_LIVE
     for (const op of ['create']) {
-      if (maybeSkipControl(t, 'entityOp', 'case_analysi.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'case_analysi.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"analysisId","req":false,"short":"Unique identifier for the analysis","type":"`$STRING`","index$":0},{"active":true,"name":"applicableLaws","req":false,"short":"Laws applicable to this case","type":"`$ARRAY`","index$":1},{"active":true,"name":"caseDetails","req":true,"short":"Detailed description of the case","type":"`$STRING`","index$":2},{"active":true,"name":"caseType","req":false,"short":"Type of legal case","type":"`$STRING`","index$":3},{"active":true,"name":"language","req":false,"type":"`$STRING`","index$":4},{"active":true,"name":"legalIssues","req":false,"short":"Identified legal issues","type":"`$ARRAY`","index$":5},{"active":true,"name":"parties","req":false,"short":"Information about parties involved","type":"`$OBJECT`","index$":6},{"active":true,"name":"precedents","req":false,"short":"Relevant legal precedents","type":"`$ARRAY`","index$":7},{"active":true,"name":"recommendations","req":false,"short":"AI recommendations for case strategy","type":"`$STRING`","index$":8},{"active":true,"name":"summary","req":false,"short":"Summary of the case analysis","type":"`$STRING`","index$":9},{"active":true,"format":"date-time","name":"timestamp","req":false,"type":"`$STRING`","index$":10}],"name":"case_analysi","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{},"contract":{"id":"POST /case-analysis","json":"{\"operationId\":\"analyzeLegalCase\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"caseDetails\":{\"description\":\"Detailed description of the case\",\"example\":\"This case involves a contract dispute between...\",\"type\":\"string\"},\"caseType\":{\"description\":\"Type of legal case\",\"enum\":[\"civil\",\"criminal\",\"commercial\",\"labor\",\"family\",\"administrative\"],\"example\":\"commercial\",\"type\":\"string\"},\"language\":{\"default\":\"zh-TW\",\"enum\":[\"zh-TW\",\"en\"],\"example\":\"zh-TW\",\"type\":\"string\"},\"parties\":{\"description\":\"Information about parties involved\",\"properties\":{\"defendant\":{\"example\":\"Company B\",\"type\":\"string\"},\"plaintiff\":{\"example\":\"Company A\",\"type\":\"string\"}},\"type\":\"object\"}},\"required\":[\"caseDetails\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"analysisId\":{\"description\":\"Unique identifier for the analysis\",\"example\":\"ca-987654321\",\"type\":\"string\"},\"applicableLaws\":{\"description\":\"Laws applicable to this case\",\"items\":{\"properties\":{\"articles\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"lawName\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"legalIssues\":{\"description\":\"Identified legal issues\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"precedents\":{\"description\":\"Relevant legal precedents\",\"items\":{\"properties\":{\"caseNumber\":{\"type\":\"string\"},\"court\":{\"type\":\"string\"},\"summary\":{\"type\":\"string\"},\"year\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"recommendations\":{\"description\":\"AI recommendations for case strategy\",\"type\":\"string\"},\"summary\":{\"description\":\"Summary of the case analysis\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful case analysis\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{\"BearerAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"BearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"JWT token authentication\",\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"POST","orig":"/case-analysis","segments":[{"lit":"case-analysis"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"case_analysi","name__orig":"case_analysi","Name":"CaseAnalysi","name_":"case_analysi","name-":"case-analysi","NAME":"CASE_ANALYSI","index$":0}, {"active":true,"entity":"case_analysi","key$":"BasicCaseAnalysiFlow","kind":"basic","name":"BasicCaseAnalysiFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"case_analysi_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0}]}, 'CaseAnalysi')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID': idmap,
     'TAIWAN_LEGAL_AI_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.TAIWAN_LEGAL_AI_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['TAIWAN_LEGAL_AI_TEST_CASE_ANALYSI_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new TaiwanLegalAiSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -140,7 +138,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -153,7 +152,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.TAIWAN_LEGAL_AI_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

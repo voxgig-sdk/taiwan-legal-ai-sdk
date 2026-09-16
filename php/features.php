@@ -4,7 +4,10 @@ declare(strict_types=1);
 // TaiwanLegalAi SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class TaiwanLegalAiFeatures
@@ -14,8 +17,14 @@ class TaiwanLegalAiFeatures
         switch ($name) {
             case "base":
                 return new TaiwanLegalAiBaseFeature();
+            case "ratelimit":
+                return new TaiwanLegalAiRatelimitFeature();
+            case "retry":
+                return new TaiwanLegalAiRetryFeature();
             case "test":
                 return new TaiwanLegalAiTestFeature();
+            case "timeout":
+                return new TaiwanLegalAiTimeoutFeature();
             default:
                 return new TaiwanLegalAiBaseFeature();
         }
@@ -31,7 +40,10 @@ class TaiwanLegalAiFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

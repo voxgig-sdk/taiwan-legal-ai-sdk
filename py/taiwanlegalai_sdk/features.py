@@ -1,12 +1,18 @@
 # TaiwanLegalAi SDK feature factory
 
 from taiwanlegalai_sdk.feature.base_feature import TaiwanLegalAiBaseFeature
+from taiwanlegalai_sdk.feature.ratelimit_feature import TaiwanLegalAiRatelimitFeature
+from taiwanlegalai_sdk.feature.retry_feature import TaiwanLegalAiRetryFeature
 from taiwanlegalai_sdk.feature.test_feature import TaiwanLegalAiTestFeature
+from taiwanlegalai_sdk.feature.timeout_feature import TaiwanLegalAiTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: TaiwanLegalAiBaseFeature(),
+    "ratelimit": lambda: TaiwanLegalAiRatelimitFeature(),
+    "retry": lambda: TaiwanLegalAiRetryFeature(),
     "test": lambda: TaiwanLegalAiTestFeature(),
+    "timeout": lambda: TaiwanLegalAiTimeoutFeature(),
 }
 
 
