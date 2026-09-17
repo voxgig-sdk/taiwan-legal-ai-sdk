@@ -81,6 +81,7 @@ func MakeConfig() map[string]any {
 			"base": "https://twlawbot.com/api",
 			"auth": map[string]any{
 				"prefix": "",
+				"name": "X-API-Key",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",

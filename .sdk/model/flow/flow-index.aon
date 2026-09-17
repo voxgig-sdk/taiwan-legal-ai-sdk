@@ -1,5 +1,5 @@
 # Flows
 
-@"BasicCaseAnalysiFlow.aon"
-@"BasicContractServiceFlow.aon"
-@"BasicLegalQueryFlow.aon"
+@"./BasicCaseAnalysiFlow.aon"
+@"./BasicContractServiceFlow.aon"
+@"./BasicLegalQueryFlow.aon"

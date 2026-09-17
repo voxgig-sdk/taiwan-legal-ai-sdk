@@ -107,12 +107,12 @@ local result, err = client:CaseAnalysi():create({ caseDetails = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/taiwan-legal-ai-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
-| Python | `voxgig-sdk-taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
-| PHP | `voxgig-sdk/taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
+| TypeScript | `@voxgig-sdk/taiwan-legal-ai-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/tags) |
+| Python | `voxgig-sdk-taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/tags) |
+| PHP | `voxgig-sdk/taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/taiwan-legal-ai-sdk/go` | `go get github.com/voxgig-sdk/taiwan-legal-ai-sdk/go@latest` |
-| Ruby | `voxgig-sdk-taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
-| Lua | `voxgig-sdk-taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/releases) |
+| Ruby | `voxgig-sdk-taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/tags) |
+| Lua | `voxgig-sdk-taiwan-legal-ai` | publish pending — [install from git tag](https://github.com/voxgig-sdk/taiwan-legal-ai-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/taiwan-legal-ai-sdk/go-cli` | `go install github.com/voxgig-sdk/taiwan-legal-ai-sdk/go-cli/cmd/taiwan-legal-ai@latest` |
 | Go MCP server | `github.com/voxgig-sdk/taiwan-legal-ai-sdk/go-mcp` | `go get github.com/voxgig-sdk/taiwan-legal-ai-sdk/go-mcp@latest` |
 

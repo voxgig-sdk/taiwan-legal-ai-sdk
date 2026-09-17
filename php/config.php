@@ -103,6 +103,7 @@ class TaiwanLegalAiConfig
                 "base" => "https://twlawbot.com/api",
                 "auth" => [
                     "prefix" => "",
+                    "name" => "X-API-Key",
                 ],
                 "headers" => [
           'content-type' => 'application/json',
