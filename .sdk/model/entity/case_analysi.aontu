@@ -1,0 +1,115 @@
+# Entity: case_analysi
+
+main: kit: entity: case_analysi: {
+
+  alias: field: {}
+
+  fields: {
+    analysisId: {
+      h: "Analysis Id"
+      n: "analysisId"
+      r: false
+      sh: "Unique identifier for the analysis"
+      t: "`$STRING`"
+    }
+    applicableLaws: {
+      h: "Applicable Laws"
+      n: "applicableLaws"
+      r: false
+      sh: "Laws applicable to this case"
+      t: "`$ARRAY`"
+    }
+    caseDetails: {
+      h: "Case Details"
+      n: "caseDetails"
+      r: true
+      sh: "Detailed description of the case"
+      t: "`$STRING`"
+    }
+    caseType: {
+      h: "Case Type"
+      n: "caseType"
+      r: false
+      sh: "Type of legal case"
+      t: "`$STRING`"
+    }
+    language: {
+      h: "Language"
+      n: "language"
+      r: false
+      t: "`$STRING`"
+    }
+    legalIssues: {
+      h: "Legal Issues"
+      n: "legalIssues"
+      r: false
+      sh: "Identified legal issues"
+      t: "`$ARRAY`"
+    }
+    parties: {
+      h: "Parties"
+      n: "parties"
+      r: false
+      sh: "Information about parties involved"
+      t: "`$OBJECT`"
+    }
+    precedents: {
+      h: "Precedents"
+      n: "precedents"
+      r: false
+      sh: "Relevant legal precedents"
+      t: "`$ARRAY`"
+    }
+    recommendations: {
+      h: "Recommendations"
+      n: "recommendations"
+      r: false
+      sh: "AI recommendations for case strategy"
+      t: "`$STRING`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: false
+      sh: "Summary of the case analysis"
+      t: "`$STRING`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "case_analysi"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /case-analysis"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/case-analysis"
+          s: [
+            {
+              lit: "case-analysis"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

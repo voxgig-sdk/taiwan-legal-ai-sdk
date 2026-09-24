@@ -1,0 +1,201 @@
+# Entity: contract_service
+
+main: kit: entity: contract_service: {
+
+  alias: field: {}
+
+  fields: {
+    clauses: {
+      h: "Clauses"
+      n: "clauses"
+      r: false
+      sh: "List of contract clauses"
+      t: "`$ARRAY`"
+    }
+    complianceCheck: {
+      h: "Compliance Check"
+      n: "complianceCheck"
+      r: false
+      sh: "Compliance with Taiwan laws"
+      t: "`$OBJECT`"
+    }
+    content: {
+      h: "Content"
+      n: "content"
+      r: false
+      sh: "The complete contract draft text"
+      t: "`$STRING`"
+    }
+    contractText: {
+      h: "Contract Text"
+      n: "contractText"
+      r: true
+      sh: "The complete contract text to be reviewed"
+      t: "`$STRING`"
+    }
+    contractType: {
+      h: "Contract Type"
+      n: "contractType"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Type of contract to draft"
+      t: "`$STRING`"
+    }
+    draftId: {
+      h: "Draft Id"
+      n: "draftId"
+      r: false
+      sh: "Unique identifier for the contract draft"
+      t: "`$STRING`"
+    }
+    focusAreas: {
+      h: "Focus Areas"
+      n: "focusAreas"
+      r: false
+      sh: "Specific areas to focus the review on"
+      t: "`$ARRAY`"
+    }
+    issues: {
+      h: "Issues"
+      n: "issues"
+      r: false
+      sh: "Identified issues and concerns"
+      t: "`$ARRAY`"
+    }
+    language: {
+      h: "Language"
+      n: "language"
+      r: false
+      t: "`$STRING`"
+    }
+    missingClauses: {
+      h: "Missing Clauses"
+      n: "missingClauses"
+      r: false
+      sh: "Important clauses that are missing"
+      t: "`$ARRAY`"
+    }
+    notes: {
+      h: "Notes"
+      n: "notes"
+      r: false
+      sh: "Important notes and considerations"
+      t: "`$STRING`"
+    }
+    overallAssessment: {
+      h: "Overall Assessment"
+      n: "overallAssessment"
+      r: false
+      sh: "Overall assessment of the contract"
+      t: "`$STRING`"
+    }
+    parties: {
+      h: "Parties"
+      n: "parties"
+      r: false
+      sh: "Information about contracting parties"
+      t: "`$OBJECT`"
+    }
+    recommendations: {
+      h: "Recommendations"
+      n: "recommendations"
+      r: false
+      sh: "Recommended changes and improvements"
+      t: "`$ARRAY`"
+    }
+    requirements: {
+      h: "Requirements"
+      n: "requirements"
+      r: true
+      sh: "Specific requirements and terms for the contract"
+      t: "`$STRING`"
+    }
+    reviewId: {
+      h: "Review Id"
+      n: "reviewId"
+      r: false
+      sh: "Unique identifier for the review"
+      t: "`$STRING`"
+    }
+    riskLevel: {
+      h: "Risk Level"
+      n: "riskLevel"
+      r: false
+      sh: "Overall risk level assessment"
+      t: "`$STRING`"
+    }
+    specificClauses: {
+      h: "Specific Clauses"
+      n: "specificClauses"
+      r: false
+      sh: "Specific clauses to include"
+      t: "`$ARRAY`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "contract_service"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /contract/draft"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/contract/draft"
+          s: [
+            {
+              lit: "contract"
+            }
+            {
+              lit: "draft"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /contract/review"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/contract/review"
+          s: [
+            {
+              lit: "contract"
+            }
+            {
+              lit: "review"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

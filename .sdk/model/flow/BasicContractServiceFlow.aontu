@@ -1,0 +1,18 @@
+# BasicContractServiceFlow
+
+main: kit: flow: BasicContractServiceFlow:
+{
+  entity: "contract_service",
+  kind: "basic",
+  name: "BasicContractServiceFlow",
+  step: [
+    {
+      i: {
+        ref: "contract_service_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicContractServiceFlow"
+}

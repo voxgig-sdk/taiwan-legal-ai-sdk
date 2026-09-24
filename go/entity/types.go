@@ -1,7 +1,7 @@
 // Typed models for the TaiwanLegalAi SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,17 +14,6 @@ import (
 
 // CaseAnalysi is the typed data model for the case_analysi entity.
 type CaseAnalysi struct {
-	AnalysisId *string `json:"analysisId,omitempty"`
-	ApplicableLaws *[]any `json:"applicableLaws,omitempty"`
-	CaseDetails string `json:"caseDetails"`
-	CaseType *string `json:"caseType,omitempty"`
-	Language *string `json:"language,omitempty"`
-	LegalIssues *[]any `json:"legalIssues,omitempty"`
-	Parties *map[string]any `json:"parties,omitempty"`
-	Precedents *[]any `json:"precedents,omitempty"`
-	Recommendations *string `json:"recommendations,omitempty"`
-	Summary *string `json:"summary,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
 }
 
 // CaseAnalysiCreateData is the typed request payload for CaseAnalysi.CreateTyped.
@@ -44,25 +33,6 @@ type CaseAnalysiCreateData struct {
 
 // ContractService is the typed data model for the contract_service entity.
 type ContractService struct {
-	Clauses *[]any `json:"clauses,omitempty"`
-	ComplianceCheck *map[string]any `json:"complianceCheck,omitempty"`
-	Content *string `json:"content,omitempty"`
-	ContractText string `json:"contractText"`
-	ContractType *string `json:"contractType,omitempty"`
-	DraftId *string `json:"draftId,omitempty"`
-	FocusAreas *[]any `json:"focusAreas,omitempty"`
-	Issues *[]any `json:"issues,omitempty"`
-	Language *string `json:"language,omitempty"`
-	MissingClauses *[]any `json:"missingClauses,omitempty"`
-	Notes *string `json:"notes,omitempty"`
-	OverallAssessment *string `json:"overallAssessment,omitempty"`
-	Parties *map[string]any `json:"parties,omitempty"`
-	Recommendations *[]any `json:"recommendations,omitempty"`
-	Requirements string `json:"requirements"`
-	ReviewId *string `json:"reviewId,omitempty"`
-	RiskLevel *string `json:"riskLevel,omitempty"`
-	SpecificClauses *[]any `json:"specificClauses,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
 }
 
 // ContractServiceCreateData is the typed request payload for ContractService.CreateTyped.
@@ -90,13 +60,6 @@ type ContractServiceCreateData struct {
 
 // LegalQuery is the typed data model for the legal_query entity.
 type LegalQuery struct {
-	Answer *string `json:"answer,omitempty"`
-	Category *string `json:"category,omitempty"`
-	Language *string `json:"language,omitempty"`
-	QueryId *string `json:"queryId,omitempty"`
-	Question *string `json:"question,omitempty"`
-	RelevantLaws *[]any `json:"relevantLaws,omitempty"`
-	Timestamp *string `json:"timestamp,omitempty"`
 }
 
 // LegalQueryCreateData is the typed request payload for LegalQuery.CreateTyped.

@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -150,58 +143,69 @@ class Config {
       "fields": [
         {
           "name": "analysisId",
-          "short": "Unique identifier for the analysis",
-          "type": "`$STRING`"
+          "title": "Analysis Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the analysis"
         },
         {
           "name": "applicableLaws",
-          "short": "Laws applicable to this case",
-          "type": "`$ARRAY`"
+          "title": "Applicable Laws",
+          "type": "`$ARRAY`",
+          "short": "Laws applicable to this case"
         },
         {
           "name": "caseDetails",
+          "title": "Case Details",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Detailed description of the case",
-          "type": "`$STRING`"
+          "short": "Detailed description of the case"
         },
         {
           "name": "caseType",
-          "short": "Type of legal case",
-          "type": "`$STRING`"
+          "title": "Case Type",
+          "type": "`$STRING`",
+          "short": "Type of legal case"
         },
         {
           "name": "language",
+          "title": "Language",
           "type": "`$STRING`"
         },
         {
           "name": "legalIssues",
-          "short": "Identified legal issues",
-          "type": "`$ARRAY`"
+          "title": "Legal Issues",
+          "type": "`$ARRAY`",
+          "short": "Identified legal issues"
         },
         {
           "name": "parties",
-          "short": "Information about parties involved",
-          "type": "`$OBJECT`"
+          "title": "Parties",
+          "type": "`$OBJECT`",
+          "short": "Information about parties involved"
         },
         {
           "name": "precedents",
-          "short": "Relevant legal precedents",
-          "type": "`$ARRAY`"
+          "title": "Precedents",
+          "type": "`$ARRAY`",
+          "short": "Relevant legal precedents"
         },
         {
           "name": "recommendations",
-          "short": "AI recommendations for case strategy",
-          "type": "`$STRING`"
+          "title": "Recommendations",
+          "type": "`$STRING`",
+          "short": "AI recommendations for case strategy"
         },
         {
           "name": "summary",
-          "short": "Summary of the case analysis",
-          "type": "`$STRING`"
+          "title": "Summary",
+          "type": "`$STRING`",
+          "short": "Summary of the case analysis"
         },
         {
-          "format": "date-time",
           "name": "timestamp",
-          "type": "`$STRING`"
+          "title": "Timestamp",
+          "type": "`$STRING`",
+          "format": "date-time"
         }
       ],
       "name": "case_analysi",
@@ -211,7 +215,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/case-analysis",
@@ -220,14 +223,16 @@ class Config {
                   "lit": "case-analysis"
                 }
               ],
-              "select": {},
+              "parts": [
+                "case-analysis"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "case-analysis"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -240,105 +245,124 @@ class Config {
       "fields": [
         {
           "name": "clauses",
-          "short": "List of contract clauses",
-          "type": "`$ARRAY`"
+          "title": "Clauses",
+          "type": "`$ARRAY`",
+          "short": "List of contract clauses"
         },
         {
           "name": "complianceCheck",
-          "short": "Compliance with Taiwan laws",
-          "type": "`$OBJECT`"
+          "title": "Compliance Check",
+          "type": "`$OBJECT`",
+          "short": "Compliance with Taiwan laws"
         },
         {
           "name": "content",
-          "short": "The complete contract draft text",
-          "type": "`$STRING`"
+          "title": "Content",
+          "type": "`$STRING`",
+          "short": "The complete contract draft text"
         },
         {
           "name": "contractText",
+          "title": "Contract Text",
+          "type": "`$STRING`",
           "req": true,
-          "short": "The complete contract text to be reviewed",
-          "type": "`$STRING`"
+          "short": "The complete contract text to be reviewed"
         },
         {
           "name": "contractType",
+          "title": "Contract Type",
+          "type": "`$STRING`",
           "op": {
             "create": {
               "req": true,
               "type": "`$STRING`"
             }
           },
-          "short": "Type of contract to draft",
-          "type": "`$STRING`"
+          "short": "Type of contract to draft"
         },
         {
           "name": "draftId",
-          "short": "Unique identifier for the contract draft",
-          "type": "`$STRING`"
+          "title": "Draft Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the contract draft"
         },
         {
           "name": "focusAreas",
-          "short": "Specific areas to focus the review on",
-          "type": "`$ARRAY`"
+          "title": "Focus Areas",
+          "type": "`$ARRAY`",
+          "short": "Specific areas to focus the review on"
         },
         {
           "name": "issues",
-          "short": "Identified issues and concerns",
-          "type": "`$ARRAY`"
+          "title": "Issues",
+          "type": "`$ARRAY`",
+          "short": "Identified issues and concerns"
         },
         {
           "name": "language",
+          "title": "Language",
           "type": "`$STRING`"
         },
         {
           "name": "missingClauses",
-          "short": "Important clauses that are missing",
-          "type": "`$ARRAY`"
+          "title": "Missing Clauses",
+          "type": "`$ARRAY`",
+          "short": "Important clauses that are missing"
         },
         {
           "name": "notes",
-          "short": "Important notes and considerations",
-          "type": "`$STRING`"
+          "title": "Notes",
+          "type": "`$STRING`",
+          "short": "Important notes and considerations"
         },
         {
           "name": "overallAssessment",
-          "short": "Overall assessment of the contract",
-          "type": "`$STRING`"
+          "title": "Overall Assessment",
+          "type": "`$STRING`",
+          "short": "Overall assessment of the contract"
         },
         {
           "name": "parties",
-          "short": "Information about contracting parties",
-          "type": "`$OBJECT`"
+          "title": "Parties",
+          "type": "`$OBJECT`",
+          "short": "Information about contracting parties"
         },
         {
           "name": "recommendations",
-          "short": "Recommended changes and improvements",
-          "type": "`$ARRAY`"
+          "title": "Recommendations",
+          "type": "`$ARRAY`",
+          "short": "Recommended changes and improvements"
         },
         {
           "name": "requirements",
+          "title": "Requirements",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Specific requirements and terms for the contract",
-          "type": "`$STRING`"
+          "short": "Specific requirements and terms for the contract"
         },
         {
           "name": "reviewId",
-          "short": "Unique identifier for the review",
-          "type": "`$STRING`"
+          "title": "Review Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the review"
         },
         {
           "name": "riskLevel",
-          "short": "Overall risk level assessment",
-          "type": "`$STRING`"
+          "title": "Risk Level",
+          "type": "`$STRING`",
+          "short": "Overall risk level assessment"
         },
         {
           "name": "specificClauses",
-          "short": "Specific clauses to include",
-          "type": "`$ARRAY`"
+          "title": "Specific Clauses",
+          "type": "`$ARRAY`",
+          "short": "Specific clauses to include"
         },
         {
-          "format": "date-time",
           "name": "timestamp",
-          "type": "`$STRING`"
+          "title": "Timestamp",
+          "type": "`$STRING`",
+          "format": "date-time"
         }
       ],
       "name": "contract_service",
@@ -348,7 +372,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/contract/draft",
@@ -360,18 +383,19 @@ class Config {
                   "lit": "draft"
                 }
               ],
-              "select": {},
+              "parts": [
+                "contract",
+                "draft"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "contract",
-                "draft"
-              ]
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/contract/review",
@@ -383,15 +407,17 @@ class Config {
                   "lit": "review"
                 }
               ],
-              "select": {},
+              "parts": [
+                "contract",
+                "review"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "contract",
-                "review"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -404,45 +430,52 @@ class Config {
       "fields": [
         {
           "name": "answer",
-          "short": "AI-generated legal guidance",
-          "type": "`$STRING`"
+          "title": "Answer",
+          "type": "`$STRING`",
+          "short": "AI-generated legal guidance"
         },
         {
           "name": "category",
-          "short": "Category of legal question",
-          "type": "`$STRING`"
+          "title": "Category",
+          "type": "`$STRING`",
+          "short": "Category of legal question"
         },
         {
           "name": "language",
-          "short": "Response language preference",
-          "type": "`$STRING`"
+          "title": "Language",
+          "type": "`$STRING`",
+          "short": "Response language preference"
         },
         {
           "name": "queryId",
-          "short": "Unique identifier for the query",
-          "type": "`$STRING`"
+          "title": "Query Id",
+          "type": "`$STRING`",
+          "short": "Unique identifier for the query"
         },
         {
           "name": "question",
+          "title": "Question",
+          "type": "`$STRING`",
           "op": {
             "create": {
               "req": true,
               "type": "`$STRING`"
             }
           },
-          "short": "The submitted question",
-          "type": "`$STRING`"
+          "short": "The submitted question"
         },
         {
           "name": "relevantLaws",
-          "short": "List of relevant legal statutes",
-          "type": "`$ARRAY`"
+          "title": "Relevant Laws",
+          "type": "`$ARRAY`",
+          "short": "List of relevant legal statutes"
         },
         {
-          "format": "date-time",
           "name": "timestamp",
+          "title": "Timestamp",
+          "type": "`$STRING`",
           "short": "Timestamp of the response",
-          "type": "`$STRING`"
+          "format": "date-time"
         }
       ],
       "name": "legal_query",
@@ -452,7 +485,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/query",
@@ -461,14 +493,16 @@ class Config {
                   "lit": "query"
                 }
               ],
-              "select": {},
+              "parts": [
+                "query"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "query"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }

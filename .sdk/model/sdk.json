@@ -24,90 +24,167 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "case_analysi": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "analysisId",
-              "req": false,
-              "short": "Unique identifier for the analysis",
-              "type": "`$STRING`"
+          "fields": {
+            "analysisId": {
+              "a": true,
+              "h": "Analysis Id",
+              "n": "analysisId",
+              "r": false,
+              "sh": "Unique identifier for the analysis",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "applicableLaws",
-              "req": false,
-              "short": "Laws applicable to this case",
-              "type": "`$ARRAY`"
+            "applicableLaws": {
+              "a": true,
+              "h": "Applicable Laws",
+              "n": "applicableLaws",
+              "r": false,
+              "sh": "Laws applicable to this case",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "caseDetails",
-              "req": true,
-              "short": "Detailed description of the case",
-              "type": "`$STRING`"
+            "caseDetails": {
+              "a": true,
+              "h": "Case Details",
+              "n": "caseDetails",
+              "r": true,
+              "sh": "Detailed description of the case",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "caseType",
-              "req": false,
-              "short": "Type of legal case",
-              "type": "`$STRING`"
+            "caseType": {
+              "a": true,
+              "h": "Case Type",
+              "n": "caseType",
+              "r": false,
+              "sh": "Type of legal case",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "language",
-              "req": false,
-              "type": "`$STRING`"
+            "language": {
+              "a": true,
+              "h": "Language",
+              "n": "language",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "legalIssues",
-              "req": false,
-              "short": "Identified legal issues",
-              "type": "`$ARRAY`"
+            "legalIssues": {
+              "a": true,
+              "h": "Legal Issues",
+              "n": "legalIssues",
+              "r": false,
+              "sh": "Identified legal issues",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "parties",
-              "req": false,
-              "short": "Information about parties involved",
-              "type": "`$OBJECT`"
+            "parties": {
+              "a": true,
+              "h": "Parties",
+              "n": "parties",
+              "r": false,
+              "sh": "Information about parties involved",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "precedents",
-              "req": false,
-              "short": "Relevant legal precedents",
-              "type": "`$ARRAY`"
+            "precedents": {
+              "a": true,
+              "h": "Precedents",
+              "n": "precedents",
+              "r": false,
+              "sh": "Relevant legal precedents",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "recommendations",
-              "req": false,
-              "short": "AI recommendations for case strategy",
-              "type": "`$STRING`"
+            "recommendations": {
+              "a": true,
+              "h": "Recommendations",
+              "n": "recommendations",
+              "r": false,
+              "sh": "AI recommendations for case strategy",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "summary",
-              "req": false,
-              "short": "Summary of the case analysis",
-              "type": "`$STRING`"
+            "summary": {
+              "a": true,
+              "h": "Summary",
+              "n": "summary",
+              "r": false,
+              "sh": "Summary of the case analysis",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "case_analysi",
           "op": {
             "create": {
@@ -115,24 +192,24 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /case-analysis",
-                    "json": "{\"operationId\":\"analyzeLegalCase\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"caseDetails\":{\"description\":\"Detailed description of the case\",\"example\":\"This case involves a contract dispute between...\",\"type\":\"string\"},\"caseType\":{\"description\":\"Type of legal case\",\"enum\":[\"civil\",\"criminal\",\"commercial\",\"labor\",\"family\",\"administrative\"],\"example\":\"commercial\",\"type\":\"string\"},\"language\":{\"default\":\"zh-TW\",\"enum\":[\"zh-TW\",\"en\"],\"example\":\"zh-TW\",\"type\":\"string\"},\"parties\":{\"description\":\"Information about parties involved\",\"properties\":{\"defendant\":{\"example\":\"Company B\",\"type\":\"string\"},\"plaintiff\":{\"example\":\"Company A\",\"type\":\"string\"}},\"type\":\"object\"}},\"required\":[\"caseDetails\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"analysisId\":{\"description\":\"Unique identifier for the analysis\",\"example\":\"ca-987654321\",\"type\":\"string\"},\"applicableLaws\":{\"description\":\"Laws applicable to this case\",\"items\":{\"properties\":{\"articles\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"lawName\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"legalIssues\":{\"description\":\"Identified legal issues\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"precedents\":{\"description\":\"Relevant legal precedents\",\"items\":{\"properties\":{\"caseNumber\":{\"type\":\"string\"},\"court\":{\"type\":\"string\"},\"summary\":{\"type\":\"string\"},\"year\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"recommendations\":{\"description\":\"AI recommendations for case strategy\",\"type\":\"string\"},\"summary\":{\"description\":\"Summary of the case analysis\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful case analysis\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{\"BearerAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"BearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"JWT token authentication\",\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/case-analysis",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/case-analysis",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "case-analysis"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -149,146 +226,165 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "clauses",
-              "req": false,
-              "short": "List of contract clauses",
-              "type": "`$ARRAY`"
+          "fields": {
+            "clauses": {
+              "a": true,
+              "h": "Clauses",
+              "n": "clauses",
+              "r": false,
+              "sh": "List of contract clauses",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "complianceCheck",
-              "req": false,
-              "short": "Compliance with Taiwan laws",
-              "type": "`$OBJECT`"
+            "complianceCheck": {
+              "a": true,
+              "h": "Compliance Check",
+              "n": "complianceCheck",
+              "r": false,
+              "sh": "Compliance with Taiwan laws",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "content",
-              "req": false,
-              "short": "The complete contract draft text",
-              "type": "`$STRING`"
+            "content": {
+              "a": true,
+              "h": "Content",
+              "n": "content",
+              "r": false,
+              "sh": "The complete contract draft text",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "contractText",
-              "req": true,
-              "short": "The complete contract text to be reviewed",
-              "type": "`$STRING`"
+            "contractText": {
+              "a": true,
+              "h": "Contract Text",
+              "n": "contractText",
+              "r": true,
+              "sh": "The complete contract text to be reviewed",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "contractType",
+            "contractType": {
+              "a": true,
+              "h": "Contract Type",
+              "n": "contractType",
               "op": {
                 "create": {
                   "req": true,
                   "type": "`$STRING`"
                 }
               },
-              "req": false,
-              "short": "Type of contract to draft",
-              "type": "`$STRING`"
+              "r": false,
+              "sh": "Type of contract to draft",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "draftId",
-              "req": false,
-              "short": "Unique identifier for the contract draft",
-              "type": "`$STRING`"
+            "draftId": {
+              "a": true,
+              "h": "Draft Id",
+              "n": "draftId",
+              "r": false,
+              "sh": "Unique identifier for the contract draft",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "focusAreas",
-              "req": false,
-              "short": "Specific areas to focus the review on",
-              "type": "`$ARRAY`"
+            "focusAreas": {
+              "a": true,
+              "h": "Focus Areas",
+              "n": "focusAreas",
+              "r": false,
+              "sh": "Specific areas to focus the review on",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "issues",
-              "req": false,
-              "short": "Identified issues and concerns",
-              "type": "`$ARRAY`"
+            "issues": {
+              "a": true,
+              "h": "Issues",
+              "n": "issues",
+              "r": false,
+              "sh": "Identified issues and concerns",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "language",
-              "req": false,
-              "type": "`$STRING`"
+            "language": {
+              "a": true,
+              "h": "Language",
+              "n": "language",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "missingClauses",
-              "req": false,
-              "short": "Important clauses that are missing",
-              "type": "`$ARRAY`"
+            "missingClauses": {
+              "a": true,
+              "h": "Missing Clauses",
+              "n": "missingClauses",
+              "r": false,
+              "sh": "Important clauses that are missing",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "notes",
-              "req": false,
-              "short": "Important notes and considerations",
-              "type": "`$STRING`"
+            "notes": {
+              "a": true,
+              "h": "Notes",
+              "n": "notes",
+              "r": false,
+              "sh": "Important notes and considerations",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "overallAssessment",
-              "req": false,
-              "short": "Overall assessment of the contract",
-              "type": "`$STRING`"
+            "overallAssessment": {
+              "a": true,
+              "h": "Overall Assessment",
+              "n": "overallAssessment",
+              "r": false,
+              "sh": "Overall assessment of the contract",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "parties",
-              "req": false,
-              "short": "Information about contracting parties",
-              "type": "`$OBJECT`"
+            "parties": {
+              "a": true,
+              "h": "Parties",
+              "n": "parties",
+              "r": false,
+              "sh": "Information about contracting parties",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "recommendations",
-              "req": false,
-              "short": "Recommended changes and improvements",
-              "type": "`$ARRAY`"
+            "recommendations": {
+              "a": true,
+              "h": "Recommendations",
+              "n": "recommendations",
+              "r": false,
+              "sh": "Recommended changes and improvements",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "requirements",
-              "req": true,
-              "short": "Specific requirements and terms for the contract",
-              "type": "`$STRING`"
+            "requirements": {
+              "a": true,
+              "h": "Requirements",
+              "n": "requirements",
+              "r": true,
+              "sh": "Specific requirements and terms for the contract",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "reviewId",
-              "req": false,
-              "short": "Unique identifier for the review",
-              "type": "`$STRING`"
+            "reviewId": {
+              "a": true,
+              "h": "Review Id",
+              "n": "reviewId",
+              "r": false,
+              "sh": "Unique identifier for the review",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "riskLevel",
-              "req": false,
-              "short": "Overall risk level assessment",
-              "type": "`$STRING`"
+            "riskLevel": {
+              "a": true,
+              "h": "Risk Level",
+              "n": "riskLevel",
+              "r": false,
+              "sh": "Overall risk level assessment",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "specificClauses",
-              "req": false,
-              "short": "Specific clauses to include",
-              "type": "`$ARRAY`"
+            "specificClauses": {
+              "a": true,
+              "h": "Specific Clauses",
+              "n": "specificClauses",
+              "r": false,
+              "sh": "Specific clauses to include",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "contract_service",
           "op": {
             "create": {
@@ -296,18 +392,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /contract/draft",
-                    "json": "{\"operationId\":\"draftContract\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"contractType\":{\"description\":\"Type of contract to draft\",\"enum\":[\"employment\",\"lease\",\"sales\",\"service\",\"nda\",\"partnership\",\"other\"],\"example\":\"employment\",\"type\":\"string\"},\"language\":{\"default\":\"zh-TW\",\"enum\":[\"zh-TW\",\"en\"],\"example\":\"zh-TW\",\"type\":\"string\"},\"parties\":{\"description\":\"Information about contracting parties\",\"properties\":{\"party1\":{\"example\":\"ABC Corporation\",\"type\":\"string\"},\"party2\":{\"example\":\"John Doe\",\"type\":\"string\"}},\"type\":\"object\"},\"requirements\":{\"description\":\"Specific requirements and terms for the contract\",\"example\":\"Full-time employment contract with 6-month probation period\",\"type\":\"string\"},\"specificClauses\":{\"description\":\"Specific clauses to include\",\"example\":[\"confidentiality\",\"non-compete\",\"termination\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"required\":[\"contractType\",\"requirements\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"clauses\":{\"description\":\"List of contract clauses\",\"items\":{\"properties\":{\"clauseNumber\":{\"type\":\"string\"},\"content\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"content\":{\"description\":\"The complete contract draft text\",\"type\":\"string\"},\"contractType\":{\"example\":\"employment\",\"type\":\"string\"},\"draftId\":{\"description\":\"Unique identifier for the contract draft\",\"example\":\"cd-555666777\",\"type\":\"string\"},\"notes\":{\"description\":\"Important notes and considerations\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successfully generated contract draft\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{\"BearerAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"BearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"JWT token authentication\",\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/contract/draft",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/contract/draft",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "contract"
                     },
@@ -315,25 +412,25 @@
                       "lit": "draft"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /contract/review",
-                    "json": "{\"operationId\":\"reviewContract\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"contractText\":{\"description\":\"The complete contract text to be reviewed\",\"type\":\"string\"},\"contractType\":{\"description\":\"Type of contract\",\"enum\":[\"employment\",\"lease\",\"sales\",\"service\",\"nda\",\"partnership\",\"other\"],\"example\":\"lease\",\"type\":\"string\"},\"focusAreas\":{\"description\":\"Specific areas to focus the review on\",\"example\":[\"liability\",\"termination\"],\"items\":{\"enum\":[\"liability\",\"termination\",\"payment\",\"confidentiality\",\"compliance\",\"all\"],\"type\":\"string\"},\"type\":\"array\"},\"language\":{\"default\":\"zh-TW\",\"enum\":[\"zh-TW\",\"en\"],\"example\":\"zh-TW\",\"type\":\"string\"}},\"required\":[\"contractText\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"complianceCheck\":{\"description\":\"Compliance with Taiwan laws\",\"properties\":{\"compliant\":{\"type\":\"boolean\"},\"issues\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"issues\":{\"description\":\"Identified issues and concerns\",\"items\":{\"properties\":{\"clause\":{\"description\":\"Clause reference\",\"type\":\"string\"},\"issue\":{\"description\":\"Description of the issue\",\"type\":\"string\"},\"recommendation\":{\"description\":\"Recommended action\",\"type\":\"string\"},\"severity\":{\"enum\":[\"critical\",\"high\",\"medium\",\"low\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"missingClauses\":{\"description\":\"Important clauses that are missing\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"overallAssessment\":{\"description\":\"Overall assessment of the contract\",\"example\":\"This contract generally protects both parties' interests but requires attention to specific clauses.\",\"type\":\"string\"},\"recommendations\":{\"description\":\"Recommended changes and improvements\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"reviewId\":{\"description\":\"Unique identifier for the review\",\"example\":\"cr-111222333\",\"type\":\"string\"},\"riskLevel\":{\"description\":\"Overall risk level assessment\",\"enum\":[\"low\",\"medium\",\"high\"],\"example\":\"medium\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successfully reviewed contract\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{\"BearerAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"BearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"JWT token authentication\",\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/contract/review",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/contract/review",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "contract"
                     },
@@ -341,8 +438,7 @@
                       "lit": "review"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -359,64 +455,71 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "answer",
-              "req": false,
-              "short": "AI-generated legal guidance",
-              "type": "`$STRING`"
+          "fields": {
+            "answer": {
+              "a": true,
+              "h": "Answer",
+              "n": "answer",
+              "r": false,
+              "sh": "AI-generated legal guidance",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "short": "Category of legal question",
-              "type": "`$STRING`"
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "sh": "Category of legal question",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "language",
-              "req": false,
-              "short": "Response language preference",
-              "type": "`$STRING`"
+            "language": {
+              "a": true,
+              "h": "Language",
+              "n": "language",
+              "r": false,
+              "sh": "Response language preference",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "queryId",
-              "req": false,
-              "short": "Unique identifier for the query",
-              "type": "`$STRING`"
+            "queryId": {
+              "a": true,
+              "h": "Query Id",
+              "n": "queryId",
+              "r": false,
+              "sh": "Unique identifier for the query",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "question",
+            "question": {
+              "a": true,
+              "h": "Question",
+              "n": "question",
               "op": {
                 "create": {
                   "req": true,
                   "type": "`$STRING`"
                 }
               },
-              "req": false,
-              "short": "The submitted question",
-              "type": "`$STRING`"
+              "r": false,
+              "sh": "The submitted question",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "relevantLaws",
-              "req": false,
-              "short": "List of relevant legal statutes",
-              "type": "`$ARRAY`"
+            "relevantLaws": {
+              "a": true,
+              "h": "Relevant Laws",
+              "n": "relevantLaws",
+              "r": false,
+              "sh": "List of relevant legal statutes",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "timestamp",
-              "req": false,
-              "short": "Timestamp of the response",
-              "type": "`$STRING`"
+            "timestamp": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Timestamp",
+              "n": "timestamp",
+              "r": false,
+              "sh": "Timestamp of the response",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "legal_query",
           "op": {
             "create": {
@@ -424,24 +527,24 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /query",
-                    "json": "{\"operationId\":\"submitLegalQuery\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"category\":{\"description\":\"Category of legal question\",\"enum\":[\"civil\",\"criminal\",\"commercial\",\"labor\",\"family\",\"administrative\",\"other\"],\"example\":\"civil\",\"type\":\"string\"},\"language\":{\"default\":\"zh-TW\",\"description\":\"Response language preference\",\"enum\":[\"zh-TW\",\"en\"],\"example\":\"zh-TW\",\"type\":\"string\"},\"question\":{\"description\":\"The legal question or query\",\"example\":\"What are the requirements for filing a lawsuit in Taiwan?\",\"type\":\"string\"}},\"required\":[\"question\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"answer\":{\"description\":\"AI-generated legal guidance\",\"example\":\"根據台灣民事訴訟法...\",\"type\":\"string\"},\"queryId\":{\"description\":\"Unique identifier for the query\",\"example\":\"q-123456789\",\"type\":\"string\"},\"question\":{\"description\":\"The submitted question\",\"example\":\"What are the requirements for filing a lawsuit in Taiwan?\",\"type\":\"string\"},\"relevantLaws\":{\"description\":\"List of relevant legal statutes\",\"items\":{\"properties\":{\"article\":{\"example\":\"第244條\",\"type\":\"string\"},\"content\":{\"example\":\"訴訟標的之價額...\",\"type\":\"string\"},\"lawName\":{\"example\":\"民事訴訟法\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"timestamp\":{\"description\":\"Timestamp of the response\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with legal guidance\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid input\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Too many requests - Rate limit exceeded\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"details\":{\"description\":\"Additional error details\",\"type\":\"string\"},\"error\":{\"description\":\"Error code\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"type\":\"string\"},\"timestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]},{\"BearerAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"BearerAuth\":{\"bearerFormat\":\"JWT\",\"description\":\"JWT token authentication\",\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/query",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/query",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "query"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -870,15 +973,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "case_analysi_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         },
@@ -891,15 +994,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "contract_service_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         },
@@ -912,15 +1015,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "legal_query_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         }

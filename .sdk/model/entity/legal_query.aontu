@@ -1,0 +1,95 @@
+# Entity: legal_query
+
+main: kit: entity: legal_query: {
+
+  alias: field: {}
+
+  fields: {
+    answer: {
+      h: "Answer"
+      n: "answer"
+      r: false
+      sh: "AI-generated legal guidance"
+      t: "`$STRING`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      sh: "Category of legal question"
+      t: "`$STRING`"
+    }
+    language: {
+      h: "Language"
+      n: "language"
+      r: false
+      sh: "Response language preference"
+      t: "`$STRING`"
+    }
+    queryId: {
+      h: "Query Id"
+      n: "queryId"
+      r: false
+      sh: "Unique identifier for the query"
+      t: "`$STRING`"
+    }
+    question: {
+      h: "Question"
+      n: "question"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The submitted question"
+      t: "`$STRING`"
+    }
+    relevantLaws: {
+      h: "Relevant Laws"
+      n: "relevantLaws"
+      r: false
+      sh: "List of relevant legal statutes"
+      t: "`$ARRAY`"
+    }
+    timestamp: {
+      fo: "date-time"
+      h: "Timestamp"
+      n: "timestamp"
+      r: false
+      sh: "Timestamp of the response"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "legal_query"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /query"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/query"
+          s: [
+            {
+              lit: "query"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
