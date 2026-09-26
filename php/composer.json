@@ -1,5 +1,5 @@
 {
-  "name": "voxgig-sdk/taiwan-legal-ai",
+  "name": "voxgig-sdk/taiwan-legal-ai-sdk",
   "description": "Unofficial generated PHP SDK for the Taiwan Legal AI public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
   "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "taiwan-legal-ai"],
