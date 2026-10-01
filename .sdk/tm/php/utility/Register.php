@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 TaiwanLegalAiUtility::setRegistrar(function (TaiwanLegalAiUtility $u): void {
     $u->clean = [TaiwanLegalAiClean::class, 'call'];
+    $u->clean_add = [TaiwanLegalAiClean::class, 'add'];
+    $u->clean_explain = [TaiwanLegalAiDone::class, 'clean_explain'];
     $u->done = [TaiwanLegalAiDone::class, 'call'];
     $u->make_error = [TaiwanLegalAiMakeError::class, 'call'];
     $u->feature_add = [TaiwanLegalAiFeatureAdd::class, 'call'];

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 TaiwanLegalAiUtility.registrar = ->(u) {
   u.clean = TaiwanLegalAiUtilities::Clean
+  u.clean_add = TaiwanLegalAiUtilities::CleanAdd
+  u.clean_explain = TaiwanLegalAiUtilities::CleanExplain
   u.done = TaiwanLegalAiUtilities::Done
   u.make_error = TaiwanLegalAiUtilities::MakeError
   u.feature_add = TaiwanLegalAiUtilities::FeatureAdd
