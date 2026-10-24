@@ -151,6 +151,13 @@ main: kit: entity: contract_service: {
       name: "create"
       points: [
         {
+          bf: [
+            "contractType"
+            "language"
+            "parties"
+            "requirements"
+            "specificClauses"
+          ]
           co: {
             id: "POST /contract/draft"
             source: "openapi3"
@@ -158,6 +165,10 @@ main: kit: entity: contract_service: {
           }
           m: "POST"
           o: "/contract/draft"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "contract"
@@ -172,6 +183,12 @@ main: kit: entity: contract_service: {
           }
         }
         {
+          bf: [
+            "contractText"
+            "contractType"
+            "focusAreas"
+            "language"
+          ]
           co: {
             id: "POST /contract/review"
             source: "openapi3"
@@ -179,6 +196,10 @@ main: kit: entity: contract_service: {
           }
           m: "POST"
           o: "/contract/review"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "contract"

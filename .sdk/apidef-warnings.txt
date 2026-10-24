@@ -1,0 +1,11 @@
+{
+  point: "warning"
+  note: "Points POST /contract/draft and POST /contract/review on entity=contract_service op=create have the same selector (exist: none), so only POST /contract/draft is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "contract_service"
+  op: "create"
+  points: [
+    "POST /contract/draft"
+    "POST /contract/review"
+  ]
+
+}

@@ -110,9 +110,9 @@ case_analysi = client.CaseAnalysi()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> CaseAnalysiEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.CaseAnalysi().create({
@@ -205,13 +205,14 @@ contract_service = client.ContractService()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> ContractServiceEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.ContractService().create({
     "contractText": "example_contractText",  # str
+    "contractType": "example_contractType",  # str
     "requirements": "example_requirements",  # str
 })
 ```
@@ -277,12 +278,13 @@ legal_query = client.LegalQuery()
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> LegalQueryEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.LegalQuery().create({
+    "question": "example_question",  # str
 })
 ```
 
@@ -472,6 +474,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

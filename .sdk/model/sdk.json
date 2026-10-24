@@ -193,6 +193,12 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "caseDetails",
+                    "caseType",
+                    "language",
+                    "parties"
+                  ],
                   "co": {
                     "id": "POST /case-analysis",
                     "source": "openapi3",
@@ -204,6 +210,10 @@
                   "o": "/case-analysis",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "case-analysis"
@@ -393,6 +403,13 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "contractType",
+                    "language",
+                    "parties",
+                    "requirements",
+                    "specificClauses"
+                  ],
                   "co": {
                     "id": "POST /contract/draft",
                     "source": "openapi3",
@@ -404,6 +421,10 @@
                   "o": "/contract/draft",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "contract"
@@ -419,6 +440,12 @@
                 },
                 {
                   "a": true,
+                  "bf": [
+                    "contractText",
+                    "contractType",
+                    "focusAreas",
+                    "language"
+                  ],
                   "co": {
                     "id": "POST /contract/review",
                     "source": "openapi3",
@@ -430,6 +457,10 @@
                   "o": "/contract/review",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "contract"
@@ -528,6 +559,11 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "category",
+                    "language",
+                    "question"
+                  ],
                   "co": {
                     "id": "POST /query",
                     "source": "openapi3",
@@ -539,6 +575,10 @@
                   "o": "/query",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "query"
@@ -879,6 +919,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -1039,6 +1080,17 @@
         "description": "TaiLexi AI is a specialized legal AI designed for Taiwan, providing automated assistance in legal queries, case analysis, and contract drafting and review. It offers a comprehensive platform for individuals and legal professionals to access legal information and support 24/7.",
         "meta_source": "https://www.freepublicapis.com",
         "security": {
+          "alternatives": [
+            [
+              {
+                "in": "header",
+                "name": "Authorization",
+                "prefix": "Bearer",
+                "scheme": "BearerAuth",
+                "type": "http"
+              }
+            ]
+          ],
           "in": "header",
           "name": "X-API-Key",
           "prefix": "",
@@ -1060,7 +1112,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -1113,6 +1165,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1343,7 +1400,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1720,6 +1780,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

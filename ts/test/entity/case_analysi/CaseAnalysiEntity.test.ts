@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { TaiwanLegalAiSDK, BaseFeature, stdutil } from '../../..'
+import { TaiwanLegalAiSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('CaseAnalysiEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = TaiwanLegalAiSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.CaseAnalysi().create({"caseDetails":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.TAIWAN_LEGAL_AI_TEST_LIVE
@@ -51,7 +63,7 @@ describe('CaseAnalysiEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"analysisId":{"a":true,"h":"Analysis Id","n":"analysisId","r":false,"sh":"Unique identifier for the analysis","t":"`$STRING`","key$":"analysisId","index$":0},"applicableLaws":{"a":true,"h":"Applicable Laws","n":"applicableLaws","r":false,"sh":"Laws applicable to this case","t":"`$ARRAY`","key$":"applicableLaws","index$":1},"caseDetails":{"a":true,"h":"Case Details","n":"caseDetails","r":true,"sh":"Detailed description of the case","t":"`$STRING`","key$":"caseDetails","index$":2},"caseType":{"a":true,"h":"Case Type","n":"caseType","r":false,"sh":"Type of legal case","t":"`$STRING`","key$":"caseType","index$":3},"language":{"a":true,"h":"Language","n":"language","r":false,"t":"`$STRING`","key$":"language","index$":4},"legalIssues":{"a":true,"h":"Legal Issues","n":"legalIssues","r":false,"sh":"Identified legal issues","t":"`$ARRAY`","key$":"legalIssues","index$":5},"parties":{"a":true,"h":"Parties","n":"parties","r":false,"sh":"Information about parties involved","t":"`$OBJECT`","key$":"parties","index$":6},"precedents":{"a":true,"h":"Precedents","n":"precedents","r":false,"sh":"Relevant legal precedents","t":"`$ARRAY`","key$":"precedents","index$":7},"recommendations":{"a":true,"h":"Recommendations","n":"recommendations","r":false,"sh":"AI recommendations for case strategy","t":"`$STRING`","key$":"recommendations","index$":8},"summary":{"a":true,"h":"Summary","n":"summary","r":false,"sh":"Summary of the case analysis","t":"`$STRING`","key$":"summary","index$":9},"timestamp":{"a":true,"fo":"date-time","h":"Timestamp","n":"timestamp","r":false,"t":"`$STRING`","key$":"timestamp","index$":10}},"name":"case_analysi","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /case-analysis","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/case-analysis","q":{},"r":{},"s":[{"lit":"case-analysis"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"case_analysi","name__orig":"case_analysi","Name":"CaseAnalysi","name_":"case_analysi","name-":"case-analysi","NAME":"CASE_ANALYSI","index$":0}, {"active":true,"entity":"case_analysi","key$":"BasicCaseAnalysiFlow","kind":"basic","name":"BasicCaseAnalysiFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"case_analysi_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'CaseAnalysi', {"POST /case-analysis":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["caseDetails"],"properties":{"caseDetails":{"type":"string","description":"Detailed description of the case","example":"This case involves a contract dispute between...","key$":"caseDetails"},"caseType":{"type":"string","description":"Type of legal case","enum":["civil","criminal","commercial","labor","family","administrative"],"example":"commercial","key$":"caseType"},"parties":{"type":"object","description":"Information about parties involved","properties":{"plaintiff":{"type":"string","example":"Company A"},"defendant":{"type":"string","example":"Company B"}},"key$":"parties"},"language":{"type":"string","enum":["zh-TW","en"],"default":"zh-TW","example":"zh-TW","key$":"language"}},"index$":1}}}},"parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"analysisId":{"a":true,"h":"Analysis Id","n":"analysisId","r":false,"sh":"Unique identifier for the analysis","t":"`$STRING`","key$":"analysisId","index$":0},"applicableLaws":{"a":true,"h":"Applicable Laws","n":"applicableLaws","r":false,"sh":"Laws applicable to this case","t":"`$ARRAY`","key$":"applicableLaws","index$":1},"caseDetails":{"a":true,"h":"Case Details","n":"caseDetails","r":true,"sh":"Detailed description of the case","t":"`$STRING`","key$":"caseDetails","index$":2},"caseType":{"a":true,"h":"Case Type","n":"caseType","r":false,"sh":"Type of legal case","t":"`$STRING`","key$":"caseType","index$":3},"language":{"a":true,"h":"Language","n":"language","r":false,"t":"`$STRING`","key$":"language","index$":4},"legalIssues":{"a":true,"h":"Legal Issues","n":"legalIssues","r":false,"sh":"Identified legal issues","t":"`$ARRAY`","key$":"legalIssues","index$":5},"parties":{"a":true,"h":"Parties","n":"parties","r":false,"sh":"Information about parties involved","t":"`$OBJECT`","key$":"parties","index$":6},"precedents":{"a":true,"h":"Precedents","n":"precedents","r":false,"sh":"Relevant legal precedents","t":"`$ARRAY`","key$":"precedents","index$":7},"recommendations":{"a":true,"h":"Recommendations","n":"recommendations","r":false,"sh":"AI recommendations for case strategy","t":"`$STRING`","key$":"recommendations","index$":8},"summary":{"a":true,"h":"Summary","n":"summary","r":false,"sh":"Summary of the case analysis","t":"`$STRING`","key$":"summary","index$":9},"timestamp":{"a":true,"fo":"date-time","h":"Timestamp","n":"timestamp","r":false,"t":"`$STRING`","key$":"timestamp","index$":10}},"name":"case_analysi","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["caseDetails","caseType","language","parties"],"co":{"id":"POST /case-analysis","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/case-analysis","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"case-analysis"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"case_analysi","name__orig":"case_analysi","Name":"CaseAnalysi","name_":"case_analysi","name-":"case-analysi","NAME":"CASE_ANALYSI","index$":0}, {"active":true,"entity":"case_analysi","key$":"BasicCaseAnalysiFlow","kind":"basic","name":"BasicCaseAnalysiFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"case_analysi_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'CaseAnalysi', {"POST /case-analysis":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["caseDetails"],"properties":{"caseDetails":{"type":"string","description":"Detailed description of the case","example":"This case involves a contract dispute between...","key$":"caseDetails"},"caseType":{"type":"string","description":"Type of legal case","enum":["civil","criminal","commercial","labor","family","administrative"],"example":"commercial","key$":"caseType"},"parties":{"type":"object","description":"Information about parties involved","properties":{"plaintiff":{"type":"string","example":"Company A"},"defendant":{"type":"string","example":"Company B"}},"key$":"parties"},"language":{"type":"string","enum":["zh-TW","en"],"default":"zh-TW","example":"zh-TW","key$":"language"}},"index$":1}}}},"parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +84,12 @@ describe('CaseAnalysiEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

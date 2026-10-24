@@ -38,16 +38,9 @@ class CaseAnalysiCreateDataRequired(TypedDict):
 
 
 class CaseAnalysiCreateData(CaseAnalysiCreateDataRequired, total=False):
-    analysisId: str
-    applicableLaws: list
     caseType: str
     language: str
-    legalIssues: list
     parties: dict
-    precedents: list
-    recommendations: str
-    summary: str
-    timestamp: str
 
 
 class ContractServiceRequired(TypedDict):
@@ -77,27 +70,15 @@ class ContractService(ContractServiceRequired, total=False):
 
 class ContractServiceCreateDataRequired(TypedDict):
     contractText: str
+    contractType: str
     requirements: str
 
 
 class ContractServiceCreateData(ContractServiceCreateDataRequired, total=False):
-    clauses: list
-    complianceCheck: dict
-    content: str
-    contractType: str
-    draftId: str
     focusAreas: list
-    issues: list
     language: str
-    missingClauses: list
-    notes: str
-    overallAssessment: str
     parties: dict
-    recommendations: list
-    reviewId: str
-    riskLevel: str
     specificClauses: list
-    timestamp: str
 
 
 class LegalQuery(TypedDict, total=False):
@@ -110,11 +91,10 @@ class LegalQuery(TypedDict, total=False):
     timestamp: str
 
 
-class LegalQueryCreateData(TypedDict, total=False):
-    answer: str
+class LegalQueryCreateDataRequired(TypedDict):
+    question: str
+
+
+class LegalQueryCreateData(LegalQueryCreateDataRequired, total=False):
     category: str
     language: str
-    queryId: str
-    question: str
-    relevantLaws: list
-    timestamp: str

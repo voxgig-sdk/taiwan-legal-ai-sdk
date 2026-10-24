@@ -3,5 +3,32 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "AI-generated legal guidance",
+      "API key for authentication",
+      "Category of legal question",
+      "Compliance with Taiwan laws",
+      "Detailed description of the case",
+      "Identified legal issues",
+      "JWT token authentication",
+      "Laws applicable to this case",
+      "List of contract clauses",
+      "Production server",
+      "Response language preference",
+      "Successful case analysis",
+      "Successful response with legal guidance",
+      "Successfully generated contract draft",
+      "Successfully reviewed contract",
+      "TaiLexi AI is a specialized legal AI designed for Taiwan, providing automated assistance in legal queries, case analysis, and contract drafting and review. It offers a comprehensive platform for individuals and legal professionals to access legal information and support 24/7.",
+      "The complete contract draft text",
+      "The complete contract text to be reviewed",
+      "The submitted question",
+      "Type of contract to draft",
+      "Type of legal case",
+      "Unique identifier for the analysis",
+      "Unique identifier for the query"
+    ]
+  }
 }

@@ -81,9 +81,12 @@ class LegalQueryEntity extends TaiwanLegalAiEntityBase_1.TaiwanLegalAiEntityBase
         catch (err) {
             // What a hook throws here must not escape the cleaning below.
             try {
-                fres = featureHook(ctx, 'PreUnexpected');
-                if (fres instanceof Promise) {
-                    await fres;
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
                 }
             }
             catch (hookerr) {
@@ -95,7 +98,7 @@ class LegalQueryEntity extends TaiwanLegalAiEntityBase_1.TaiwanLegalAiEntityBase
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<LegalQuery> return stays clean under strict null checks.
+                // Promise<LegalQueryEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }

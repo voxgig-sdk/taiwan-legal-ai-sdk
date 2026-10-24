@@ -59,12 +59,6 @@ CaseAnalysi = Struct.new(
 
 # Request payload for CaseAnalysi#create.
 #
-# @!attribute [rw] analysisId
-#   @return [String, nil]
-#
-# @!attribute [rw] applicableLaws
-#   @return [Array, nil]
-#
 # @!attribute [rw] caseDetails
 #   @return [String]
 #
@@ -74,35 +68,13 @@ CaseAnalysi = Struct.new(
 # @!attribute [rw] language
 #   @return [String, nil]
 #
-# @!attribute [rw] legalIssues
-#   @return [Array, nil]
-#
 # @!attribute [rw] parties
 #   @return [Hash, nil]
-#
-# @!attribute [rw] precedents
-#   @return [Array, nil]
-#
-# @!attribute [rw] recommendations
-#   @return [String, nil]
-#
-# @!attribute [rw] summary
-#   @return [String, nil]
-#
-# @!attribute [rw] timestamp
-#   @return [String, nil]
 CaseAnalysiCreateData = Struct.new(
-  :analysisId,
-  :applicableLaws,
   :caseDetails,
   :caseType,
   :language,
-  :legalIssues,
   :parties,
-  :precedents,
-  :recommendations,
-  :summary,
-  :timestamp,
   keyword_init: true
 )
 
@@ -189,82 +161,34 @@ ContractService = Struct.new(
 
 # Request payload for ContractService#create.
 #
-# @!attribute [rw] clauses
-#   @return [Array, nil]
-#
-# @!attribute [rw] complianceCheck
-#   @return [Hash, nil]
-#
-# @!attribute [rw] content
-#   @return [String, nil]
-#
 # @!attribute [rw] contractText
 #   @return [String]
 #
 # @!attribute [rw] contractType
-#   @return [String, nil]
-#
-# @!attribute [rw] draftId
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] focusAreas
-#   @return [Array, nil]
-#
-# @!attribute [rw] issues
 #   @return [Array, nil]
 #
 # @!attribute [rw] language
 #   @return [String, nil]
 #
-# @!attribute [rw] missingClauses
-#   @return [Array, nil]
-#
-# @!attribute [rw] notes
-#   @return [String, nil]
-#
-# @!attribute [rw] overallAssessment
-#   @return [String, nil]
-#
 # @!attribute [rw] parties
 #   @return [Hash, nil]
-#
-# @!attribute [rw] recommendations
-#   @return [Array, nil]
 #
 # @!attribute [rw] requirements
 #   @return [String]
 #
-# @!attribute [rw] reviewId
-#   @return [String, nil]
-#
-# @!attribute [rw] riskLevel
-#   @return [String, nil]
-#
 # @!attribute [rw] specificClauses
 #   @return [Array, nil]
-#
-# @!attribute [rw] timestamp
-#   @return [String, nil]
 ContractServiceCreateData = Struct.new(
-  :clauses,
-  :complianceCheck,
-  :content,
   :contractText,
   :contractType,
-  :draftId,
   :focusAreas,
-  :issues,
   :language,
-  :missingClauses,
-  :notes,
-  :overallAssessment,
   :parties,
-  :recommendations,
   :requirements,
-  :reviewId,
-  :riskLevel,
   :specificClauses,
-  :timestamp,
   keyword_init: true
 )
 
@@ -303,34 +227,18 @@ LegalQuery = Struct.new(
 
 # Request payload for LegalQuery#create.
 #
-# @!attribute [rw] answer
-#   @return [String, nil]
-#
 # @!attribute [rw] category
 #   @return [String, nil]
 #
 # @!attribute [rw] language
 #   @return [String, nil]
 #
-# @!attribute [rw] queryId
-#   @return [String, nil]
-#
 # @!attribute [rw] question
-#   @return [String, nil]
-#
-# @!attribute [rw] relevantLaws
-#   @return [Array, nil]
-#
-# @!attribute [rw] timestamp
-#   @return [String, nil]
+#   @return [String]
 LegalQueryCreateData = Struct.new(
-  :answer,
   :category,
   :language,
-  :queryId,
   :question,
-  :relevantLaws,
-  :timestamp,
   keyword_init: true
 )
 

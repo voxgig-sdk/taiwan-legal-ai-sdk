@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { TaiwanLegalAiSDK, BaseFeature, stdutil } from '../../..'
+import { TaiwanLegalAiSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('LegalQueryEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = TaiwanLegalAiSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.LegalQuery().create({"category":1,"question":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.TAIWAN_LEGAL_AI_TEST_LIVE
@@ -51,7 +63,7 @@ describe('LegalQueryEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"answer":{"a":true,"h":"Answer","n":"answer","r":false,"sh":"AI-generated legal guidance","t":"`$STRING`","key$":"answer","index$":0},"category":{"a":true,"h":"Category","n":"category","r":false,"sh":"Category of legal question","t":"`$STRING`","key$":"category","index$":1},"language":{"a":true,"h":"Language","n":"language","r":false,"sh":"Response language preference","t":"`$STRING`","key$":"language","index$":2},"queryId":{"a":true,"h":"Query Id","n":"queryId","r":false,"sh":"Unique identifier for the query","t":"`$STRING`","key$":"queryId","index$":3},"question":{"a":true,"h":"Question","n":"question","op":{"create":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"The submitted question","t":"`$STRING`","key$":"question","index$":4},"relevantLaws":{"a":true,"h":"Relevant Laws","n":"relevantLaws","r":false,"sh":"List of relevant legal statutes","t":"`$ARRAY`","key$":"relevantLaws","index$":5},"timestamp":{"a":true,"fo":"date-time","h":"Timestamp","n":"timestamp","r":false,"sh":"Timestamp of the response","t":"`$STRING`","key$":"timestamp","index$":6}},"name":"legal_query","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /query","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/query","q":{},"r":{},"s":[{"lit":"query"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"legal_query","name__orig":"legal_query","Name":"LegalQuery","name_":"legal_query","name-":"legal-query","NAME":"LEGAL_QUERY","index$":2}, {"active":true,"entity":"legal_query","key$":"BasicLegalQueryFlow","kind":"basic","name":"BasicLegalQueryFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"legal_query_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'LegalQuery', {"POST /query":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["question"],"properties":{"question":{"type":"string","description":"The legal question or query","example":"What are the requirements for filing a lawsuit in Taiwan?","key$":"question"},"category":{"type":"string","description":"Category of legal question","enum":["civil","criminal","commercial","labor","family","administrative","other"],"example":"civil","key$":"category"},"language":{"type":"string","description":"Response language preference","enum":["zh-TW","en"],"default":"zh-TW","example":"zh-TW","key$":"language"}},"index$":1}}}},"parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"answer":{"a":true,"h":"Answer","n":"answer","r":false,"sh":"AI-generated legal guidance","t":"`$STRING`","key$":"answer","index$":0},"category":{"a":true,"h":"Category","n":"category","r":false,"sh":"Category of legal question","t":"`$STRING`","key$":"category","index$":1},"language":{"a":true,"h":"Language","n":"language","r":false,"sh":"Response language preference","t":"`$STRING`","key$":"language","index$":2},"queryId":{"a":true,"h":"Query Id","n":"queryId","r":false,"sh":"Unique identifier for the query","t":"`$STRING`","key$":"queryId","index$":3},"question":{"a":true,"h":"Question","n":"question","op":{"create":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"The submitted question","t":"`$STRING`","key$":"question","index$":4},"relevantLaws":{"a":true,"h":"Relevant Laws","n":"relevantLaws","r":false,"sh":"List of relevant legal statutes","t":"`$ARRAY`","key$":"relevantLaws","index$":5},"timestamp":{"a":true,"fo":"date-time","h":"Timestamp","n":"timestamp","r":false,"sh":"Timestamp of the response","t":"`$STRING`","key$":"timestamp","index$":6}},"name":"legal_query","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["category","language","question"],"co":{"id":"POST /query","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/query","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"query"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"legal_query","name__orig":"legal_query","Name":"LegalQuery","name_":"legal_query","name-":"legal-query","NAME":"LEGAL_QUERY","index$":2}, {"active":true,"entity":"legal_query","key$":"BasicLegalQueryFlow","kind":"basic","name":"BasicLegalQueryFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"legal_query_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'LegalQuery', {"POST /query":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["question"],"properties":{"question":{"type":"string","description":"The legal question or query","example":"What are the requirements for filing a lawsuit in Taiwan?","key$":"question"},"category":{"type":"string","description":"Category of legal question","enum":["civil","criminal","commercial","labor","family","administrative","other"],"example":"civil","key$":"category"},"language":{"type":"string","description":"Response language preference","enum":["zh-TW","en"],"default":"zh-TW","example":"zh-TW","key$":"language"}},"index$":1}}}},"parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +84,12 @@ describe('LegalQueryEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

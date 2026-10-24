@@ -117,7 +117,7 @@ $case_analysi = $client->CaseAnalysi();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->CaseAnalysi()->create([
@@ -213,11 +213,12 @@ $contract_service = $client->ContractService();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->ContractService()->create([
   "contractText" => null, // string
+  "contractType" => null, // string
   "requirements" => null, // string
 ]);
 ```
@@ -286,10 +287,11 @@ $legal_query = $client->LegalQuery();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->LegalQuery()->create([
+  "question" => null, // string
 ]);
 ```
 
@@ -480,6 +482,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

@@ -9,6 +9,17 @@ main: {
       }
       description: "TaiLexi AI is a specialized legal AI designed for Taiwan, providing automated assistance in legal queries, case analysis, and contract drafting and review. It offers a comprehensive platform for individuals and legal professionals to access legal information and support 24/7."
       security: {
+        alternatives: [
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "BearerAuth"
+              type: "http"
+            }
+          ]
+        ]
         in: "header"
         name: "X-API-Key"
         prefix: ""
